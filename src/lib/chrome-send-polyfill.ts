@@ -180,6 +180,8 @@ const _send_polyfill = (msg: string, params?: any[]) => {
         cr.webUIListenerCallback('search-engines-changed', structuredClone(searchEngines));
     } else if (msg === 'requestDefaultBrowserState') {
         cr.webUIResponse(params![0], true, defaultBrowser);
+    } else if (msg === 'getBackgroundColor') {
+        cr.webUIResponse(params![0], true, 'rgba(60, 60, 60, 1)');
     } else if (msg === 'setAsDefaultBrowser') {
         defaultBrowser.isDefault = true;
         cr.webUIListenerCallback('browser-default-state-changed', structuredClone(defaultBrowser));
