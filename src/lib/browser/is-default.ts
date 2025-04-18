@@ -1,23 +1,20 @@
-import { readable } from "svelte/store";
+import { writable, type Readable } from "svelte/store";
 import * as cr from "../cr";
 
-let setDefaultBrowser: (_: boolean) => void;
+const _defaultBrowser = writable(false);
 
 const browser = cr.DefaultBrowserBrowserProxyImpl.getInstance();
+browser.requestDefaultBrowserState().then(
+    state => _defaultBrowser.set(state.isDefault)
+);
 
-export const isDefaultBrowser = readable(false, (set) => {
-    browser.requestDefaultBrowserState().then(
-        state => set(state.isDefault)
-    );
-
-    setDefaultBrowser = set;
-});
+cr.addWebUiListener(
+    'browser-default-state-changed',
+    (state: cr.DefaultBrowserInfo) => _defaultBrowser.set(state.isDefault)
+);
 
 export const askToBeDefault = (/* 🥺👉👈 */) => {
     browser.setAsDefaultBrowser();
 }
 
-cr.addWebUiListener(
-    'browser-default-state-changed',
-    (state: cr.DefaultBrowserInfo) => setDefaultBrowser(state.isDefault)
-);
+export const isDefaultBrowser: Readable<boolean> = _defaultBrowser;
