@@ -32,8 +32,8 @@ export const s = {
         subtitle: "You can change it later in Settings."
     },
     searchEngines: {
-        duckduckgo: "Great privacy and usability. Doesn’t store or sell any user data.",
-        kagi: "Feature-rich, privacy-respecting, and very friendly. Requires a paid account. Feels different from the rest.",
+        duckduckgo: "Great privacy and usability. Relies on Bing for search results.",
+        kagi: "Friendly, privacy-respecting, and feature-rich. Great customizable ranking, less SEO spam. Requires an account.",
         qwant: "Based in Europe. Uses results from Bing. Sends tracking data to Microsoft.",
         ecosia: "Plants trees for searches. Relies on Bing and Google. Sends tracking data to Microsoft and Google.",
         bing: "An overwhelming search engine by Microsoft.",
