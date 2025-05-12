@@ -36,7 +36,7 @@ export const s = {
         kagi: "Friendly, privacy-respecting, and feature-rich. Great customizable ranking, less SEO spam. Requires an account.",
         qwant: "Based in Europe. Uses results from Bing. Sends tracking data to Microsoft.",
         ecosia: "Plants trees for searches. Relies on Bing and Google. Sends tracking data to Microsoft and Google.",
-        bing: "An overwhelming search engine by Microsoft.",
+        bing: "An overwhelming search engine by Microsoft with no privacy in sight.",
         google: "Well, you know already. Consider trying something else."
     },
     defaultBrowser: {
