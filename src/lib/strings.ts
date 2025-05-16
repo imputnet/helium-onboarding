@@ -33,7 +33,7 @@ export const s = {
     },
     searchEngines: {
         duckduckgo: "Great privacy and usability. Relies on Bing for search results.",
-        kagi: "Friendly, privacy-respecting, and feature-rich. Great customizable ranking, less SEO spam. Requires an account.",
+        kagi: "Privacy-respecting, feature-rich, and customizable. Includes domain ranking, no ads, and zero tracking. Requires an account.",
         qwant: "Based in Europe. Uses results from Bing. Sends tracking data to Microsoft.",
         ecosia: "Plants trees for searches. Relies on Bing and Google. Sends tracking data to Microsoft and Google.",
         bing: "An overwhelming search engine by Microsoft with no privacy in sight.",
