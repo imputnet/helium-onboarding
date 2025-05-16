@@ -32,11 +32,11 @@ export const s = {
         subtitle: "You can change it later in Settings."
     },
     searchEngines: {
-        duckduckgo: "Great privacy and usability. Relies on Bing for search results.",
-        kagi: "Privacy-respecting, feature-rich, and customizable. Includes domain ranking, no ads, and zero tracking. Requires an account.",
+        duckduckgo: "Privacy-respecting. Relies on Bing for search results.",
+        kagi: "Privacy-respecting, feature-rich, and customizable. Includes domain ranking, zero tracking, and no ads. Requires an account.",
         qwant: "Based in Europe. Uses results from Bing. Sends tracking data to Microsoft.",
-        ecosia: "Plants trees for searches. Relies on Bing and Google. Sends tracking data to Microsoft and Google.",
-        bing: "An overwhelming search engine by Microsoft with no privacy in sight.",
+        ecosia: "May plant trees for clicking ads. Relies on Bing and Google. Sends tracking data to Microsoft and Google.",
+        bing: "An overwhelming search engine with no privacy.",
         google: "Well, you know already. Consider trying something else."
     },
     defaultBrowser: {
