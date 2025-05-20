@@ -2,13 +2,15 @@ import * as cr from './cr';
 import type { DefaultBrowserInfo } from './cr/default_browser_browser_proxy';
 import type { SearchEngine, SearchEnginesInfo } from './cr/search_engines_browser_proxy';
 
-let chrome: Record<string, Function> = {};
-
 declare namespace globalThis {
     namespace chrome {
         function send(msg: string, params?: any[]): void;
     }
 }
+
+if (import.meta.env.DEV) {
+
+let chrome: Record<string, Function> = {};
 
 if (!('chrome' in globalThis)) {
     Object.assign(globalThis, { chrome });
@@ -229,3 +231,5 @@ if (!('send' in chrome)) {
     chrome.send = _send_polyfill;
     console.log('polyfilled chrome.send()');
 }
+
+} /* if(import.meta.env.DEV) */
