@@ -40,6 +40,10 @@ type Action = () => void;
 let queue: [number, cr.WhatToImport, Action, Action][] = [];
 
 const runNext = () => {
+    if (queue.length === 0) {
+        return;
+    }
+
     const [ index, tasks, resolve, reject ] = queue.pop()!;
 
     const me = cr.addWebUiListener('import-data-status-changed', (status: cr.ImportDataStatus) => {
