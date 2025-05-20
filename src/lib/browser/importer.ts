@@ -1,29 +1,13 @@
-import { derived, readable } from "svelte/store";
+import { derived, writable } from "svelte/store";
 import * as cr from "../cr";
-
-let setProfiles: (_: cr.BrowserProfile[]) => void;
 
 const browser = cr.ImportDataBrowserProxyImpl.getInstance();
 
-const importableProfilesRaw = readable<cr.BrowserProfile[]>([], (set) => {
-    browser.initializeImportDialog().then(set);
-    setProfiles = set;
-});
+const importableProfilesRaw = writable<cr.BrowserProfile[]>([]);
 
-export const importableProfiles = derived(importableProfilesRaw, $profiles => {
-    return $profiles.filter(p => {
-        return !p.name.toLowerCase().includes('html');
-    });
-});
-
-export type WhatToImport = Partial<{
-    autofillFormData: boolean,
-    bookmarks: boolean,
-    history: boolean,
-    savedPasswords: boolean,
-    searchEngine: boolean,
-    extensions: boolean
-}>;
+browser.initializeImportDialog().then(
+    profiles => importableProfilesRaw.set(profiles)
+);
 
 const convertTasks = (tasks: WhatToImport): cr.WhatToImport => {
     return {
@@ -59,12 +43,27 @@ const runNext = () => {
         if (queue.length) {
             runNext();
         } else {
-            browser.initializeImportDialog().then(setProfiles);
+            browser.initializeImportDialog().then(importableProfilesRaw.set);
         }
     });
 
     browser.importData(index, tasks);
 }
+
+export const importableProfiles = derived(importableProfilesRaw, $profiles => {
+    return $profiles.filter(p => {
+        return !p.name.toLowerCase().includes('html');
+    });
+});
+
+export type WhatToImport = Partial<{
+    autofillFormData: boolean,
+    bookmarks: boolean,
+    history: boolean,
+    savedPasswords: boolean,
+    searchEngine: boolean,
+    extensions: boolean
+}>;
 
 export const importProfile = (index: number, tasks: WhatToImport) => {
     const wrappedTasks = convertTasks(tasks);

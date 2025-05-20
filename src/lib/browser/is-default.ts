@@ -1,4 +1,4 @@
-import { writable, type Readable } from "svelte/store";
+import { derived, writable } from "svelte/store";
 import * as cr from "../cr";
 
 const _defaultBrowser = writable(false);
@@ -22,4 +22,4 @@ export const askToBeDefault = (/* 🥺👉👈 */) => {
     browser.setAsDefaultBrowser();
 }
 
-export const isDefaultBrowser: Readable<boolean> = _defaultBrowser;
+export const isDefaultBrowser = derived(_defaultBrowser, $ => $);

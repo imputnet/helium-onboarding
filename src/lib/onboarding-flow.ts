@@ -1,5 +1,5 @@
 import { SvelteSet } from "svelte/reactivity";
-import { derived, get, readable, writable, type Updater } from "svelte/store";
+import { derived, get, writable, type Updater } from "svelte/store";
 
 import { canBeDefaultBrowser, importableProfiles, isDefaultBrowser } from "./browser";
 
@@ -12,12 +12,7 @@ export const flow = [
     "Finish"
 ] as const;
 
-let update: (_: Updater<number>) => void;
-
-const index = readable(
-    0,
-    (_, _update) => { update = _update }
-);
+const index = writable(0);
 
 export const currentPage = derived(
     index,
@@ -43,11 +38,11 @@ const getPageNumber = (current: number, direction = 1) => {
 }
 
 export const nextPage = () => {
-    update(getPageNumber);
+    index.update((current) => getPageNumber(current));
 }
 
 export const previousPage = () => {
-    update((current) => getPageNumber(current, -1));
+    index.update((current) => getPageNumber(current, -1));
 }
 
 export const userChoseHeliumAsDefault = writable(true);

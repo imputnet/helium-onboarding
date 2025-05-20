@@ -1,4 +1,4 @@
-import { readable } from "svelte/store";
+import { derived, writable } from "svelte/store";
 import * as cr from "../cr";
 
 export type Preferences = {
@@ -13,15 +13,18 @@ export type Preferences = {
 
 export type PrefKey = keyof Preferences;
 
-let setPreferences: (_: Preferences) => void;
+const _preferences = writable({} as Preferences);
 
-export const preferences = readable(
-    {} as Preferences,
-    (set) => {
-        cr.sendWithPromise('getPrefs').then(set);
-        setPreferences = set;
-    }
+cr.sendWithPromise('getPrefs').then(
+    prefs => _preferences.set(prefs)
 );
+
+cr.addWebUiListener(
+    'helium-prefs-changed',
+    (prefs: Preferences) => _preferences.set(prefs)
+);
+
+export const preferences = derived(_preferences, $ => $);
 
 export const setPref = async <
     Key extends PrefKey,
@@ -29,8 +32,3 @@ export const setPref = async <
 >(name: Key, value: Value): Promise<void> => {
     await cr.sendWithPromise('setPref', name, value);
 }
-
-cr.addWebUiListener(
-    'helium-prefs-changed',
-    (prefs: Preferences) => setPreferences(prefs)
-);
