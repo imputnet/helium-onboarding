@@ -1,4 +1,4 @@
-import { derived, writable } from "svelte/store";
+import { readonly, writable } from "svelte/store";
 import * as cr from "../cr";
 
 const browser = cr.SearchEnginesBrowserProxyImpl.getInstance();
@@ -13,7 +13,7 @@ cr.addWebUiListener(
     (state: cr.SearchEnginesInfo) => _searchEngines.set(state.defaults)
 );
 
-export const searchEngines = derived(_searchEngines, $ => $);
+export const searchEngines = readonly(_searchEngines);
 
 export const setDefaultEngine = (modelIndex: number) => {
     browser.setDefaultSearchEngine(

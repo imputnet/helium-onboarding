@@ -1,4 +1,4 @@
-import { derived, writable } from "svelte/store";
+import { readonly, writable } from "svelte/store";
 import * as cr from "../cr";
 
 export type Preferences = {
@@ -24,7 +24,7 @@ cr.addWebUiListener(
     (prefs: Preferences) => _preferences.set(prefs)
 );
 
-export const preferences = derived(_preferences, $ => $);
+export const preferences = readonly(_preferences);
 
 export const setPref = async <
     Key extends PrefKey,
