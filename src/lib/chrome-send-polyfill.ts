@@ -26,6 +26,7 @@ const prefs: Record<string, unknown> = {
     'services.origin_override': '',
     'services.user_consented': false,
     'services.spellcheck_files': true,
+    'services.browser_updates': true,
 };
 
 const searchEngineTemplate: SearchEngine = {

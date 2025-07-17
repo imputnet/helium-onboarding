@@ -9,6 +9,7 @@ export type Preferences = {
     'services.origin_override': string,
     'services.user_consented': boolean,
     'services.spellcheck_files': boolean,
+    'services.browser_updates': boolean,
 };
 
 export type PrefKey = keyof Preferences;
