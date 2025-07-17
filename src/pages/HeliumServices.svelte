@@ -34,9 +34,15 @@
                 inactive={!$pr["services.enabled"]}
             />
             <Toggle
-                title={s.services.proxy_title}
-                desc={s.services.proxy_desc}
+                title={s.services.extensions_title}
+                desc={s.services.extensions_desc}
                 prefName={"services.ext_proxy"}
+                inactive={!$pr["services.enabled"]}
+            />
+            <Toggle
+                title={s.services.autoupdates_title}
+                desc={s.services.autoupdates_desc}
+                prefName={"services.browser_updates"}
                 inactive={!$pr["services.enabled"]}
             />
             <ButtonLink
