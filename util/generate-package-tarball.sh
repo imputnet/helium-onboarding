@@ -16,6 +16,7 @@ make() {
         --frozen-lockfile \
         --verify-store-integrity \
         --shamefully-hoist \
+        --node-linker hoisted \
         --force
 
     TAR=gtar
