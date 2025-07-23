@@ -1,5 +1,5 @@
 import { writeFile, readdir, lstat } from 'node:fs/promises';
-import { basename, join } from 'node:path';
+import { basename, relative, join, sep, posix } from 'node:path';
 
 if (process.argv.length !== 4) {
     console.log(`usage: ${basename(process.argv[1])} <dist folder> <.grd output>`);
@@ -24,10 +24,9 @@ async function* walk(path: string): AsyncGenerator<string> {
 const to_identifier = (path: string) => {
     const prefix = 'IDR_HELIUM_ONBOARDING_';
 
-    return prefix + path.replaceAll('/', '_')
-        .replaceAll('.', '_')
-        .replaceAll('-', '_')
-        .toUpperCase();
+    return prefix + path.replace(/[-\\\/.:]/g, '_')
+                        .replace(/_+/g, '_')
+                        .toUpperCase();
 }
 
 const check = (str: string) => {
@@ -44,7 +43,7 @@ const generate = async () => {
     const includes: string[] = [];
 
     for await (const path of walk(dist_dir)) {
-        const relative_path = path.replace(/.*dist\//, '');
+        const relative_path = relative(dist_dir, path).replaceAll(sep, posix.sep);
         includes.push(`
           <include
               name="${check(to_identifier(relative_path))}"
