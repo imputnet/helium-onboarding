@@ -24,8 +24,7 @@ async function* walk(path: string): AsyncGenerator<string> {
 const to_identifier = (path: string) => {
     const prefix = 'IDR_HELIUM_ONBOARDING_';
 
-    return prefix + path.replace(/[-\\\/.:]/g, '_')
-                        .replace(/_+/g, '_')
+    return prefix + path.replace(/[-\\\/.:_]+/g, '_')
                         .toUpperCase();
 }
 
