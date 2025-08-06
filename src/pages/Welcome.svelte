@@ -23,12 +23,14 @@
 >
     <div id="welcome-page-container">
         <div id="welcome-top">
-            <div id="welcome-logo">
-                <HeliumLogo />
-            </div>
-            <div id="welcome-text">
-                <h1>{s.welcome.greeting}</h1>
-                <p>{s.welcome.body}</p>
+            <div id="welcome-logo-text">
+                <div id="welcome-logo">
+                    <HeliumLogo />
+                </div>
+                <div id="welcome-text">
+                    <h1>{s.welcome.greeting}</h1>
+                    <p>{s.welcome.body}</p>
+                </div>
             </div>
             <div id="welcome-buttons">
                 <button onclick={useDefaults}>
@@ -53,9 +55,6 @@
 
         &.visible {
             visibility: visible;
-            animation: main-zoom-blur-in 0.7s;
-            animation-delay: 0.5s;
-            animation-fill-mode: backwards;
         }
 
         &:not(.visible) {
@@ -65,7 +64,8 @@
     }
 
     #welcome-top,
-    #welcome-text {
+    #welcome-text,
+    #welcome-logo-text {
         display: flex;
         flex-direction: column;
     }
@@ -74,11 +74,21 @@
         max-width: 700px;
     }
 
-    #welcome-top {
+    #welcome-top,
+    #welcome-logo-text {
         height: 100%;
         gap: 32px;
         justify-content: center;
         align-items: center;
+    }
+
+    #welcome-logo-text,
+    #welcome-text {
+        gap: 20px
+    }
+
+    #welcome-logo-text {
+        max-width: 600px;
     }
 
     #welcome-logo :global(svg) {
@@ -86,12 +96,41 @@
         width: 64px;
     }
 
-    #welcome-text {
-        gap: 20px;
-
-        & p {
-            font-size: 20px;
+    .visible {
+        #welcome-logo {
+            animation: logo-intro 0.6s;
+            animation-delay: 1s;
         }
+
+        #welcome-text,
+        #welcome-buttons,
+        #welcome-footer {
+            animation: blur-in 0.35s;
+        }
+
+        #welcome-text {
+            animation-delay: 1.5s;
+        }
+
+        #welcome-buttons {
+            animation-delay: 1.6s;
+        }
+
+        #welcome-footer {
+            animation-delay: 1.7s;
+        }
+
+        #welcome-logo,
+        #welcome-text,
+        #welcome-buttons,
+        #welcome-footer {
+            animation-fill-mode: both;
+            will-change: transform, filter, opacity;
+        }
+    }
+
+    #welcome-text p {
+        font-size: 20px;
     }
 
     #welcome-buttons {
@@ -106,11 +145,28 @@
         justify-content: center;
         width: 100%;
         left: 0;
+    }
 
-        animation: main-zoom-blur-in 0.6s;
-        animation-delay: 1s;
-        will-change: transform, filter, opacity;
-        animation-fill-mode: backwards;
+    @keyframes logo-intro {
+        from {
+            opacity: 0;
+            transform: scale(2) translateY(250px);
+            filter: blur(10px);
+        }
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+    @keyframes blur-in {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+            filter: blur(10px);
+        }
+        to {
+            opacity: 1;
+        }
     }
 
     @media (prefers-reduced-transparency) or (prefers-reduced-motion) {

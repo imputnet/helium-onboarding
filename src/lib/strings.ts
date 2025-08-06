@@ -8,15 +8,15 @@ export const s = {
     },
     welcome: {
         greeting: "Meet Helium",
-        body: "Let's configure your browser just the way you want it.\nIf you're in a rush, you can stick to defaults with best privacy and usability.",
-        defaultsNote: "If you skip the setup, Helium online services and extensions won't work.\nIf you use defaults, Helium online services will be enabled."
+        body: "Let's configure your browser just the way you want it. If you're in a rush, you can stick to defaults with best privacy and comfort.",
+        defaultsNote: "If you use defaults, Helium services will be enabled.\nYou can skip setup and come back later, but Helium services won't be enabled."
     },
     finish: {
         title: "Welcome to Helium!",
         body: "The setup is complete, we're really glad you're here.\nLet's get the browsing started!"
     },
     services: {
-        title: "Helium online services",
+        title: "Helium services",
         subtitle: "All services are anonymous, private, and self-hostable.\nChanges will be applied after you go to the next page.",
         connection_title: "Allow connecting to Helium services",
         connection_desc: "Helium services provide additional functionality, such as extension downloads and native !bangs. Helium will not be able to pre-install uBlock Origin if online services are disabled.",
