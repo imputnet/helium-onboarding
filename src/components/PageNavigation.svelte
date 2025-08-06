@@ -80,6 +80,7 @@
         bottom: 48px;
         position: absolute;
         gap: var(--gap-2);
+        padding-top: var(--gap-1);
         z-index: 9;
 
         visibility: hidden;
