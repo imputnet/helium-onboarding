@@ -147,33 +147,10 @@
         left: 0;
     }
 
-    @keyframes logo-intro {
-        from {
-            opacity: 0;
-            transform: scale(2) translateY(250px);
-            filter: blur(10px);
-        }
-        to {
-            opacity: 1;
-            transform: none;
-        }
-    }
-    @keyframes blur-in {
-        from {
-            opacity: 0;
-            transform: scale(0.9);
-            filter: blur(10px);
-        }
-        to {
-            opacity: 1;
-        }
-    }
-
-    @media (prefers-reduced-transparency) or (prefers-reduced-motion) {
-        #welcome-page.visible,
-        .visible #welcome-footer {
-            animation: none;
-            opacity: 1;
+    @media (prefers-reduced-motion) {
+        #welcome-page.visible * {
+            animation-delay: 0.2s;
+            animation-duration: 0.5s;
         }
     }
 </style>

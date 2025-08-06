@@ -259,3 +259,66 @@ button, .button {
         opacity: 0;
     }
 }
+
+@keyframes logo-intro {
+    from {
+        opacity: 0;
+        transform: scale(2) translateY(250px);
+        filter: blur(10px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes blur-in {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+        filter: blur(10px);
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion) {
+    @keyframes zoom-blur-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes zoom-blur-out {
+        from {
+            opacity: 1;
+            visibility: visible;
+        }
+        to {
+            visibility: hidden;
+            opacity: 0;
+        }
+    }
+
+    @keyframes logo-intro {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes blur-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+}

@@ -101,11 +101,4 @@
     #finish-text p {
         font-size: 20px;
     }
-
-    @media (prefers-reduced-transparency) or (prefers-reduced-motion) {
-        #finish-page.visible {
-            animation: none;
-            opacity: 1;
-        }
-    }
 </style>
