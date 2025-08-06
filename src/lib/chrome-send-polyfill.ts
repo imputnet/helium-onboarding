@@ -108,7 +108,7 @@ const importerListSimple = [
     [ "Chromium", "Play", chrome_has ],
     [ "Vivaldi", "Work", chrome_has_favs ],
     [ "Opera", "lalala", chrome_has_favs ],
-    [ "Yandex", "сидим пердим", chrome_has_favs ],
+    [ "Yandex", "Бла бла бла", chrome_has_favs ],
     [ "NAVER Whale", "Work", chrome_has ],
     [ "Arc", "Person 1", chrome_has ],
     [ "Microsoft Edge", "Profile 1", chrome_has ],
