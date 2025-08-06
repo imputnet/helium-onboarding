@@ -22,13 +22,15 @@
 >
     <div id="finish-page-container">
         <div id="finish-top">
-            <div id="finish-logo">
-                <HeliumLogo />
-                <IconHeart />
-            </div>
-            <div id="finish-text">
-                <h1>{s.finish.title}</h1>
-                <p>{s.finish.body}</p>
+            <div id="finish-logo-text">
+                <div id="finish-logo">
+                    <HeliumLogo />
+                    <IconHeart />
+                </div>
+                <div id="finish-text">
+                    <h1>{s.finish.title}</h1>
+                    <p>{s.finish.body}</p>
+                </div>
             </div>
             <button class="primary" onclick={done}>
                 <IconCheck />
@@ -56,7 +58,8 @@
     }
 
     #finish-top,
-    #finish-text {
+    #finish-text,
+    #finish-logo-text {
         display: flex;
         flex-direction: column;
     }
@@ -65,11 +68,17 @@
         max-width: 700px;
     }
 
-    #finish-top {
+    #finish-top,
+    #finish-logo-text {
         height: 100%;
         gap: 32px;
         justify-content: center;
         align-items: center;
+    }
+
+    #finish-logo-text,
+    #finish-text {
+        gap: 20px
     }
 
     #finish-logo {
@@ -89,12 +98,8 @@
         }
     }
 
-    #finish-text {
-        gap: 20px;
-
-        & p {
-            font-size: 20px;
-        }
+    #finish-text p {
+        font-size: 20px;
     }
 
     @media (prefers-reduced-transparency) or (prefers-reduced-motion) {
