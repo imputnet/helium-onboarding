@@ -99,7 +99,7 @@
     .visible {
         #welcome-logo {
             animation: logo-intro 0.6s;
-            animation-delay: 1s;
+            animation-delay: 0.6s;
         }
 
         #welcome-text,
@@ -109,15 +109,15 @@
         }
 
         #welcome-text {
-            animation-delay: 1.5s;
+            animation-delay: 1s;
         }
 
         #welcome-buttons {
-            animation-delay: 1.6s;
+            animation-delay: 1.1s;
         }
 
         #welcome-footer {
-            animation-delay: 1.7s;
+            animation-delay: 1.2s;
         }
 
         #welcome-logo,
