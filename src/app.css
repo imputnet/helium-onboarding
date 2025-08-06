@@ -16,7 +16,12 @@
     --white: #ffffff;
     --black: #000000;
 
-    --helium-gradient: linear-gradient(180deg, #152671 0%, #31428c 53%, #4e5fa9 100%);
+    --helium-gradient: linear-gradient(
+        180deg,
+        #152671 10%,
+        #1b2c78 30%,
+        #5669bd 100%
+    );
     --helium-elevated: #afbeff;
     --helium-elevated-10: rgba(175, 190, 255, 0.1);
     --helium-elevated-20: rgba(175, 190, 255, 0.2);
@@ -52,11 +57,15 @@ body {
     display: none;
 }
 
-h1, h2, h4{
+h1, h2, h4 {
     font-weight: 500;
     line-height: 1.2;
     margin-block: 0;
     margin-inline: 0;
+}
+
+h1, h2 {
+    letter-spacing: -0.05rem;
 }
 
 h1 {
