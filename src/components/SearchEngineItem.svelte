@@ -66,6 +66,7 @@
     .engine-icon {
         width: 32px;
         height: 32px;
+        aspect-ratio: 1/1;
         border-radius: 8px;
     }
 </style>

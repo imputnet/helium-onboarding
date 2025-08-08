@@ -3,6 +3,7 @@
     import type { BrowserProfile } from "../lib/cr";
     import { currentPage } from "../lib/onboarding-flow";
     import { importableProfiles } from "../lib/browser";
+    import { browserIcons } from "../lib/nonfree-icons";
 
     import PageHeader from "../components/PageHeader.svelte";
     import ProfileImportOption from "../components/ProfileImportOption.svelte";
@@ -26,23 +27,23 @@
         Object.entries(groupedProfiles).sort(([a], [b]) => a.localeCompare(b))
     );
 
-    const browserIcons = {
-        Arc: "Arc",
-        Brave: "Brave",
-        Chromium: "Chromium",
-        Opera: "Opera",
-        Safari: "Safari",
-        Vivaldi: "Vivaldi",
-        Yandex: "Yandex",
+    const browserIconMap = {
+        Arc: "arc",
+        Brave: "brave",
+        Chromium: "chromium",
+        Opera: "opera",
+        Safari: "safari",
+        Vivaldi: "vivaldi",
+        Yandex: "yandex",
 
-        "Google Chrome": "Chrome",
-        "Google Chrome Beta": "ChromeBeta",
-        "Google Chrome Canary": "ChromeCanary",
-        "Google Chrome Dev": "ChromeDev",
-        "Microsoft Edge": "Edge",
-        "Mozilla Firefox": "Firefox",
-        "NAVER Whale": "Whale",
-    };
+        "Google Chrome": "chrome",
+        "Google Chrome Beta": "chrome_beta",
+        "Google Chrome Canary": "chrome_canary",
+        "Google Chrome Dev": "chrome_dev",
+        "Microsoft Edge": "edge",
+        "Mozilla Firefox": "firefox",
+        "NAVER Whale": "whale",
+    } as const;
 </script>
 
 <div id="data-import-page" class="onboarding-page" class:visible>
@@ -54,14 +55,12 @@
         />
         <div id="content" class="page-content">
             {#each sorted as [browser, profiles]}
+                {@const icon = browserIconMap[browser as keyof typeof browserIconMap]}
+                {@const url = icon && browserIcons[icon]}
                 <div class="browser-header">
                     <div class="browser-icon">
-                        {#if browser in browserIcons}
-                            {@const icon = browserIcons[browser as keyof typeof browserIcons]}
-                            <img
-                                src="/browser-icons/{icon}.png"
-                                alt="{browser} icon"
-                            />
+                        {#if url}
+                            <img src={url} alt="{browser} icon" />
                         {:else}
                             <IconWorld />
                         {/if}

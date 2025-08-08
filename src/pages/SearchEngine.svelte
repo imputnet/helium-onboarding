@@ -2,6 +2,7 @@
     import { s } from "../lib/strings";
     import { currentPage } from "../lib/onboarding-flow";
     import { searchEngines } from "../lib/browser/search-engines";
+    import { searchEngineIcons } from "../lib/nonfree-icons";
 
     import PageHeader from "../components/PageHeader.svelte";
     import IconSearch from "../icons/tabler/IconSearch.svelte";
@@ -9,14 +10,8 @@
 
     const searchDescs: Record<string, string> = s.searchEngines;
 
-    // can't use svgs for these engines cuz
-    // they don't provide .svg as a usable brand resource
-    const svgExceptions = ["bing", "google"];
-
-    const iconPath = (engine: string) => {
-        const ext = svgExceptions.includes(engine) ? "png" : "svg";
-        return `/search-engine-icons/${engine.toLowerCase()}.${ext}`;
-    };
+    const iconPath = (engine: string) =>
+        searchEngineIcons[engine.toLowerCase()] ?? "";
 
     const visible = $derived($currentPage === "SearchEngine");
 </script>
