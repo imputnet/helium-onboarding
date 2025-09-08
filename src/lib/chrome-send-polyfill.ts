@@ -99,25 +99,31 @@ const chrome_has_favs = new Set([...chrome_has, "favorites"]);
 const safari_has = new Set(["favorites"]);
 
 const importerListSimple = [
+    [ "Safari", "", safari_has ],
+    [ "Bookmarks HTML File", "", safari_has ],
+
     [ "Mozilla Firefox", "default release", ff_has ],
+    [ "Zen", "default release", ff_has ],
+
     [ "Google Chrome", "Your Chrome", chrome_has_favs ],
     [ "Google Chrome Beta", "Your Chrome", chrome_has_favs ],
     [ "Google Chrome Dev", "Your Chrome", chrome_has_favs ],
     [ "Google Chrome Canary", "Your Chrome", chrome_has_favs ],
     [ "Chromium", "Work", chrome_has ],
     [ "Chromium", "Play", chrome_has ],
+
     [ "Vivaldi", "Work", chrome_has_favs ],
     [ "Opera", "lalala", chrome_has_favs ],
     [ "Yandex", "Бла бла бла", chrome_has_favs ],
     [ "NAVER Whale", "Work", chrome_has ],
     [ "Arc", "Person 1", chrome_has ],
+    [ "Dia", "Person 1", chrome_has ],
     [ "Microsoft Edge", "Profile 1", chrome_has ],
     [ "Microsoft Edge", "Bill Gates", chrome_has ],
     [ "Brave", "Work", chrome_has_favs ],
     [ "Brave", "Jork", chrome_has_favs ],
     [ "Brave", "New Jork", chrome_has_favs ],
-    [ "Safari", "", safari_has ],
-    [ "Bookmarks HTML File", "", safari_has ]
+    [ "Perplexity Comet", "Work", chrome_has ],
 ] as const;
 
 const importerList: cr.BrowserProfile[] = importerListSimple.map((data, index) => {

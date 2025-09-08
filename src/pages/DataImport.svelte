@@ -31,10 +31,12 @@
         Arc: "arc",
         Brave: "brave",
         Chromium: "chromium",
+        Dia: "dia",
         Opera: "opera",
         Safari: "safari",
         Vivaldi: "vivaldi",
         Yandex: "yandex",
+        Zen: "zen",
 
         "Google Chrome": "chrome",
         "Google Chrome Beta": "chrome_beta",
@@ -43,6 +45,7 @@
         "Microsoft Edge": "edge",
         "Mozilla Firefox": "firefox",
         "NAVER Whale": "whale",
+        "Perplexity Comet": "comet",
     } as const;
 </script>
 
