@@ -38,8 +38,8 @@
 
     --page-scroll-gradient-mask: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 1) 80%,
-        rgba(0, 0, 0, 0.1) 90%,
+        rgba(0, 0, 0, 1) 85%,
+        rgba(0, 0, 0, 0.1) 95%,
         rgba(0, 0, 0, 0) 100%
     );
 }
