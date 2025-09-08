@@ -133,6 +133,10 @@
                 height: 28px;
             }
         }
+
+        & > h4 {
+            line-height: 1;
+        }
     }
 
     .browser-profiles {
