@@ -29,7 +29,10 @@ export const s = {
         extensions_desc: "When enabled, Helium will proxy extension downloads and updates to protect your privacy. When disabled, downloading and updating extensions will not work.",
 
         autoupdates_title: "Allow automatic browser updates",
+        autoupdates_title_unavailable: "Allow automatic browser updates (in the future)",
         autoupdates_desc: "Helium will automatically download and install browser updates as they become available. We recommend keeping this setting enabled to ensure you get the latest security patches and features.",
+        autoupdates_linux: "\n\nIn-browser auto-updates are not available on Linux yet, but they may become available in the future. For now, please use external software to keep Helium's AppImage up-to-date. We already provide .zsync files along with releases.",
+        autoupdates_windows: "\n\nIn-browser auto-updates are not available on Windows yet, but they may become available in the future. For now, please use external software or install updates manually to keep Helium up-to-date.",
 
         spellcheck_title: "Allow downloading dictionary files for spell checking",
         spellcheck_desc: "Helium will fetch dictionary files used for spell checking when requested. When disabled, spell checking will not work.",
