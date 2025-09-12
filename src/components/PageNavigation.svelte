@@ -13,6 +13,7 @@
 
     import IconArrowLeft from "../icons/tabler/IconArrowLeft.svelte";
     import IconArrowRight from "../icons/tabler/IconArrowRight.svelte";
+    import IconLoader from "../icons/tabler/IconLoader.svelte";
 
     const visible = $derived(
         $currentPage !== "Welcome" && $currentPage !== "Finish"
@@ -58,11 +59,11 @@
     const next = () => {
         working = true;
         doNext()
-        .catch(() => {})
-        .finally(() => {
-            working = false;
-            nextPage();
-        });
+            .catch(() => {})
+            .finally(() => {
+                working = false;
+                nextPage();
+            });
     }
 
     const footerNotePages = ["SearchEngine", "DataImport"];
@@ -78,7 +79,13 @@
         {s.button.back}
     </button>
     <button disabled={working} class="primary" onclick={next}>
-        <IconArrowRight />
+        {#if working}
+            <div class="spinner">
+                <IconLoader />
+            </div>
+        {:else}
+            <IconArrowRight />
+        {/if}
         {s.button.next}
     </button>
 </div>
@@ -115,11 +122,19 @@
         &.footer-note {
             transform: translateY(-5px);
         }
+    }
 
-        & > :disabled {
-            opacity: 0.5;
-            background-color: var(--helium-elevated-20);
-            color: var(--white);
+    .spinner {
+        display: flex;
+        animation: spinner 0.7s infinite linear;
+    }
+
+    @keyframes spinner {
+        from {
+            transform: rotate(0);
+        }
+        to {
+            transform: rotate(360deg);
         }
     }
 </style>
