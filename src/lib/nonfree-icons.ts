@@ -10,9 +10,15 @@ const mapFromGlob = (files: FileMap): FileMap => {
 }
 
 export const searchEngineIcons = mapFromGlob(
-    import.meta.glob("$nonfree/search_engines/*.{svg,png}", { eager: true, as: "url" })
+    import.meta.glob(
+        "$nonfree/search_engines/*.{svg,png}",
+        { eager: true, query: '?url', import: 'default' }
+    )
 );
 
 export const browserIcons = mapFromGlob(
-    import.meta.glob("$nonfree/browsers/*.png", { eager: true, as: "url" })
+    import.meta.glob(
+        "$nonfree/browsers/*.png",
+        { eager: true, query: '?url', import: 'default' }
+    )
 );
