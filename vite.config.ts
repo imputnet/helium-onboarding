@@ -11,5 +11,6 @@ export default defineConfig({
     },
     build: {
         target: 'chrome140',
+        assetsInlineLimit: (filename, content) => filename.endsWith('.svg')
     }
 });
