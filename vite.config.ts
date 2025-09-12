@@ -8,5 +8,8 @@ export default defineConfig({
         alias: {
             $nonfree: path.resolve(__dirname, "node_modules/nonfree-icons"),
         }
+    },
+    build: {
+        target: 'chrome140',
     }
 });
