@@ -18,40 +18,52 @@
         $currentPage !== "Welcome" && $currentPage !== "Finish"
     );
 
-    const next = () => {
+    let working = $state(false);
+
+    const doNext = async () => {
         switch ($currentPage) {
         case "HeliumServices":
             // if the user pressed "next" on the HeliumServices page,
             // then we mark consent (having seen the page) as true
-            setPref("services.user_consented", true);
+            await setPref("services.user_consented", true);
             break;
 
         case "DefaultBrowser":
-            if ($userChoseHeliumAsDefault) askToBeDefault();
+            if ($userChoseHeliumAsDefault) {
+                askToBeDefault();
+            }
             break;
 
         case "DataImport":
-            // slight delay just so the animation isn't chopped
-            setTimeout(() => {
-                $selectedProfiles.forEach((index) => {
-                    importProfile(index, {
+            // FIXME: handle errors
+            await Promise.allSettled(
+                [...$selectedProfiles].map(
+                    index => importProfile(index, {
                         bookmarks: true,
                         history: true,
-                        extensions: true,
-                    });
-                });
+                        extensions: true
+                    })
+                )
+            );
 
-                $previouslyImportedProfiles = new SvelteSet([
-                    ...$previouslyImportedProfiles,
-                    ...$selectedProfiles,
-                ]);
-                $selectedProfiles.clear();
-            }, 400);
+            $previouslyImportedProfiles = new SvelteSet([
+                ...$previouslyImportedProfiles,
+                ...$selectedProfiles,
+            ]);
+            $selectedProfiles.clear();
             break;
         }
-
-        nextPage();
     };
+
+    const next = () => {
+        working = true;
+        doNext()
+        .catch(() => {})
+        .finally(() => {
+            working = false;
+            nextPage();
+        });
+    }
 
     const footerNotePages = ["SearchEngine", "DataImport"];
 </script>
@@ -61,11 +73,11 @@
     class:visible
     class:footer-note={footerNotePages.includes($currentPage)}
 >
-    <button onclick={previousPage}>
+    <button disabled={working} onclick={previousPage}>
         <IconArrowLeft />
         {s.button.back}
     </button>
-    <button class="primary" onclick={next}>
+    <button disabled={working} class="primary" onclick={next}>
         <IconArrowRight />
         {s.button.next}
     </button>
@@ -102,6 +114,12 @@
 
         &.footer-note {
             transform: translateY(-5px);
+        }
+
+        & > :disabled {
+            opacity: 0.5;
+            background-color: var(--helium-elevated-20);
+            color: var(--white);
         }
     }
 </style>
