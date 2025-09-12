@@ -1,7 +1,7 @@
 <script lang="ts">
     import { s } from "../lib/strings";
+    import { platform } from "../lib/platform";
     import { currentPage } from "../lib/onboarding-flow";
-    // pr - preferences, shortened for convenience
     import { preferences as pr } from "../lib/browser";
 
     import Toggle from "../components/Toggle.svelte";
@@ -45,6 +45,14 @@
                 prefName={"services.browser_updates"}
                 inactive={!$pr["services.enabled"]}
             />
+            {#if !platform.is.macos}
+                <Toggle
+                    title={s.services.spellcheck_title}
+                    desc={s.services.spellcheck_desc}
+                    prefName={"services.spellcheck_files"}
+                    inactive={!$pr["services.enabled"]}
+                />
+            {/if}
             <ButtonLink
                 title={s.services.instance_title}
                 desc={s.services.instance_desc}

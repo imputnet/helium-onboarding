@@ -18,16 +18,24 @@ export const s = {
     services: {
         title: "Helium services",
         subtitle: "All services are anonymous, private, and self-hostable.\nChanges will be applied after you go to the next page.",
+
         connection_title: "Allow connecting to Helium services",
         connection_desc: "Helium services provide additional functionality, such as extension downloads and native !bangs. Helium will not be able to pre-install uBlock Origin if online services are disabled.",
+
         bangs_title: "Allow downloading the !bangs list",
         bangs_desc: "Helium will fetch a list of bangs that help you browse the Internet faster, such as !w or !gh. When disabled, bangs will not work.",
+
         extensions_title: "Proxy extension downloads and updates",
         extensions_desc: "When enabled, Helium will proxy extension downloads and updates to protect your privacy. When disabled, downloading and updating extensions will not work.",
+
         autoupdates_title: "Allow automatic browser updates",
         autoupdates_desc: "Helium will automatically download and install browser updates as they become available. We recommend keeping this setting enabled to ensure you get the latest security patches and features.",
+
+        spellcheck_title: "Allow downloading dictionary files for spell checking",
+        spellcheck_desc: "Helium will fetch dictionary files used for spell checking when requested. When disabled, spell checking will not work.",
+
         instance_title: "Use your own instance of Helium services",
-        instance_desc: "You can host your own instance of Helium services and use it in your browser instead of the pre-hosted server. If you have one, you can set it in Helium settings."
+        instance_desc: "You can host your own instance of Helium services and use it in your browser instead of the pre-hosted server. If you have one, you can set it in Helium settings.",
     },
     search: {
         title: "Choose a search engine",
