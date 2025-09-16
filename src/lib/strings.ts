@@ -42,7 +42,7 @@ export const s = {
     },
     search: {
         title: "Choose a search engine",
-        subtitle: "You can change it later in Settings."
+        subtitle: "Search engines listed here are shown in random order.\nYou can update your choice later in Settings."
     },
     searchEngines: {
         duckduckgo: "Privacy-respecting. Relies on Bing for search results.",
