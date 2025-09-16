@@ -45,12 +45,12 @@ export const s = {
         subtitle: "Search engines listed here are shown in random order.\nYou can update your choice later in Settings."
     },
     searchEngines: {
-        duckduckgo: "Privacy-respecting. Relies on Bing for search results.",
-        kagi: "Privacy-respecting, feature-rich, and customizable. Includes domain ranking, zero tracking, and no ads. Requires an account.",
-        qwant: "Based in Europe. Uses results from Bing. Sends tracking data to Microsoft.",
+        duckduckgo: "Privacy-focused. Relies on Bing results but never tracks or profiles you.",
+        kagi: "Privacy-focused. Customizable results without ads or tracking. Requires a paid account.",
+        qwant: "Based in Europe. Uses Bing results. Sends tracking data to Microsoft.",
         ecosia: "May plant trees for clicking ads. Relies on Bing and Google. Sends tracking data to Microsoft and Google.",
-        bing: "An overwhelming search engine with no privacy.",
-        google: "Well, you know already. Consider trying something else."
+        bing: "Collects extensive personal data. Privacy controls are buried and limited. Subjectively overwhelming UI.",
+        google: "Your personal data fuels its monopoly. Market-dominant due to anti-competitive and anti-consumer practices."
     },
     defaultBrowser: {
         title: "Ready to make the switch?",
