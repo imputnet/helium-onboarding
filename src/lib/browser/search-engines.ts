@@ -4,9 +4,13 @@ import { readonly, writable } from "svelte/store";
 const browser = cr.SearchEnginesBrowserProxyImpl.getInstance();
 const _searchEngines = writable<cr.SearchEngine[]>([]);
 
+const _keys: Record<number, number> = {};
+const shuffleKey = (engine: cr.SearchEngine) =>
+    (_keys[engine.id] ??= Math.random());
+
 const shuffle = (array: cr.SearchEngine[]) => {
     return array
-        .map(value => ({ value, sort: Math.random() }))
+        .map(value => ({ value, sort: shuffleKey(value) }))
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value);
 }
