@@ -47,15 +47,15 @@
             />
             <ToggleSeparator />
             <Toggle
-                title={s.services.bangs_title}
-                desc={s.services.bangs_desc}
-                prefName={"services.bangs"}
-                inactive={!$pr["services.enabled"]}
-            />
-            <Toggle
                 title={s.services.extensions_title}
                 desc={s.services.extensions_desc}
                 prefName={"services.ext_proxy"}
+                inactive={!$pr["services.enabled"]}
+            />
+            <Toggle
+                title={s.services.bangs_title}
+                desc={s.services.bangs_desc}
+                prefName={"services.bangs"}
                 inactive={!$pr["services.enabled"]}
             />
             <Toggle
