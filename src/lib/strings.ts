@@ -28,6 +28,9 @@ export const s = {
         extensions_title: "Proxy extension downloads and updates",
         extensions_desc: "When enabled, Helium will proxy extension downloads and updates to protect your privacy. When disabled, downloading and updating extensions will not work.",
 
+        ublock_title: "Allow downloading filter lists for uBlock Origin",
+        ublock_desc: "Helium will fetch fresh filter lists for uBlock Origin. All requests to lists are proxied to protect your privacy. When disabled, default filter lists will be loaded from local storage, which are only updated along with Helium. Optional filter lists will be requested without proxying.",
+
         autoupdates_title: "Allow automatic browser updates",
         autoupdates_title_unavailable: "Allow automatic browser updates (in the future)",
         autoupdates_desc: "Helium will automatically download and install browser updates as they become available. We recommend keeping this setting enabled to ensure you get the latest security patches and features.",

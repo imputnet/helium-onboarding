@@ -27,6 +27,7 @@ const prefs: Record<string, unknown> = {
     'services.user_consented': false,
     'services.spellcheck_files': true,
     'services.browser_updates': true,
+    'services.ublock_assets': true,
 };
 
 const searchEngineTemplate: SearchEngine = {

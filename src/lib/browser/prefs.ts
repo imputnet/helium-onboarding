@@ -10,6 +10,7 @@ export type Preferences = {
     'services.user_consented': boolean,
     'services.spellcheck_files': boolean,
     'services.browser_updates': boolean,
+    'services.ublock_assets': boolean,
 };
 
 export type PrefKey = keyof Preferences;

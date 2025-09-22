@@ -59,6 +59,12 @@
                 inactive={!$pr["services.enabled"]}
             />
             <Toggle
+                title={s.services.ublock_title}
+                desc={s.services.ublock_desc}
+                prefName={"services.ublock_assets"}
+                inactive={!$pr["services.enabled"]}
+            />
+            <Toggle
                 title={updatesPlatformText.title}
                 desc={s.services.autoupdates_desc + updatesPlatformText.extraDesc}
                 prefName={"services.browser_updates"}
