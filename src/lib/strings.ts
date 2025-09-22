@@ -20,7 +20,7 @@ export const s = {
         subtitle: "All services are anonymous, private, and self-hostable.\nChanges will be applied after you go to the next page.",
 
         connection_title: "Allow connecting to Helium services",
-        connection_desc: "Helium services provide additional functionality, such as extension downloads and native !bangs. Helium will not be able to pre-install uBlock Origin if online services are disabled.",
+        connection_desc: "Helium services provide additional functionality, such as: extension downloads, native !bangs, filter list updates, and browser updates. When disabled, none of these features will work, but Helium will not make any web requests.",
 
         bangs_title: "Allow downloading the !bangs list",
         bangs_desc: "Helium will fetch a list of bangs that help you browse the Internet faster, such as !w or !gh. When disabled, bangs will not work.",
