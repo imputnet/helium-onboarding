@@ -9,7 +9,11 @@ export const s = {
     welcome: {
         greeting: "Meet Helium",
         body: "Let's configure your browser just the way you want it. If you're in a rush, you can stick to defaults with best privacy and comfort.",
-        defaultsNote: "If you use defaults, Helium services will be enabled.\nYou can skip setup and come back later, but Helium services won't be enabled."
+        terms_note: "By continuing, you agree to the",
+        terms_privacy: "privacy policy",
+        terms_and: "and",
+        terms_use: "terms of use",
+        defaults: "You can skip setup and come back later, but Helium services won't work until then."
     },
     finish: {
         title: "Welcome to Helium!",

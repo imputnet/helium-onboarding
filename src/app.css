@@ -91,6 +91,11 @@ h1, h2, p {
     white-space: pre-line;
 }
 
+a {
+    color: inherit;
+    text-underline-offset: 2px;
+}
+
 button {
     appearance: none;
     letter-spacing: inherit;

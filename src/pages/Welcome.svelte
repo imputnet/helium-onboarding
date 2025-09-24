@@ -3,6 +3,8 @@
     import { setPref } from "../lib/browser";
     import { currentPage, nextPage } from "../lib/onboarding-flow";
 
+    import OuterLink from "../components/OuterLink.svelte";
+
     import HeliumLogo from "../icons/HeliumLogo.svelte";
     import IconCheck from "../icons/tabler/IconCheck.svelte";
     import IconArrowRight from "../icons/tabler/IconArrowRight.svelte";
@@ -14,6 +16,9 @@
     }
 
     const visible = $derived($currentPage === "Welcome");
+
+    const privacyUrl = "https://helium.computer/privacy";
+    const termsUrl = "https://helium.computer/terms";
 </script>
 
 <div
@@ -44,7 +49,18 @@
             </div>
         </div>
         <div id="welcome-footer">
-            <p>{s.welcome.defaultsNote}</p>
+            <p id="legal-note">
+                {s.welcome.terms_note}
+                <OuterLink href={privacyUrl}>
+                    {s.welcome.terms_privacy}
+                </OuterLink>
+                {s.welcome.terms_and}
+                <OuterLink href={termsUrl}>
+                    {s.welcome.terms_use}
+                </OuterLink>.
+            </p>
+
+            <p>{s.welcome.defaults}</p>
         </div>
     </div>
 </div>
@@ -143,8 +159,13 @@
         position: absolute;
         display: flex;
         justify-content: center;
+        flex-direction: column;
         width: 100%;
         left: 0;
+    }
+
+    #welcome-footer p {
+        font-size: 12px;
     }
 
     @media (prefers-reduced-motion) {
