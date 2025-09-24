@@ -50,6 +50,7 @@ grit("generated_resources") {
 
     # Required because the .grd is generated.
     enable_input_discovery_for_gn_analyze = false
+    use_brotli = true
 
     output_dir = "$target_gen_dir/resources"
 
