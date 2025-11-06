@@ -131,11 +131,10 @@ button, .button {
 
     &:hover {
         background-color: var(--helium-elevated-25);
-        transform: scale(1.03);
 
         &:active {
             background-color: var(--helium-elevated-30);
-            transform: scale(0.98);
+            transform: scale(0.97);
         }
     }
 
@@ -159,10 +158,8 @@ button, .button {
         padding: 16px 21px;
 
         &:hover {
-            transform: scale(1.005);
-
             &:active {
-                transform: scale(0.995);
+                transform: scale(0.99);
             }
         }
     }
