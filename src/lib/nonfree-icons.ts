@@ -22,3 +22,10 @@ export const browserIcons = mapFromGlob(
         { eager: true, query: '?url', import: 'default' }
     )
 );
+
+export const passwordManagerIcons = mapFromGlob(
+    import.meta.glob(
+        "$nonfree/password_managers/*.png",
+        { eager: true, query: '?url', import: 'default' }
+    )
+);

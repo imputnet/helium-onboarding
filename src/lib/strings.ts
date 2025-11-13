@@ -74,5 +74,9 @@ export const s = {
         history: "History",
         extensions: "Extensions"
     },
+    password: {
+        title: "Password manager",
+        subtitle: "Helium doesn't have a built-in password manager.\n Would you like to install an independent one?"
+    },
     trademarkDisclaimer: "All product names, logos, and brands are property of their respective owners.\n They are used on this page for identification purposes only. No endorsement is implied."
 }

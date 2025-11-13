@@ -8,6 +8,7 @@
     import HeliumServices from "./pages/HeliumServices.svelte";
     import SearchEngine from "./pages/SearchEngine.svelte";
     import DataImport from "./pages/DataImport.svelte";
+    import PasswordManager from "./pages/PasswordManager.svelte";
     import DefaultBrowser from "./pages/DefaultBrowser.svelte";
     import Finish from "./pages/Finish.svelte";
 </script>
@@ -21,6 +22,7 @@
         <SearchEngine />
         <DataImport />
         <DefaultBrowser />
+        <PasswordManager />
         <Finish />
     </div>
 </main>
