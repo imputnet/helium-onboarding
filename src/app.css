@@ -57,6 +57,11 @@ body {
     display: none;
 }
 
+img {
+    pointer-events: none;
+    user-select: none;
+}
+
 h1, h2, h4 {
     font-weight: 500;
     line-height: 1.2;
