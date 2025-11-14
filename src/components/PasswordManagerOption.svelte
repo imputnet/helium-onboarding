@@ -1,11 +1,12 @@
 <script lang="ts">
     import { passwordManagerIcons } from "../lib/nonfree-icons";
+    import type { PasswordManagerInfo } from "../lib/password-managers";
+
+    import HeliumPartner from "./HeliumPartner.svelte";
 
     import IconKey from "../icons/tabler/IconKey.svelte";
-    import IconExternalLink from "../icons/tabler/IconExternalLink.svelte";
     import IconDownload from "../icons/tabler/IconDownload.svelte";
-
-    import type { PasswordManagerInfo } from "../lib/password-managers";
+    import IconExternalLink from "../icons/tabler/IconExternalLink.svelte";
 
     let { id, info }: { id: string, info: PasswordManagerInfo } = $props();
 
@@ -51,6 +52,9 @@
             {/if}
         </div>
         <div class="pm-text">
+            {#if info.partner}
+                <HeliumPartner />
+            {/if}
             <h4>{info.title}</h4>
             <p>{info.description}</p>
         </div>

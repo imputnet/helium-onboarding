@@ -5,6 +5,7 @@ export type PasswordManagerInfo = {
     importGuide?: string;
     setupGuide?: string;
     privacyPolicy: string;
+    partner?: boolean;
 };
 
 export const passwordManagers: Record<string, PasswordManagerInfo> = {
@@ -20,7 +21,8 @@ export const passwordManagers: Record<string, PasswordManagerInfo> = {
         description: "A secure password manager from the makers of Proton Mail. Open source and based in Switzerland. Free with an optional paid plan.",
         installUrl: "https://chromewebstore.google.com/detail/ghmbeldphafepmbegfdlkpapadhbakde",
         importGuide: "https://proton.me/support/pass-import",
-        privacyPolicy: "https://proton.me/pass/privacy-policy"
+        privacyPolicy: "https://proton.me/pass/privacy-policy",
+        partner: true
     },
     onePassword: {
         title: "1Password",

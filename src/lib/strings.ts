@@ -6,6 +6,10 @@ export const s = {
         back: "Back",
         getStarted: "Get started"
     },
+    partner: {
+        title: "Helium Partner",
+        tooltip: "Using this service will support the development of Helium."
+    },
     welcome: {
         greeting: "Meet Helium",
         body: "Let's configure your browser just the way you want it. If you're in a rush, you can stick to defaults with best privacy and comfort.",
