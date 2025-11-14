@@ -54,7 +54,7 @@
         font-weight: 400;
         width: fit-content;
         line-height: 0;
-        padding: 1px 0;
+        padding: 2px 0;
 
         & :global(svg) {
             width: 13px;
