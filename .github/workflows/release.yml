@@ -54,7 +54,7 @@ jobs:
           sha256sum helium*.tar.gz >> release.md
           echo '```' >> release.md
       - name: Release
-        uses: softprops/action-gh-release@v2
+        uses: imputnet/action-gh-release@v2.5
         id: release
         with:
           body_path: /tmp/release.md
