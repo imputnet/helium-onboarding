@@ -9,7 +9,10 @@ const browser = cr.DefaultBrowserBrowserProxyImpl.getInstance();
 browser.requestDefaultBrowserState().then(
     state => {
         _defaultBrowser.set(state.isDefault);
-        canBeDefaultBrowser = state.canBeDefault;
+        canBeDefaultBrowser =
+            state.canBeDefault
+            && !state.isDisabledByPolicy
+            && !state.isUnknownError;
     }
 );
 
