@@ -15,8 +15,8 @@
 
     const groupedProfiles = $derived(
         $importableProfiles.reduce(
-            (acc, i) => {
-                (acc[i.name] ??= []).push(i);
+            (acc, profile) => {
+                (acc[profile.name] ??= []).push(profile);
                 return acc;
             },
             {} as Record<string, BrowserProfile[]>
