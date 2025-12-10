@@ -35,11 +35,10 @@ export const s = {
         ublock_title: "Allow downloading filter lists for uBlock Origin",
         ublock_desc: "Helium will fetch fresh filter lists for uBlock Origin. All requests to lists are proxied to protect your privacy. When disabled, default filter lists will be loaded from local storage, which are only updated along with Helium. Optional filter lists will be requested without proxying.",
 
-        autoupdates_title: "Allow automatic browser updates",
-        autoupdates_title_unavailable: "Allow automatic browser updates (in the future)",
-        autoupdates_desc: "Helium will automatically download and install browser updates as they become available. We recommend keeping this setting enabled to ensure you get the latest security patches and features.",
-        autoupdates_linux: "\n\nIn-browser auto-updates are not available on Linux yet, but they may become available in the future. For now, please use external software to keep Helium's AppImage up-to-date. We already provide .zsync files along with releases.",
-        autoupdates_windows: "\n\nIn-browser auto-updates are not available on Windows yet, but they may become available in the future. For now, please use external software or install updates manually to keep Helium up-to-date.",
+        autoupdates_title: "Allow automatic browser and component updates",
+        autoupdates_desc: "Helium will automatically download and install browser and component updates as they become available. We recommend keeping this setting enabled to ensure you get the latest features and security updates.",
+        autoupdates_linux: "\n\nAutomatic browser updates are not available on Linux yet, but component updates are. For now, please use external software to keep Helium's AppImage up-to-date. We already provide .zsync files along with releases.",
+        autoupdates_windows: "\n\nAutomatic browser updates are not available on Windows yet, but component updates are. For now, please use external software or install updates manually to keep Helium up-to-date.",
 
         spellcheck_title: "Allow downloading dictionary files for spell checking",
         spellcheck_desc: "Helium will fetch dictionary files used for spell checking when requested. When disabled, spell checking will not work.",
