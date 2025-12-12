@@ -10,6 +10,7 @@
     import IconArrowRight from "../icons/tabler/IconArrowRight.svelte";
 
     const useDefaults = async () => {
+        chrome.send('acceptLatestSchema');
         await setPref('services.user_consented', true);
         await setPref('completed_onboarding', true);
         window.open("chrome://newtab", "_self");
