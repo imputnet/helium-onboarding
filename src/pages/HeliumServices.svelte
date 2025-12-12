@@ -15,21 +15,12 @@
     // TODO: remove/update this as auto-updates become
     // available on windows and linux
     const platformSpecific = {
-        macos: {
-            title: s.services.autoupdates_title,
-            extraDesc: ""
-        },
-        linux: {
-            title: s.services.autoupdates_title_unavailable,
-            extraDesc: s.services.autoupdates_linux
-        },
-        windows: {
-            title: s.services.autoupdates_title_unavailable,
-            extraDesc: s.services.autoupdates_windows
-        }
+        macos: "",
+        linux: s.services.autoupdates_linux,
+        windows: s.services.autoupdates_windows
     };
 
-    const updatesPlatformText = platformSpecific[platform.name];
+    const updatesPlatformDesc = platformSpecific[platform.name];
 </script>
 
 <div id="services-page" class="onboarding-page" class:visible>
@@ -65,8 +56,8 @@
                 inactive={!$pr["services.enabled"]}
             />
             <Toggle
-                title={updatesPlatformText.title}
-                desc={s.services.autoupdates_desc + updatesPlatformText.extraDesc}
+                title={s.services.autoupdates_title}
+                desc={s.services.autoupdates_desc + updatesPlatformDesc}
                 prefName={"services.browser_updates"}
                 inactive={!$pr["services.enabled"]}
             />

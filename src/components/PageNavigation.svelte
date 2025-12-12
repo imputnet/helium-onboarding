@@ -27,6 +27,7 @@
             // if the user pressed "next" on the HeliumServices page,
             // then we mark consent (having seen the page) as true
             await setPref("services.user_consented", true);
+            chrome.send("acceptLatestSchema");
             break;
 
         case "DefaultBrowser":
