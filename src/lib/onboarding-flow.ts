@@ -1,5 +1,5 @@
 import { SvelteSet } from "svelte/reactivity";
-import { derived, get, writable, type Updater } from "svelte/store";
+import { derived, get, writable } from "svelte/store";
 
 import { canBeDefaultBrowser, importableProfiles, isDefaultBrowser } from "./browser";
 
@@ -45,7 +45,6 @@ export const previousPage = () => {
     index.update((current) => getPageNumber(current, -1));
 }
 
-export const working = writable(true);
 export const userChoseHeliumAsDefault = writable(true);
 export const selectedProfiles = writable(new SvelteSet<number>());
 export const previouslyImportedProfiles = writable(new SvelteSet<number>());
