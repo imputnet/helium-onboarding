@@ -4,7 +4,7 @@ export const s = {
         configure: "Configure",
         next: "Next",
         back: "Back",
-        getStarted: "Get started"
+        letsGo: "Let's go!"
     },
     welcome: {
         greeting: "Meet Helium",
@@ -16,8 +16,8 @@ export const s = {
         defaults: "You can skip setup and come back later, but Helium services won't work until then."
     },
     finish: {
-        title: "Welcome to Helium!",
-        body: "The setup is complete, we're really glad you're here.\nLet's get the browsing started!"
+        title: "Ready to browse?",
+        body: "The setup is complete, thank you for choosing Helium.\nTime to enjoy the Internet again.",
     },
     services: {
         title: "Helium services",

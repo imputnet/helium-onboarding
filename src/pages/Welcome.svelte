@@ -42,7 +42,7 @@
                     </p>
                 </div>
             </div>
-            <div id="welcome-buttons">
+            <div id="welcome-buttons" class="action-buttons">
                 <button onclick={useDefaults}>
                     <IconCheck />
                     {s.button.useDefaults}
@@ -158,11 +158,6 @@
 
     #welcome-text p {
         font-size: 20px;
-    }
-
-    #welcome-buttons {
-        display: flex;
-        gap: var(--gap-2);
     }
 
     #welcome-footer {

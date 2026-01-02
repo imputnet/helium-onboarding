@@ -1,11 +1,13 @@
 <script lang="ts">
     import { s } from "../lib/strings";
     import { setPref } from "../lib/browser";
-    import { currentPage } from "../lib/onboarding-flow";
+    import { currentPage, previousPage } from "../lib/onboarding-flow";
 
     import HeliumLogo from "../icons/HeliumLogo.svelte";
-    import IconCheck from "../icons/tabler/IconCheck.svelte";
     import IconHeart from "../icons/tabler/IconHeart.svelte";
+
+    import IconCheck from "../icons/tabler/IconCheck.svelte";
+    import IconArrowLeft from "../icons/tabler/IconArrowLeft.svelte";
 
     const done = async () => {
         await setPref('completed_onboarding', true);
@@ -32,10 +34,16 @@
                     <p>{s.finish.body}</p>
                 </div>
             </div>
-            <button class="primary" onclick={done}>
-                <IconCheck />
-                {s.button.getStarted}
-            </button>
+            <div id="finish-buttons" class="action-buttons">
+                <button onclick={previousPage}>
+                    <IconArrowLeft />
+                    {s.button.back}
+                </button>
+                <button class="primary" onclick={done}>
+                    <IconCheck />
+                    {s.button.letsGo}
+                </button>
+            </div>
         </div>
     </div>
 </div>

@@ -72,6 +72,7 @@
 
 <div
     id="setup-buttons"
+    class="action-buttons"
     class:visible
     class:footer-note={footerNotePages.includes($currentPage)}
 >
@@ -93,13 +94,11 @@
 
 <style>
     #setup-buttons {
-        display: flex;
         justify-content: center;
         width: 100%;
         left: 0;
         bottom: 48px;
         position: absolute;
-        gap: var(--gap-2);
         padding-top: var(--gap-1);
         z-index: 9;
 
