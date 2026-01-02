@@ -23,7 +23,7 @@ export const s = {
     },
     services: {
         title: "Helium services",
-        subtitle: "All services are anonymous, private, and self-hostable.\nChanges will be applied after you go to the next page.",
+        subtitle: "Services are not active until you consent to using them.\nChanges will be applied after you go to the next page.",
 
         connection_title: "Allow connecting to Helium services",
         connection_desc: "Helium services provide additional functionality, such as: extension downloads, native !bangs, filter list updates, and browser updates. When disabled, none of these features will work, but Helium will not make any web requests.",
