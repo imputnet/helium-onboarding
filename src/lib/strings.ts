@@ -1,27 +1,29 @@
+import type { SearchCategory, SearchEngineName } from "./search-engine-config";
+
 export const s = {
     button: {
         useDefaults: "Use defaults",
         configure: "Configure",
         next: "Next",
         back: "Back",
-        getStarted: "Get started"
+        letsGo: "Let's go!"
     },
     welcome: {
         greeting: "Meet Helium",
-        body: "Let's configure your browser just the way you want it. If you're in a rush, you can stick to defaults with best privacy and comfort.",
+        body: "Configure your browser just the way you want it or use\nthe default preset with best privacy and comfort.",
         terms_note: "By continuing, you agree to the",
         terms_privacy: "privacy policy",
         terms_and: "and",
         terms_use: "terms of use",
-        defaults: "You can skip setup and come back later, but Helium services won't work until then."
+        footer: "You can skip setup and come back later, but Helium services won't work without it.",
     },
     finish: {
-        title: "Welcome to Helium!",
-        body: "The setup is complete, we're really glad you're here.\nLet's get the browsing started!"
+        title: "Ready to browse?",
+        body: "The setup is complete, thank you for choosing Helium.\nTime to enjoy the Internet again.",
     },
     services: {
         title: "Helium services",
-        subtitle: "All services are anonymous, private, and self-hostable.\nChanges will be applied after you go to the next page.",
+        subtitle: "Services are not active until you consent to using them.\nChanges will be applied after you go to the next page.",
 
         connection_title: "Allow connecting to Helium services",
         connection_desc: "Helium services provide additional functionality, such as: extension downloads, native !bangs, filter list updates, and browser updates. When disabled, none of these features will work, but Helium will not make any web requests.",
@@ -47,20 +49,26 @@ export const s = {
         instance_desc: "You can host your own instance of Helium services and use it in your browser instead of the pre-hosted server. If you have one, you can set it in Helium settings.",
     },
     search: {
-        title: "Choose a search engine",
-        subtitle: "Search engines listed here are shown in random order.\nYou can update your choice later in Settings."
+        title: "Default search engine",
+        subtitle: "You can change your choice later in Settings.\nEngines are ordered by privacy.",
     },
+    searchCategories: {
+        private: "A privacy-first search engine which\ndoesn't profile or track you.",
+        small: "Transparent, but not privacy-focused.\nOffers better privacy than mainstream\nsearch engines.",
+        mainstream: "A mainstream search engine which\ncollects extensive personal data.",
+        custom: "A custom search engine. Its privacy\nwasn't verified by Helium.",
+    } satisfies Record<SearchCategory, string>,
     searchEngines: {
-        duckduckgo: "Privacy-focused. Relies on Bing results but never tracks or profiles you.",
+        duckduckgo: "Privacy-focused. Relies on Bing results but promises to never track or profile you.",
         kagi: "Privacy-focused. Customizable results without ads or tracking. Requires a paid account.",
         qwant: "Based in Europe. Uses Bing results. Sends tracking data to Microsoft.",
         ecosia: "May plant trees for clicking ads. Relies on Bing and Google. Sends tracking data to Microsoft and Google.",
         bing: "Collects extensive personal data. Privacy controls are buried and limited. Subjectively overwhelming UI.",
-        google: "Your personal data fuels its monopoly. Market-dominant due to anti-competitive and anti-consumer practices."
-    },
+        google: "It's Google. It dominates the search market, collects extensive personal data, and profiles you."
+    } satisfies Record<SearchEngineName, string>,
     defaultBrowser: {
-        title: "Ready to make the switch?",
-        subtitle: "Make all links open in Helium by default.\nGonna feel just like home, but better.",
+        title: "Ready to switch to Helium?",
+        subtitle: "Better privacy, speed, and comfort. All in one click.\nLet's make links open in Helium by default.",
         yes: "Yes",
         no: "No",
         yes_desc: "Make Helium my default browser.",

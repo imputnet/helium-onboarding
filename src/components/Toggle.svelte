@@ -55,15 +55,15 @@
             margin: 3px;
             background-color: var(--white);
             border-radius: 50px;
-            will-change: transform;
-            transition: transform 0.15s;
+            will-change: translate;
+            transition: translate 0.15s;
         }
 
         &.enabled {
             background-color: var(--helium-elevated-80);
 
             & .runner {
-                transform: translateX(20px);
+                translate: 20px 0;
             }
         }
     }

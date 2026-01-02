@@ -1,31 +1,33 @@
 import * as cr from "../cr";
 import { readonly, writable } from "svelte/store";
+import { searchEngineConfig } from "../search-engine-config";
 
 const browser = cr.SearchEnginesBrowserProxyImpl.getInstance();
 const _searchEngines = writable<cr.SearchEngine[]>([]);
 
-const _keys: Record<number, number> = {};
-const shuffleKey = (engine: cr.SearchEngine) =>
-    (_keys[engine.id] ??= Math.random());
+const engineOrder = Object.fromEntries(
+    Object.keys(searchEngineConfig).map((key, i) => [key, i])
+);
 
-const shuffle = (array: cr.SearchEngine[]) => {
-    return array
-        .map(value => ({ value, sort: shuffleKey(value) }))
-        .sort((a, b) => a.sort - b.sort)
-        .map(({ value }) => value);
-}
+// use the order defined in searchEngineConfig and
+// push custom engines (not in config) to the end
+const engineIndex = (keyword: string) =>
+    engineOrder[keyword.split(".")[0]] ?? Infinity;
+
+const sortEngines = (engines: cr.SearchEngine[]) => {
+    return engines.sort((a, b) =>
+        engineIndex(a.keyword) - engineIndex(b.keyword)
+    );
+};
 
 browser.getSearchEnginesList().then(
-    engines => _searchEngines.set(
-        shuffle(engines.defaults)
-    )
+    engines => _searchEngines.set(sortEngines(engines.defaults))
 );
 
 cr.addWebUiListener(
     'search-engines-changed',
-    (state: cr.SearchEnginesInfo) => _searchEngines.set(
-        shuffle(state.defaults)
-    )
+    (state: cr.SearchEnginesInfo) =>
+        _searchEngines.set(sortEngines(state.defaults))
 );
 
 export const searchEngines = readonly(_searchEngines);

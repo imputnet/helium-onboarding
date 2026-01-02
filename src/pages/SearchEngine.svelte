@@ -25,14 +25,15 @@
         />
 
         <div id="content" class="page-content">
-            {#each $searchEngines as engine}
-                {@const engineKey = engine.keyword.split(".")[0]}
+            {#each $searchEngines as e}
+                {@const engineKey = e.keyword.split(".")[0]}
                 <SearchEngineItem
-                    name={engine.name}
+                    id={engineKey}
+                    name={e.name}
                     desc={searchDescs[engineKey]}
                     iconPath={iconPath(engineKey)}
-                    modelIndex={engine.modelIndex}
-                    isDefault={engine.default}
+                    modelIndex={e.modelIndex}
+                    isDefault={e.default}
                 />
             {/each}
         </div>
@@ -49,13 +50,13 @@
 
         &.visible {
             visibility: visible;
-            animation: zoom-blur-in 0.5s;
-            animation-delay: 0.02s;
+            animation: page-in 0.3s;
+            animation-delay: 0.05s;
             animation-fill-mode: backwards;
         }
 
         &:not(.visible) {
-            animation: zoom-blur-out 0.2s;
+            animation: page-out 0.2s;
             animation-fill-mode: forwards;
         }
     }

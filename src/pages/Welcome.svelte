@@ -34,11 +34,15 @@
                     <HeliumLogo />
                 </div>
                 <div id="welcome-text">
-                    <h1>{s.welcome.greeting}</h1>
-                    <p>{s.welcome.body}</p>
+                    <h1 id="welcome-greet">
+                        {s.welcome.greeting}
+                    </h1>
+                    <p id="welcome-body">
+                        {s.welcome.body}
+                    </p>
                 </div>
             </div>
-            <div id="welcome-buttons">
+            <div id="welcome-buttons" class="action-buttons">
                 <button onclick={useDefaults}>
                     <IconCheck />
                     {s.button.useDefaults}
@@ -61,7 +65,7 @@
                 </OuterLink>.
             </p>
 
-            <p>{s.welcome.defaults}</p>
+            <p>{s.welcome.footer}</p>
         </div>
     </div>
 </div>
@@ -75,7 +79,7 @@
         }
 
         &:not(.visible) {
-            animation: zoom-blur-out 0.2s;
+            animation: page-out 0.2s;
             animation-fill-mode: forwards;
         }
     }
@@ -115,17 +119,22 @@
 
     .visible {
         #welcome-logo {
-            animation: logo-intro 0.6s;
+            animation: intro-logo 0.6s;
             animation-delay: 0.6s;
         }
 
-        #welcome-text,
+        #welcome-greet,
+        #welcome-body,
         #welcome-buttons,
         #welcome-footer {
-            animation: blur-in 0.35s;
+            animation: intro-in 0.35s;
         }
 
-        #welcome-text {
+        #welcome-greet {
+            animation-delay: 0.9s;
+        }
+
+        #welcome-body {
             animation-delay: 1s;
         }
 
@@ -134,25 +143,21 @@
         }
 
         #welcome-footer {
-            animation-delay: 1.2s;
+            animation-delay: 1.3s;
         }
 
         #welcome-logo,
-        #welcome-text,
+        #welcome-greet,
+        #welcome-body,
         #welcome-buttons,
         #welcome-footer {
             animation-fill-mode: both;
-            will-change: transform, filter, opacity;
+            will-change: translate, filter, opacity;
         }
     }
 
     #welcome-text p {
         font-size: 20px;
-    }
-
-    #welcome-buttons {
-        display: flex;
-        gap: var(--gap-2);
     }
 
     #welcome-footer {

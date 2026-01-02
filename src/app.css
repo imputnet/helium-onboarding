@@ -16,12 +16,20 @@
     --white: #ffffff;
     --black: #000000;
 
+    --helium-gradient-start-rgb: 21, 38, 113;
+    --helium-gradient-start: rgb(var(--helium-gradient-start-rgb));
+    --helium-gradient-mid-rgb: 27, 44, 120;
+    --helium-gradient-mid: rgb(var(--helium-gradient-mid-rgb));
+    --helium-gradient-end-rgb: 86, 105, 189;
+    --helium-gradient-end: rgb(var(--helium-gradient-end-rgb));
+
     --helium-gradient: linear-gradient(
         180deg,
-        #152671 10%,
-        #1b2c78 30%,
-        #5669bd 100%
+        var(--helium-gradient-start) 10%,
+        var(--helium-gradient-mid) 30%,
+        var(--helium-gradient-end) 100%
     );
+
     --helium-elevated: #afbeff;
     --helium-elevated-10: rgba(175, 190, 255, 0.1);
     --helium-elevated-20: rgba(175, 190, 255, 0.2);
@@ -55,6 +63,11 @@ body {
 
 *::-webkit-scrollbar {
     display: none;
+}
+
+img {
+    pointer-events: none;
+    user-select: none;
 }
 
 h1, h2, h4 {
@@ -94,6 +107,10 @@ h1, h2, p {
 a {
     color: inherit;
     text-underline-offset: 2px;
+
+    &:focus-visible {
+        border-radius: 2px;
+    }
 }
 
 button {
@@ -179,11 +196,18 @@ button, .button {
         width: 21px;
         stroke-width: 1.5px;
     }
+}
 
-    &:focus-visible {
-        outline: 1.5px white solid;
-        outline-offset: 4px;
-    }
+button:focus-visible,
+.button:focus-visible,
+a:focus-visible {
+    outline: 2px white solid;
+    outline-offset: 3px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: var(--gap-2);
 }
 
 .onboarding-page {
@@ -198,7 +222,7 @@ button, .button {
     left: 0;
 
     position: absolute;
-    will-change: transform, filter, opacity;
+    will-change: translate, filter, opacity;
 }
 
 .scrollable-page {
@@ -228,41 +252,32 @@ button, .button {
     bottom: 14px;
 }
 
-@keyframes zoom-blur-in {
+@keyframes page-in {
     from {
-        transform: scale(1.3);
-        filter: blur(12px);
+        translate: 0 30px;
+        filter: blur(8px);
         opacity: 0;
-    }
-    55% {
-        transform: scale(0.995);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1);
     }
     to {
         opacity: 1;
+        filter: none;
     }
 }
 
-@keyframes zoom-blur-out {
-    0% {
+@keyframes page-out {
+    from {
         opacity: 1;
         visibility: visible;
     }
-    100% {
-        transform: scale(0.9);
-        filter: blur(12px);
-        opacity: 0;
-    }
     to {
-        visibility: hidden;
         opacity: 0;
+        visibility: hidden;
+        translate: 0 -30px;
+        filter: blur(8px);
     }
 }
 
-@keyframes logo-intro {
+@keyframes intro-logo {
     from {
         opacity: 0;
         transform: scale(2) translateY(250px);
@@ -274,10 +289,10 @@ button, .button {
     }
 }
 
-@keyframes blur-in {
+@keyframes intro-in {
     from {
         opacity: 0;
-        transform: scale(0.9);
+        translate: 0 50px;
         filter: blur(10px);
     }
     to {
@@ -286,7 +301,7 @@ button, .button {
 }
 
 @media (prefers-reduced-motion) {
-    @keyframes zoom-blur-in {
+    @keyframes page-in {
         from {
             opacity: 0;
         }
@@ -295,7 +310,7 @@ button, .button {
         }
     }
 
-    @keyframes zoom-blur-out {
+    @keyframes page-out {
         from {
             opacity: 1;
             visibility: visible;
@@ -306,7 +321,7 @@ button, .button {
         }
     }
 
-    @keyframes logo-intro {
+    @keyframes intro-logo {
         from {
             opacity: 0;
         }
@@ -315,7 +330,7 @@ button, .button {
         }
     }
 
-    @keyframes blur-in {
+    @keyframes intro-in {
         from {
             opacity: 0;
         }

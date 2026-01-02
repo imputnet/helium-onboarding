@@ -72,6 +72,7 @@
 
 <div
     id="setup-buttons"
+    class="action-buttons"
     class:visible
     class:footer-note={footerNotePages.includes($currentPage)}
 >
@@ -93,30 +94,28 @@
 
 <style>
     #setup-buttons {
-        display: flex;
         justify-content: center;
         width: 100%;
         left: 0;
         bottom: 48px;
         position: absolute;
-        gap: var(--gap-2);
         padding-top: var(--gap-1);
         z-index: 9;
 
         visibility: hidden;
 
         transition: transform 0.25s;
-        will-change: transform, filter;
+        will-change: translate, transform, filter;
 
         &.visible {
             visibility: visible;
-            animation: zoom-blur-in 0.5s;
+            animation: page-in 0.3s;
             animation-delay: 0.1s;
             animation-fill-mode: backwards;
         }
 
         &:not(.visible) {
-            animation: zoom-blur-out 0.2s;
+            animation: page-out 0.2s;
             animation-fill-mode: forwards;
         }
 
