@@ -4,28 +4,14 @@ import { readonly, writable } from "svelte/store";
 const browser = cr.SearchEnginesBrowserProxyImpl.getInstance();
 const _searchEngines = writable<cr.SearchEngine[]>([]);
 
-const _keys: Record<number, number> = {};
-const shuffleKey = (engine: cr.SearchEngine) =>
-    (_keys[engine.id] ??= Math.random());
-
-const shuffle = (array: cr.SearchEngine[]) => {
-    return array
-        .map(value => ({ value, sort: shuffleKey(value) }))
-        .sort((a, b) => a.sort - b.sort)
-        .map(({ value }) => value);
-}
-
 browser.getSearchEnginesList().then(
-    engines => _searchEngines.set(
-        shuffle(engines.defaults)
-    )
+    engines => _searchEngines.set(engines.defaults)
 );
 
 cr.addWebUiListener(
     'search-engines-changed',
-    (state: cr.SearchEnginesInfo) => _searchEngines.set(
-        shuffle(state.defaults)
-    )
+    (state: cr.SearchEnginesInfo) =>
+        _searchEngines.set(state.defaults)
 );
 
 export const searchEngines = readonly(_searchEngines);
