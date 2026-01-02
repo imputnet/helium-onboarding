@@ -97,12 +97,15 @@
 
     .engine-name {
         display: flex;
+        align-items: center;
         gap: 4px;
+        line-height: 1;
+        margin-bottom: 2px;
 
         & :global(svg) {
             stroke-width: 2px;
-            height: 18px;
-            width: 18px;
+            height: 19px;
+            width: 19px;
         }
     }
 
