@@ -104,6 +104,7 @@
         padding: 10px 12px;
         font-size: 14px;
         white-space: pre;
+        line-height: 1.2;
 
         border-radius: 12px;
         border-top-left-radius: 4px;
