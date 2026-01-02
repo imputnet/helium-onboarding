@@ -59,8 +59,8 @@ export const s = {
         google: "Your personal data fuels its monopoly. Market-dominant due to anti-competitive and anti-consumer practices."
     },
     defaultBrowser: {
-        title: "Ready to make the switch?",
-        subtitle: "Make all links open in Helium by default.\nGonna feel just like home, but better.",
+        title: "Ready to switch to Helium?",
+        subtitle: "Better privacy, speed, and comfort. All in one click.\nLet's make links open in Helium by default.",
         yes: "Yes",
         no: "No",
         yes_desc: "Make Helium my default browser.",
