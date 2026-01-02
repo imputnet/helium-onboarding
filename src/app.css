@@ -99,6 +99,10 @@ h1, h2, p {
 a {
     color: inherit;
     text-underline-offset: 2px;
+
+    &:focus-visible {
+        border-radius: 2px;
+    }
 }
 
 button {
@@ -184,11 +188,13 @@ button, .button {
         width: 21px;
         stroke-width: 1.5px;
     }
+}
 
-    &:focus-visible {
-        outline: 1.5px white solid;
-        outline-offset: 4px;
-    }
+button:focus-visible,
+.button:focus-visible,
+a:focus-visible {
+    outline: 2px white solid;
+    outline-offset: 3px;
 }
 
 .onboarding-page {
