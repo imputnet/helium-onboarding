@@ -175,7 +175,8 @@ const _send_polyfill = (msg: string, params?: any[]) => {
             cr.webUIListenerCallback('helium-prefs-changed', {...prefs});
         }
     } else if (msg === 'getSearchEnginesList') {
-        cr.webUIResponse(params![0], true, searchEngines);
+        cr.webUIResponse(params![0],
+                         true, structuredClone(searchEngines));
     } else if (msg === 'getProfileName') {
         cr.webUIResponse(params![0], true, profileName);
     } else if (msg === 'setProfileName') {
