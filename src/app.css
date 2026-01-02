@@ -198,7 +198,7 @@ button, .button {
     left: 0;
 
     position: absolute;
-    will-change: transform, filter, opacity;
+    will-change: translate, filter, opacity;
 }
 
 .scrollable-page {
@@ -228,37 +228,28 @@ button, .button {
     bottom: 14px;
 }
 
-@keyframes zoom-blur-in {
+@keyframes page-in {
     from {
-        transform: scale(1.3);
-        filter: blur(12px);
+        translate: 0 30px;
+        filter: blur(8px);
         opacity: 0;
-    }
-    55% {
-        transform: scale(0.995);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(1);
     }
     to {
         opacity: 1;
+        filter: none;
     }
 }
 
-@keyframes zoom-blur-out {
-    0% {
+@keyframes page-out {
+    from {
         opacity: 1;
         visibility: visible;
     }
-    100% {
-        transform: scale(0.9);
-        filter: blur(12px);
-        opacity: 0;
-    }
     to {
-        visibility: hidden;
         opacity: 0;
+        visibility: hidden;
+        translate: 0 -30px;
+        filter: blur(8px);
     }
 }
 
@@ -286,7 +277,7 @@ button, .button {
 }
 
 @media (prefers-reduced-motion) {
-    @keyframes zoom-blur-in {
+    @keyframes page-in {
         from {
             opacity: 0;
         }
@@ -295,7 +286,7 @@ button, .button {
         }
     }
 
-    @keyframes zoom-blur-out {
+    @keyframes page-out {
         from {
             opacity: 1;
             visibility: visible;

@@ -79,7 +79,7 @@
         }
 
         &:not(.visible) {
-            animation: zoom-blur-out 0.2s;
+            animation: page-out 0.2s;
             animation-fill-mode: forwards;
         }
     }

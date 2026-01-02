@@ -90,13 +90,13 @@
 
         &.visible {
             visibility: visible;
-            animation: zoom-blur-in 0.5s;
-            animation-delay: 0.02s;
+            animation: page-in 0.3s;
+            animation-delay: 0.05s;
             animation-fill-mode: backwards;
         }
 
         &:not(.visible) {
-            animation: zoom-blur-out 0.2s;
+            animation: page-out 0.2s;
             animation-fill-mode: forwards;
         }
     }
