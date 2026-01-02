@@ -25,14 +25,15 @@
         />
 
         <div id="content" class="page-content">
-            {#each $searchEngines as engine}
-                {@const engineKey = engine.keyword.split(".")[0]}
+            {#each $searchEngines as e}
+                {@const engineKey = e.keyword.split(".")[0]}
                 <SearchEngineItem
-                    name={engine.name}
+                    id={engineKey}
+                    name={e.name}
                     desc={searchDescs[engineKey]}
                     iconPath={iconPath(engineKey)}
-                    modelIndex={engine.modelIndex}
-                    isDefault={engine.default}
+                    modelIndex={e.modelIndex}
+                    isDefault={e.default}
                 />
             {/each}
         </div>

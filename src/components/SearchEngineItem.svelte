@@ -1,8 +1,19 @@
 <script lang="ts">
+    import { s } from "../lib/strings";
     import { setDefaultEngine } from "../lib/browser";
+    import { searchEngineConfig, type SearchEngineName } from "../lib/search-engine-config";
+
+    import Tooltip from "./Tooltip.svelte";
+
     import IconSearch from "../icons/tabler/IconSearch.svelte";
 
+    import IconShieldCheck from "../icons/tabler/IconShieldCheck.svelte";
+    import IconShieldExclamation from "../icons/tabler/IconShieldExclamation.svelte";
+    import IconShieldOff from "../icons/tabler/IconShieldOff.svelte";
+    import IconShieldQuestion from "../icons/tabler/IconShieldQuestion.svelte";
+
     type Props = {
+        id: string;
         name: string;
         desc: string;
         iconPath: string;
@@ -10,9 +21,26 @@
         isDefault: boolean;
     };
 
-    let { name, desc, iconPath, modelIndex, isDefault }: Props = $props();
+    let { id, name, desc, iconPath, modelIndex, isDefault }: Props = $props();
 
     let brokenIcon = $state(false);
+
+    const privacyMarkers = {
+        private: IconShieldCheck,
+        small: IconShieldExclamation,
+        mainstream: IconShieldOff,
+        custom: IconShieldQuestion,
+    }
+
+    const engineCategory = $derived.by(() => {
+        if (Object.hasOwn(searchEngineConfig, id)) {
+            return searchEngineConfig[id as SearchEngineName];
+        }
+
+        return "custom";
+    });
+
+    const PrivacyIcon = $derived(privacyMarkers[engineCategory]);
 </script>
 
 <button
@@ -38,8 +66,20 @@
         {/if}
     </div>
     <div class="engine-text">
-        <h4>{name}</h4>
-        <p>{desc}</p>
+        <h4 class="engine-name">
+            <Tooltip>
+                {#snippet anchor()}
+                    <PrivacyIcon />
+                {/snippet}
+                {#snippet content()}
+                    {s.searchCategories[engineCategory]}
+                {/snippet}
+            </Tooltip>
+            {name}
+        </h4>
+        {#if engineCategory !== "custom"}
+            <p>{desc}</p>
+        {/if}
     </div>
 </button>
 
@@ -53,6 +93,17 @@
         display: flex;
         flex-direction: column;
         gap: 2px;
+    }
+
+    .engine-name {
+        display: flex;
+        gap: 4px;
+
+        & :global(svg) {
+            stroke-width: 2px;
+            height: 18px;
+            width: 18px;
+        }
     }
 
     .engine-icon-container {

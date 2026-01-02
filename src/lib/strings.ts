@@ -1,3 +1,5 @@
+import type { SearchCategory, SearchEngineName } from "./search-engine-config";
+
 export const s = {
     button: {
         useDefaults: "Use defaults",
@@ -47,9 +49,15 @@ export const s = {
         instance_desc: "You can host your own instance of Helium services and use it in your browser instead of the pre-hosted server. If you have one, you can set it in Helium settings.",
     },
     search: {
-        title: "Choose a search engine",
-        subtitle: "Search engines listed here are shown in random order.\nYou can update your choice later in Settings."
+        title: "Default search engine",
+        subtitle: "You can change your choice later in Settings.\nEngines are ordered by privacy.",
     },
+    searchCategories: {
+        private: "A privacy-first search engine which\ndoesn't profile or track you.",
+        small: "Transparent, but not privacy-focused.\nOffers better privacy than mainstream\nsearch engines.",
+        mainstream: "A mainstream search engine which\ncollects extensive personal data.",
+        custom: "A custom search engine. Its privacy\nwasn't verified by Helium.",
+    } satisfies Record<SearchCategory, string>,
     searchEngines: {
         duckduckgo: "Privacy-focused. Relies on Bing results but promises to never track or profile you.",
         kagi: "Privacy-focused. Customizable results without ads or tracking. Requires a paid account.",
@@ -57,7 +65,7 @@ export const s = {
         ecosia: "May plant trees for clicking ads. Relies on Bing and Google. Sends tracking data to Microsoft and Google.",
         bing: "Collects extensive personal data. Privacy controls are buried and limited. Subjectively overwhelming UI.",
         google: "It's Google. It dominates the search market, collects extensive personal data, and profiles you."
-    },
+    } satisfies Record<SearchEngineName, string>,
     defaultBrowser: {
         title: "Ready to switch to Helium?",
         subtitle: "Better privacy, speed, and comfort. All in one click.\nLet's make links open in Helium by default.",

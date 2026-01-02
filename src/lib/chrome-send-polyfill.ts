@@ -70,6 +70,8 @@ const actualDefaults: [string, number, string, number, boolean][] = [
     ["Qwant", 4, "qwant.com", 3, false],
     ["Microsoft Bing", 2, "bing.com", 4, false],
     ["Google", 5, "google.com", 5, false],
+    ["Foogle", 8, "foogle.com", 6, false],
+    ["Bargle", 9, "bargle.com", 7, false],
 ];
 
 for (const [ name, id, keyword, modelId, isDefault ] of actualDefaults) {
