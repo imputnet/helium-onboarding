@@ -10,12 +10,12 @@ export const s = {
     },
     welcome: {
         greeting: "Meet Helium",
-        body: "Let's configure your browser just the way you want it. If you're in a rush, you can stick to defaults with best privacy and comfort.",
+        body: "Configure your browser just the way you want it or use\nthe default preset with best privacy and comfort.",
         terms_note: "By continuing, you agree to the",
         terms_privacy: "privacy policy",
         terms_and: "and",
         terms_use: "terms of use",
-        defaults: "You can skip setup and come back later, but Helium services won't work until then."
+        footer: "You can skip setup and come back later, but Helium services won't work without it.",
     },
     finish: {
         title: "Ready to browse?",

@@ -65,7 +65,7 @@
                 </OuterLink>.
             </p>
 
-            <p>{s.welcome.defaults}</p>
+            <p>{s.welcome.footer}</p>
         </div>
     </div>
 </div>
