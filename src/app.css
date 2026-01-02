@@ -262,7 +262,7 @@ button, .button {
     }
 }
 
-@keyframes logo-intro {
+@keyframes intro-logo {
     from {
         opacity: 0;
         transform: scale(2) translateY(250px);
@@ -274,10 +274,10 @@ button, .button {
     }
 }
 
-@keyframes blur-in {
+@keyframes intro-in {
     from {
         opacity: 0;
-        transform: scale(0.9);
+        translate: 0 50px;
         filter: blur(10px);
     }
     to {
@@ -306,7 +306,7 @@ button, .button {
         }
     }
 
-    @keyframes logo-intro {
+    @keyframes intro-logo {
         from {
             opacity: 0;
         }
@@ -315,7 +315,7 @@ button, .button {
         }
     }
 
-    @keyframes blur-in {
+    @keyframes intro-in {
         from {
             opacity: 0;
         }
