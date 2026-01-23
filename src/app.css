@@ -226,7 +226,7 @@ a:focus-visible {
 }
 
 .scrollable-page {
-    max-width: 600px;
+    width: 100%;
     overflow-x: scroll;
     overflow-y: visible;
     /* 20px - accommodation for hover effects */
@@ -241,8 +241,10 @@ a:focus-visible {
     display: flex;
     flex-direction: column;
     gap: var(--gap-1);
-    margin-top: var(--gap-2);
+    padding-top: var(--gap-2);
+    margin: 0 auto;
     align-items: center;
+    max-width: 600px;
 }
 
 .trademark-disclaimer {
