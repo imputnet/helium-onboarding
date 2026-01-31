@@ -14,7 +14,7 @@ export const s = {
     },
     welcome: {
         greeting: "Meet Helium",
-        body: "Configure your browser just the way you want it or use\nthe default preset with best privacy and comfort.",
+        body: "Configure your browser just the way you want it, or use\nthe default preset with best privacy and comfort.",
         terms_note: "By continuing, you agree to the",
         terms_privacy: "privacy policy",
         terms_and: "and",
