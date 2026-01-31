@@ -236,6 +236,7 @@ const _send_polyfill = (msg: string, params?: any[]) => {
         }, 2000);
     } else if (params?.[0]) {
         cr.webUIResponse(params[0], false, 'unknown method');
+        alert('unknown method: ' + params[0]);
     }
 }
 
