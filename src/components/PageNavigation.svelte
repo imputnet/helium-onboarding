@@ -67,7 +67,7 @@
             });
     }
 
-    const footerNotePages = ["SearchEngine", "DataImport"];
+    const footerNotePages = ["SearchEngine", "DataImport", "PasswordManager"];
 </script>
 
 <div

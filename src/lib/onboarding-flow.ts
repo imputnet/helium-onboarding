@@ -1,6 +1,7 @@
 import { SvelteSet } from "svelte/reactivity";
 import { derived, get, writable } from "svelte/store";
 
+import { preferences } from "../lib/browser";
 import { canBeDefaultBrowser, importableProfiles, isDefaultBrowser } from "./browser";
 
 export const flow = [
@@ -8,6 +9,7 @@ export const flow = [
     "HeliumServices",
     "SearchEngine",
     "DataImport",
+    "PasswordManager",
     "DefaultBrowser",
     "Finish"
 ] as const;
@@ -32,6 +34,14 @@ const getPageNumber = (current: number, direction = 1) => {
         // skip if we're already default (we can't undefault ourselves)
         if (!canBeDefaultBrowser || get(isDefaultBrowser))
             next += direction;
+    }
+
+    if (flow[next] === 'PasswordManager') {
+        // skip if we aren't allowed to install extensions
+        const pref = get(preferences);
+        if (!pref['services.ext_proxy'] || !pref['services.enabled']) {
+            next += direction;
+        }
     }
 
     return Math.max(0, Math.min(next, flow.length - 1));
