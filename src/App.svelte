@@ -1,49 +1,62 @@
 <script lang="ts">
     import "@fontsource-variable/instrument-sans";
 
-    import { currentPage } from "./lib/onboarding-flow";
+    import * as pages from "./pages";
+    import { currentPage, flow } from "./lib/onboarding-flow";
 
-    import Welcome from "./pages/Welcome.svelte";
     import PageNavigation from "./components/PageNavigation.svelte";
-    import HeliumServices from "./pages/HeliumServices.svelte";
-    import SearchEngine from "./pages/SearchEngine.svelte";
-    import DataImport from "./pages/DataImport.svelte";
-    import PasswordManager from "./pages/PasswordManager.svelte";
-    import DefaultBrowser from "./pages/DefaultBrowser.svelte";
-    import Finish from "./pages/Finish.svelte";
+
+    const OUT_ANIMATION_DURATION = 200;
+
+    type Page = typeof flow[number];
+
+    const initialMount = Object.fromEntries(
+        flow.map(p => [p, false])
+    ) as Record<Page, boolean>;
+
+    let mounted = $state(initialMount);
+    let prevPage: Page | null = null;
+
+    $effect(() => {
+        const page = $currentPage;
+        mounted[page] = true;
+
+        if (prevPage && prevPage !== page) {
+            const toUnmount = prevPage;
+            setTimeout(() => {
+                if ($currentPage !== toUnmount) {
+                    mounted[toUnmount] = false;
+                }
+            }, OUT_ANIMATION_DURATION);
+        }
+
+        prevPage = page;
+    });
 </script>
 
 <main>
-    <Welcome />
+    <!--
+        PageNavigation is not persistently displayed on the Finish page,
+        but it's animated away from the previous page. Removing it from
+        DOM would cause a sudden disappearance instead of a smooth animation.
 
-    <div id="secondary" class:visible={$currentPage !== "Welcome"}>
+        We could remove it after the animation is done, just like the
+        actual pages, but it feels extremely unnecessary.
+    -->
+    {#if $currentPage !== "Welcome"}
         <PageNavigation />
-        <HeliumServices />
-        <SearchEngine />
-        <DataImport />
-        <PasswordManager />
-        <DefaultBrowser />
-        <Finish />
-    </div>
+    {/if}
+
+    {#each flow as page (page)}
+        {#if mounted[page]}
+            {@const Component = pages[page]}
+            <Component />
+        {/if}
+    {/each}
 </main>
 
 <style>
     main {
         height: 100vh;
-    }
-
-    /*
-       hide secondary pages on start
-       & allow them to animate out if user goes back to welcome screen.
-       the "out" animation on either of secondary pages takes 0.2s.
-    */
-    #secondary {
-        opacity: 0;
-        transition: 0s opacity;
-        transition-delay: 0.2s;
-    }
-
-    #secondary.visible {
-        opacity: 1;
     }
 </style>
