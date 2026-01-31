@@ -61,7 +61,6 @@ const searchEngines: SearchEnginesInfo = {
 };
 
 let currentDefault = 0;
-let schemaVersion = 0;
 
 const actualDefaults: [string, number, string, number, boolean][] = [
     ["DuckDuckGo", 6, "duckduckgo.com", 0, true],
@@ -182,7 +181,6 @@ const _send_polyfill = (msg: string, params?: any[]) => {
     } else if (msg === 'setProfileName') {
         profileName = params![0];
     } else if (msg === 'acceptLatestSchema') {
-        schemaVersion = 42; /* doesn't matter */
     } else if (msg === 'setDefaultSearchEngine') {
         const currentDefaultEngine = searchEngines.defaults[currentDefault];
         currentDefaultEngine.displayName = currentDefaultEngine.name;
