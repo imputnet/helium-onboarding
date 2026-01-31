@@ -8,7 +8,7 @@
     };
 
     let { href, class: classes, children }: Props = $props();
-    let target = href.startsWith("#") ? "" : "_blank";
+    let target = $derived(href.startsWith("#") ? "" : "_blank");
 </script>
 
 <a {href} class={classes} {target} rel="noopener noreferrer">

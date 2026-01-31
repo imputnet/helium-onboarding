@@ -11,7 +11,7 @@
 
     let { id, info }: { id: string, info: PasswordManagerInfo } = $props();
 
-    const iconPath = passwordManagerIcons[id.toLowerCase()] ?? "";
+    const iconPath = $derived(passwordManagerIcons[id.toLowerCase()] ?? "");
 
     let brokenIcon = $state(false);
 </script>
