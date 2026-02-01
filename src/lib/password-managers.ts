@@ -1,3 +1,5 @@
+import type { Platform } from "./platform";
+
 export type PasswordManagerInfo = {
     title: string;
     description: string;
@@ -6,6 +8,7 @@ export type PasswordManagerInfo = {
     importGuide?: string;
     setupGuide?: string;
     privacyPolicy: string;
+    platforms?: Platform[];
 };
 
 export const passwordManagers: Record<string, PasswordManagerInfo> = {
@@ -43,6 +46,7 @@ export const passwordManagers: Record<string, PasswordManagerInfo> = {
         description: "Free password manager by Apple. Will nag you about using Safari and require re-authentication on browser restart. Can't generate passwords.",
         extensionId: "pejdijmoenmkgeppbflobdenhhabjlaj",
         privacyPolicy: "https://www.apple.com/legal/privacy/",
+        platforms: ["windows", "macos"],
     },
     keePassXC: {
         title: "KeePassXC",

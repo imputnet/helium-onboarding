@@ -13,4 +13,6 @@ const platform = {
     },
 }
 
+export type Platform = keyof typeof platform['is'];
+
 export { platform };

@@ -1,5 +1,6 @@
 <script lang="ts">
     import { s } from "../lib/strings";
+    import { platform } from "../lib/platform";
     import { currentPage } from "../lib/onboarding-flow";
     import { passwordManagers } from "../lib/password-managers";
 
@@ -21,7 +22,9 @@
 
         <div id="content" class="page-content">
             {#each Object.entries(passwordManagers) as [id, info]}
-                <PasswordManagerOption {id} {info} />
+                {#if !info.platforms || info.platforms.includes(platform.name)}
+                    <PasswordManagerOption {id} {info} />
+                {/if}
             {/each}
         </div>
     </div>
