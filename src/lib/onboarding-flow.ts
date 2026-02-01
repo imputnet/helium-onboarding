@@ -21,27 +21,32 @@ export const currentPage = derived(
     $index => flow[$index]
 );
 
+const shouldSkip = (page: typeof flow[number]): boolean => {
+    switch (page) {
+        case 'DataImport':
+            // skip if nothing to import
+            return get(importableProfiles).length === 0;
+        case 'PasswordManager':
+            // skip if we aren't allowed to install extensions
+            const pref = get(preferences);
+            return !pref['services.ext_proxy'] || !pref['services.enabled'];
+        case 'DefaultBrowser':
+            // skip if we're already default (we can't undefault ourselves)
+            return !canBeDefaultBrowser || get(isDefaultBrowser);
+        default:
+            return false;
+    }
+}
+
 const getPageNumber = (current: number, direction = 1) => {
     let next = current + direction;
 
-    if (flow[next] === 'DataImport') {
-        // skip if nothing to import
-        if (get(importableProfiles).length === 0)
-            next += direction;
-    }
-
-    if (flow[next] === 'DefaultBrowser') {
-        // skip if we're already default (we can't undefault ourselves)
-        if (!canBeDefaultBrowser || get(isDefaultBrowser))
-            next += direction;
-    }
-
-    if (flow[next] === 'PasswordManager') {
-        // skip if we aren't allowed to install extensions
-        const pref = get(preferences);
-        if (!pref['services.ext_proxy'] || !pref['services.enabled']) {
-            next += direction;
-        }
+    while (
+        next >= 0 &&
+        next < flow.length &&
+        shouldSkip(flow[next])
+    ) {
+        next += direction;
     }
 
     return Math.max(0, Math.min(next, flow.length - 1));
