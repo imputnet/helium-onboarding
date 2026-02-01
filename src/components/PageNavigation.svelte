@@ -11,9 +11,10 @@
         previouslyImportedProfiles,
     } from "../lib/onboarding-flow";
 
+    import Spinner from "./Spinner.svelte";
+
     import IconArrowLeft from "../icons/tabler/IconArrowLeft.svelte";
     import IconArrowRight from "../icons/tabler/IconArrowRight.svelte";
-    import IconLoader from "../icons/tabler/IconLoader.svelte";
 
     const visible = $derived(
         $currentPage !== "Welcome" && $currentPage !== "Finish"
@@ -82,9 +83,7 @@
     </button>
     <button disabled={working} class="primary" onclick={next}>
         {#if working}
-            <div class="spinner">
-                <IconLoader />
-            </div>
+            <Spinner />
         {:else}
             <IconArrowRight />
         {/if}
@@ -121,20 +120,6 @@
 
         &.footer-note {
             transform: translateY(-5px);
-        }
-    }
-
-    .spinner {
-        display: flex;
-        animation: spinner 0.7s infinite linear;
-    }
-
-    @keyframes spinner {
-        from {
-            transform: rotate(0);
-        }
-        to {
-            transform: rotate(360deg);
         }
     }
 </style>
