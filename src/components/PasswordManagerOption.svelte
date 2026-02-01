@@ -1,8 +1,17 @@
 <script lang="ts">
     import { s } from "../lib/strings";
     import { passwordManagerIcons } from "../lib/nonfree-icons";
+
+    import {
+        extensionStatus,
+        installExtension,
+        WebstoreInstallErrorCode,
+        type InstallResponse,
+    } from "../lib/browser";
+
     import type { PasswordManagerInfo } from "../lib/password-managers";
 
+    import Spinner from "./Spinner.svelte";
     import HeliumPartner from "./HeliumPartner.svelte";
 
     import IconKey from "../icons/tabler/IconKey.svelte";
@@ -11,20 +20,48 @@
 
     let { id, info }: { id: string, info: PasswordManagerInfo } = $props();
 
+    let brokenIcon = $state(false);
     const iconPath = $derived(passwordManagerIcons[id.toLowerCase()] ?? "");
 
-    let brokenIcon = $state(false);
+    let installed = $derived($extensionStatus[info.extensionId]);
+    let working = $state(false);
+    let error = $state(0);
+
+    const handleInstall = (res: InstallResponse) => {
+        // Show an error if anything but UserCancelled occurred
+        const isError = !res.success &&
+            res.code !== WebstoreInstallErrorCode.UserCancelled;
+
+        if (!isError) return;
+
+        error = res.code;
+        console.error(
+            `Failed to install ${info.extensionId}:\n` +
+            `   [${res.code}] ${res.error}`
+        )
+    }
+
+    const install = async () => {
+        // Install function is expected to never be called when
+        // either of these states is true, but we handle it
+        // here just in case.
+        if (installed || working || error) return;
+
+        working = true;
+
+        await installExtension(info.extensionId)
+            .then(handleInstall)
+            .finally(() => working = false);
+    }
 </script>
 
 {#snippet link(
     url: string,
     title: string,
     Icon?: ConstructorOfATypedSvelteComponent,
-    primary?: boolean,
 )}
     <a
         class="button action-link"
-        class:primary
         target="_blank"
         rel="noopener noreferrer"
         href={url}
@@ -82,14 +119,26 @@
                 IconExternalLink,
             )}
         </div>
-        <div>
-            {@render link(
-                info.installUrl,
-                s.password.install,
-                IconDownload,
-                true,
-            )}
-        </div>
+
+        <button
+            class="button action-link"
+            class:primary={!installed && !error}
+            disabled={installed || !!error || working}
+            onclick={install}
+        >
+            {#if installed}
+                {s.password.installed}
+            {:else if error}
+                {s.password.error} {error}
+            {:else}
+                {s.password.install}
+                {#if working}
+                    <Spinner />
+                {:else}
+                    <IconDownload />
+                {/if}
+            {/if}
+        </button>
     </div>
 </div>
 
