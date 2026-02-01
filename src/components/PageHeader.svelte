@@ -40,8 +40,9 @@
             gap: 12px;
 
             & > :global(svg) {
-                height: 28px;
-                width: 28px;
+                height: 32px;
+                width: 32px;
+                stroke-width: 1.7px;
             }
 
             &.vertical {

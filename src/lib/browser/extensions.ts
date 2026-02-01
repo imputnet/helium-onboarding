@@ -6,7 +6,7 @@ export type InstallError = {
     code: WebstoreInstallErrorCode;
 };
 
-type InstallResponse =
+export type InstallResponse =
     | { success: true }
     | { success: false } & InstallError;
 

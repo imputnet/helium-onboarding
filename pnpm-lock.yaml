@@ -12,8 +12,8 @@ importers:
         specifier: ^5.2.7
         version: 5.2.7
       nonfree-icons:
-        specifier: https://gist.githubusercontent.com/wukko/7317b226d6b5ad74b8195a4cd1c0cc9c/raw/6d3663c54cb923d7d444c8de5c0153225d5ee3c5/nonfree-helium-onboarding-icons.tar.gz
-        version: https://gist.githubusercontent.com/wukko/7317b226d6b5ad74b8195a4cd1c0cc9c/raw/6d3663c54cb923d7d444c8de5c0153225d5ee3c5/nonfree-helium-onboarding-icons.tar.gz
+        specifier: https://gist.githubusercontent.com/wukko/7317b226d6b5ad74b8195a4cd1c0cc9c/raw/1af89080acc7797a233f4fb0180824fc5ef42a62/nonfree-helium-onboarding-icons.tar.gz
+        version: https://gist.githubusercontent.com/wukko/7317b226d6b5ad74b8195a4cd1c0cc9c/raw/1af89080acc7797a233f4fb0180824fc5ef42a62/nonfree-helium-onboarding-icons.tar.gz
     devDependencies:
       '@sveltejs/vite-plugin-svelte':
         specifier: ^6.2.0
@@ -428,8 +428,8 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  nonfree-icons@https://gist.githubusercontent.com/wukko/7317b226d6b5ad74b8195a4cd1c0cc9c/raw/6d3663c54cb923d7d444c8de5c0153225d5ee3c5/nonfree-helium-onboarding-icons.tar.gz:
-    resolution: {tarball: https://gist.githubusercontent.com/wukko/7317b226d6b5ad74b8195a4cd1c0cc9c/raw/6d3663c54cb923d7d444c8de5c0153225d5ee3c5/nonfree-helium-onboarding-icons.tar.gz}
+  nonfree-icons@https://gist.githubusercontent.com/wukko/7317b226d6b5ad74b8195a4cd1c0cc9c/raw/1af89080acc7797a233f4fb0180824fc5ef42a62/nonfree-helium-onboarding-icons.tar.gz:
+    resolution: {tarball: https://gist.githubusercontent.com/wukko/7317b226d6b5ad74b8195a4cd1c0cc9c/raw/1af89080acc7797a233f4fb0180824fc5ef42a62/nonfree-helium-onboarding-icons.tar.gz}
     version: 1.0.0
 
   picocolors@1.1.1:
@@ -808,7 +808,7 @@ snapshots:
 
   nanoid@3.3.11: {}
 
-  nonfree-icons@https://gist.githubusercontent.com/wukko/7317b226d6b5ad74b8195a4cd1c0cc9c/raw/6d3663c54cb923d7d444c8de5c0153225d5ee3c5/nonfree-helium-onboarding-icons.tar.gz: {}
+  nonfree-icons@https://gist.githubusercontent.com/wukko/7317b226d6b5ad74b8195a4cd1c0cc9c/raw/1af89080acc7797a233f4fb0180824fc5ef42a62/nonfree-helium-onboarding-icons.tar.gz: {}
 
   picocolors@1.1.1: {}
 

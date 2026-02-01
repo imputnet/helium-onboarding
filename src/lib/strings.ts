@@ -8,9 +8,13 @@ export const s = {
         back: "Back",
         letsGo: "Let's go!"
     },
+    partner: {
+        title: "Helium Partner",
+        tooltip: "Paying for this service will support\nthe development of Helium."
+    },
     welcome: {
         greeting: "Meet Helium",
-        body: "Configure your browser just the way you want it or use\nthe default preset with best privacy and comfort.",
+        body: "Configure your browser just the way you want it, or use\nthe default preset with best privacy and comfort.",
         terms_note: "By continuing, you agree to the",
         terms_privacy: "privacy policy",
         terms_and: "and",
@@ -80,6 +84,16 @@ export const s = {
         bookmarks: "Bookmarks",
         history: "History",
         extensions: "Extensions"
+    },
+    password: {
+        title: "Password manager",
+        subtitle: "Helium doesn't have a built-in password manager by design.\n Would you like to install a browser-agnostic one?",
+        importGuide: "Import",
+        setupGuide: "Setup",
+        privacy: "Privacy",
+        install: "Install",
+        installed: "Installed",
+        error: "Error:",
     },
     trademarkDisclaimer: "All product names, logos, and brands are property of their respective owners.\n They are used on this page for identification purposes only. No endorsement is implied."
 }
