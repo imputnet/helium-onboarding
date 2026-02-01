@@ -34,3 +34,7 @@ export const setPref = async <
 >(name: Key, value: Value): Promise<void> => {
     await cr.sendWithPromise('setPref', name, value);
 }
+
+export const acceptLatestSchema = () => {
+    chrome.send("acceptLatestSchema");
+}

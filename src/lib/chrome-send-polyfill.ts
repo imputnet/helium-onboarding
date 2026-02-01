@@ -1,6 +1,7 @@
 import * as cr from './cr';
 import type { DefaultBrowserInfo } from './cr/default_browser_browser_proxy';
 import type { SearchEngine, SearchEnginesInfo } from './cr/search_engines_browser_proxy';
+import type { ExtensionStatus, InstallError } from './browser';
 
 declare namespace globalThis {
     namespace chrome {
@@ -61,7 +62,6 @@ const searchEngines: SearchEnginesInfo = {
 };
 
 let currentDefault = 0;
-let schemaVersion = 0;
 
 const actualDefaults: [string, number, string, number, boolean][] = [
     ["DuckDuckGo", 6, "duckduckgo.com", 0, true],
@@ -154,6 +154,14 @@ const necessary_keys: (keyof cr.WhatToImport)[] = [
     'import_dialog_extensions'
 ];
 
+const extensionList: ExtensionStatus = {
+    aeblfdkhhhdcdjpifhhbdiojplfjncoa: true,
+    ahfgeienlihckogmohjhadlkjgocpleb: true,
+    blockjmkbacgjkknlgpkjjiijinjdanf: true,
+    jfnekidfgkhnfagaabpddmioknbjglgp: true,
+    mhjfbmdgcfjbbpaeojofohoefgiehjai: true,
+};
+
 const _send_polyfill = (msg: string, params?: any[]) => {
     console.log(msg, params);
 
@@ -182,7 +190,6 @@ const _send_polyfill = (msg: string, params?: any[]) => {
     } else if (msg === 'setProfileName') {
         profileName = params![0];
     } else if (msg === 'acceptLatestSchema') {
-        schemaVersion = 42; /* doesn't matter */
     } else if (msg === 'setDefaultSearchEngine') {
         const currentDefaultEngine = searchEngines.defaults[currentDefault];
         currentDefaultEngine.displayName = currentDefaultEngine.name;
@@ -236,8 +243,49 @@ const _send_polyfill = (msg: string, params?: any[]) => {
                 : cr.ImportDataStatus.SUCCEEDED
             );
         }, 2000);
+    } else if (msg === 'getExtensions') {
+        cr.webUIResponse(params![0], true, structuredClone(extensionList));
+    } else if (msg === 'installExtension') {
+        let err: InstallError | undefined;
+
+        if (params?.length !== 2) {
+            err = {
+                code: 1,
+                error: 'missing extension ID'
+            };
+        }
+
+        const extid: string = params![1];
+        if (extid.toLowerCase() !== extid || extid.length !== 32) {
+            err = {
+                code: 5,
+                error: 'invalid extension ID'
+            };
+        } else if (extid === 'simulateusercancelledxxxxxxxxxxx') {
+            err = {
+                code: 10,
+                error: 'user cancelled (this is not a "real" error)'
+            };
+        } else if (extid === 'simulatewebstorerequesterrorxxxx') {
+            err = {
+                code: 7,
+                error: 'invalid webstore response'
+            };
+        }
+
+        setTimeout(() => {
+            if (!err) {
+                extensionList[extid] = true;
+                cr.webUIListenerCallback('extension-state-changed', {
+                    [extid]: true
+                });
+            }
+
+            cr.webUIResponse(params![0], !err, err || null);
+        }, Math.random() * 1500);
     } else if (params?.[0]) {
         cr.webUIResponse(params[0], false, 'unknown method');
+        alert('unknown method: ' + params[0]);
     }
 }
 

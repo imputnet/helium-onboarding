@@ -1,6 +1,6 @@
 <script lang="ts">
     import { s } from "../lib/strings";
-    import { setPref } from "../lib/browser";
+    import { setPref, acceptLatestSchema } from "../lib/browser";
     import { currentPage, nextPage } from "../lib/onboarding-flow";
 
     import OuterLink from "../components/OuterLink.svelte";
@@ -10,7 +10,7 @@
     import IconArrowRight from "../icons/tabler/IconArrowRight.svelte";
 
     const useDefaults = async () => {
-        chrome.send('acceptLatestSchema');
+        acceptLatestSchema();
         await setPref('services.user_consented', true);
         await setPref('completed_onboarding', true);
         window.open("chrome://newtab", "_self");
