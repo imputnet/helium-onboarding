@@ -87,7 +87,7 @@ export const s = {
     },
     password: {
         title: "Password manager",
-        subtitle: "Helium doesn't have a built-in password manager by design.\n Would you like to install a browser-agnostic one?",
+        subtitle: "Helium doesn't have a built-in password manager, by design.\n Would you like to install a browser-agnostic one?",
         importGuide: "Import",
         setupGuide: "Setup",
         privacy: "Privacy",
@@ -95,5 +95,4 @@ export const s = {
         installed: "Installed",
         error: "Error:",
     },
-    trademarkDisclaimer: "All product names, logos, and brands are property of their respective owners.\n They are used on this page for identification purposes only. No endorsement is implied."
 }

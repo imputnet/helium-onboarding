@@ -78,9 +78,6 @@
             {/each}
         </div>
     </div>
-    <p id="data-import-footer" class="trademark-disclaimer">
-        {s.trademarkDisclaimer}
-    </p>
 </div>
 
 <style>

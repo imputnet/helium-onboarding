@@ -4,7 +4,6 @@
     import { currentPage, previousPage } from "../lib/onboarding-flow";
 
     import HeliumLogo from "../icons/HeliumLogo.svelte";
-    import IconHeart from "../icons/tabler/IconHeart.svelte";
 
     import IconCheck from "../icons/tabler/IconCheck.svelte";
     import IconArrowLeft from "../icons/tabler/IconArrowLeft.svelte";
@@ -27,7 +26,6 @@
             <div id="finish-logo-text">
                 <div id="finish-logo">
                     <HeliumLogo />
-                    <IconHeart />
                 </div>
                 <div id="finish-text">
                     <h1>{s.finish.title}</h1>
@@ -86,7 +84,7 @@
 
     #finish-logo-text,
     #finish-text {
-        gap: 20px
+        gap: 16px
     }
 
     #finish-logo {
@@ -98,12 +96,6 @@
     #finish-logo :global(svg) {
         height: 64px;
         width: 64px;
-
-        &:last-child {
-            stroke-width: 1.2px;
-            height: 76px;
-            width: 76px;
-        }
     }
 
     #finish-text p {

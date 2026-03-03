@@ -153,9 +153,8 @@
         max-width: 420px;
         height: -webkit-fill-available;
         justify-content: space-between;
-        background-color: var(--helium-elevated-15);
-        outline: 1.5px var(--helium-elevated-25) solid;
-        outline-offset: -1.5px;
+        background-color: var(--helium-elevated-5);
+        box-shadow: 0 0 0 1.5px var(--helium-elevated-5) inset;
     }
 
     .pm-top {
@@ -189,7 +188,7 @@
 
     .action-link {
         padding: 9px 16px;
-        border-radius: 8px;
+        border-radius: 10px;
         font-size: 15px;
         font-weight: 500;
         gap: 6px;
@@ -201,14 +200,8 @@
         }
     }
 
-    .action-link:not(.primary) {
-        &:not(:hover) {
-            background: var(--helium-elevated-20);
-        }
-    }
-
     .pm-icon-container {
-        background: var(--helium-elevated-20);
+        background: var(--helium-elevated-10);
         display: flex;
         justify-content: center;
         align-items: center;

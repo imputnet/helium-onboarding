@@ -30,8 +30,8 @@
         display: flex;
         align-items: center;
         gap: 4px;
-        font-size: 13px;
-        font-weight: 400;
+        font-size: 13.5px;
+        font-weight: 500;
         width: fit-content;
         line-height: 0;
         padding: 2px 0;

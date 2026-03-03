@@ -110,7 +110,7 @@
     }
 
     .engine-icon-container {
-        background: var(--helium-elevated-30);
+        background: var(--helium-elevated-10);
         display: flex;
         justify-content: center;
         align-items: center;

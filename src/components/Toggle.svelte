@@ -60,7 +60,7 @@
         }
 
         &.enabled {
-            background-color: var(--helium-elevated-80);
+            background-color: var(--helium-blue);
 
             & .runner {
                 translate: 20px 0;

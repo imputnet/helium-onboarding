@@ -28,9 +28,6 @@
             {/each}
         </div>
     </div>
-    <p id="password-manager-footer" class="trademark-disclaimer">
-        {s.trademarkDisclaimer}
-    </p>
 </div>
 
 <style>

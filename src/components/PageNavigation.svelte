@@ -67,16 +67,9 @@
                 nextPage();
             });
     }
-
-    const footerNotePages = ["SearchEngine", "DataImport", "PasswordManager"];
 </script>
 
-<div
-    id="setup-buttons"
-    class="action-buttons"
-    class:visible
-    class:footer-note={footerNotePages.includes($currentPage)}
->
+<div id="setup-buttons" class="action-buttons" class:visible>
     <button disabled={working} onclick={previousPage}>
         <IconArrowLeft />
         {s.button.back}
@@ -93,33 +86,48 @@
 
 <style>
     #setup-buttons {
+        --bottom-space: 24px;
+        --misclick-protect: 8px;
+
+        bottom: var(--bottom-space);
+
         justify-content: center;
-        width: 100%;
-        left: 0;
-        bottom: 48px;
-        position: absolute;
-        padding-top: var(--gap-1);
+
+        position: fixed;
         z-index: 9;
 
         visibility: hidden;
 
-        transition: transform 0.25s;
-        will-change: translate, transform, filter;
-
         &.visible {
             visibility: visible;
-            animation: page-in 0.3s;
-            animation-delay: 0.1s;
+            animation: slide-in 0.35s;
+            animation-delay: 0.4s;
             animation-fill-mode: backwards;
         }
+    }
 
-        &:not(.visible) {
-            animation: page-out 0.2s;
-            animation-fill-mode: forwards;
+    button:not(.primary) {
+        backdrop-filter: blur(15px);
+    }
+
+    /* invisible bottom layer to prevent misclicks */
+    #setup-buttons::before {
+        content: '';
+        width: 600px;
+        height: calc(100% + var(--bottom-space) + var(--misclick-protect));
+        top: calc(-1 * var(--misclick-protect));
+        position: absolute;
+    }
+
+    @keyframes slide-in {
+        from {
+            translate: 0 80px;
         }
+    }
 
-        &.footer-note {
-            transform: translateY(-5px);
+    @media (prefers-reduced-motion) {
+        #setup-buttons.visible {
+            animation: none;
         }
     }
 </style>

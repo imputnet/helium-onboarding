@@ -4,6 +4,6 @@
     .toggle-separator {
         height: 2px;
         width: calc(100% - 48px);
-        background: var(--helium-elevated-20);
+        background: var(--helium-elevated-10);
     }
 </style>
