@@ -67,16 +67,9 @@
                 nextPage();
             });
     }
-
-    const footerNotePages = ["SearchEngine", "DataImport", "PasswordManager"];
 </script>
 
-<div
-    id="setup-buttons"
-    class="action-buttons"
-    class:visible
-    class:footer-note={footerNotePages.includes($currentPage)}
->
+<div id="setup-buttons" class="action-buttons" class:visible>
     <button disabled={working} onclick={previousPage}>
         <IconArrowLeft />
         {s.button.back}
@@ -118,8 +111,5 @@
             animation-fill-mode: forwards;
         }
 
-        &.footer-note {
-            transform: translateY(-5px);
-        }
     }
 </style>

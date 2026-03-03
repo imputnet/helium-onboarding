@@ -95,5 +95,4 @@ export const s = {
         installed: "Installed",
         error: "Error:",
     },
-    trademarkDisclaimer: "All product names, logos, and brands are property of their respective owners.\n They are used on this page for identification purposes only. No endorsement is implied."
 }
