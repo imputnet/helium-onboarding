@@ -24,16 +24,19 @@
         justify-content: center;
         align-items: center;
 
-        background-color: var(--helium-elevated-20);
+        background-color: var(--helium-elevated-10);
+        box-shadow: 0 0 0 1.5px var(--helium-elevated-5) inset;
 
         & > :global(svg) {
             width: 21px;
             height: 21px;
+            stroke-width: 2px;
             opacity: 0;
         }
 
         &.checked {
-            background-color: var(--helium-elevated-40);
+            background-color: var(--primary);
+            color: var(--tooltip-bg);
 
             & > :global(svg) {
                 opacity: 1;

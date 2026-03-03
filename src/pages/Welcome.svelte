@@ -105,7 +105,7 @@
 
     #welcome-logo-text,
     #welcome-text {
-        gap: 20px
+        gap: 16px
     }
 
     #welcome-logo-text {

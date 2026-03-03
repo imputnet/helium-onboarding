@@ -13,44 +13,72 @@
 
     user-select: none;
 
+    --primary: #0d1c64;
+    --secondary: #475a7f;
+
     --white: #ffffff;
-    --black: #000000;
 
-    --helium-gradient-start-rgb: 21, 38, 113;
-    --helium-gradient-start: rgb(var(--helium-gradient-start-rgb));
-    --helium-gradient-mid-rgb: 27, 44, 120;
-    --helium-gradient-mid: rgb(var(--helium-gradient-mid-rgb));
-    --helium-gradient-end-rgb: 86, 105, 189;
-    --helium-gradient-end: rgb(var(--helium-gradient-end-rgb));
+    --helium-blue: #3450d1;
+    --helium-blue-hover: #3a58db;
+    --helium-blue-press: #304bc2;
 
-    --helium-gradient: linear-gradient(
+    color: var(--primary);
+
+    --background: #fbfcff;
+
+    --bg-gradient-start: #e3e8ff;
+    --bg-gradient-end: #f4f7ff;
+    --bg-gradient-end-rgb: 244, 247, 255;
+
+    --tooltip-bg: rgb(234, 237, 253);
+    --tooltip-shadow: rgba(155, 166, 216, 0.5);
+
+    --background-gradient: linear-gradient(
         180deg,
-        var(--helium-gradient-start) 10%,
-        var(--helium-gradient-mid) 30%,
-        var(--helium-gradient-end) 100%
+        var(--bg-gradient-start) 0%,
+        var(--bg-gradient-end) 100%
     );
 
-    --helium-elevated: #afbeff;
-    --helium-elevated-10: rgba(175, 190, 255, 0.1);
-    --helium-elevated-15: rgba(175, 190, 255, 0.15);
-    --helium-elevated-20: rgba(175, 190, 255, 0.2);
-    --helium-elevated-25: rgba(175, 190, 255, 0.25);
-    --helium-elevated-30: rgba(175, 190, 255, 0.3);
-    --helium-elevated-40: rgba(175, 190, 255, 0.4);
-    --helium-elevated-80: rgba(175, 190, 255, 0.8);
+    --helium-elevated: 52, 80, 209;
+    --helium-elevated-5: rgba(var(--helium-elevated), 0.05);
+    --helium-elevated-7: rgba(var(--helium-elevated), 0.07);
+    --helium-elevated-10: rgba(var(--helium-elevated), 0.1);
+    --helium-elevated-15: rgba(var(--helium-elevated), 0.15);
+    --helium-elevated-30: rgba(var(--helium-elevated), 0.3);
 
-    --white-80: rgba(255, 255, 255, 0.8);
-    --white-85: rgba(255, 255, 255, 0.85);
-
+    --gap: 8px;
     --gap-1: 12px;
     --gap-2: 24px;
 
     --page-scroll-gradient-mask: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 1) 85%,
-        rgba(0, 0, 0, 0.1) 95%,
+        rgba(0, 0, 0, 1) 90%,
         rgba(0, 0, 0, 0) 100%
     );
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary: #e3e6f2;
+        --secondary: #8f9bcb;
+
+        --white: var(--primary);
+
+        --background: #0e1123;
+
+        --tooltip-bg: rgb(29, 42, 93);
+        --tooltip-shadow: rgba(20, 35, 95, 0.5);
+
+        --bg-gradient-start: #151932;
+        --bg-gradient-end: #2d3c7f;
+        --bg-gradient-end-rgb: 45, 60, 127;
+
+        --helium-elevated: 179, 190, 236;
+    }
+}
+
+html {
+    background: var(--background);
 }
 
 body {
@@ -58,7 +86,7 @@ body {
     display: flex;
     justify-content: center;
     min-height: 100vh;
-    background: var(--helium-gradient);
+    background: var(--background-gradient);
     overflow: hidden;
 }
 
@@ -98,7 +126,7 @@ p {
     margin: 0;
     font-size: 16px;
     line-height: 1.2;
-    color: var(--helium-elevated);
+    color: var(--secondary);
 }
 
 h1, h2, p {
@@ -133,14 +161,15 @@ button {
 }
 
 button, .button {
-    color: var(--white);
-    background-color: var(--helium-elevated-20);
+    color: var(--primary);
+    background-color: var(--helium-elevated-7);
+    box-shadow: 0 0 0 1.5px var(--helium-elevated-5) inset;
 
     font-size: 16px;
     padding: 11px 18px;
     border-radius: 12px;
 
-    transition: 0.1s background-color, 0.2s transform, 0.2s opacity;
+    transition: 0.2s background-color, 0.2s transform, 0.2s opacity;
     will-change: transform;
 
     display: flex;
@@ -148,23 +177,23 @@ button, .button {
     gap: 9px;
 
     &:hover {
-        background-color: var(--helium-elevated-25);
+        background-color: var(--helium-elevated-10);
 
         &:active {
-            background-color: var(--helium-elevated-30);
+            background-color: var(--helium-elevated-15);
             transform: scale(0.97);
         }
     }
 
     &.primary {
-        color: var(--black);
-        background-color: var(--white);
+        color: var(--white);
+        background-color: var(--helium-blue);
 
         &:hover {
-            background-color: var(--white-85);
+            background-color: var(--helium-blue-hover);
 
             &:active {
-                background-color: var(--white-80);
+                background-color: var(--helium-blue-press);
             }
         }
     }
@@ -184,12 +213,18 @@ button, .button {
 
     &.inactive,
     &:disabled {
+        color: var(--primary);
+        background-color: var(--helium-elevated-7);
         pointer-events: none;
         opacity: 0.5;
+
+        &:not(.selected) {
+            box-shadow: none;
+        }
     }
 
     &.selected {
-        box-shadow: 0 0 0 2px var(--white) inset;
+        box-shadow: 0 0 0 2px var(--primary) inset;
     }
 
     & svg {
@@ -202,13 +237,17 @@ button, .button {
 button:focus-visible,
 .button:focus-visible,
 a:focus-visible {
-    outline: 2px white solid;
+    outline: 2px var(--primary) solid;
     outline-offset: 3px;
 }
 
 .action-buttons {
     display: flex;
-    gap: var(--gap-2);
+    gap: var(--gap);
+
+    & > button {
+        border-radius: 30px;
+    }
 }
 
 .onboarding-page {
@@ -230,11 +269,11 @@ a:focus-visible {
     max-width: 600px;
     overflow-x: scroll;
     overflow-y: visible;
-    /* 20px - accommodation for hover effects */
-    padding: 20px;
+    /* accommodation for outline */
+    padding: 6px;
     padding-top: 0;
-    /* 150px - accommodation for navigation buttons */
-    padding-bottom: 150px;
+    /* accommodation for navigation buttons */
+    padding-bottom: 96px;
     mask-image: var(--page-scroll-gradient-mask);
 }
 

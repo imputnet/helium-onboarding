@@ -95,9 +95,9 @@
     }
 
     .tooltip-content {
-        color: var(--white);
-        background-color: var(--helium-gradient-mid);
-        outline: 1.5px solid var(--helium-elevated-30);
+        color: var(--primary);
+        background-color: var(--tooltip-bg);
+        outline: 1.5px solid var(--helium-elevated-10);
         outline-offset: -1.5px;
 
         text-wrap: pretty;
@@ -108,6 +108,6 @@
 
         border-radius: 12px;
         border-top-left-radius: 4px;
-        box-shadow: 4px 4px 10px 0px rgba(var(--helium-gradient-mid-rgb), 0.9);
+        box-shadow: 4px 4px 10px 0px var(--tooltip-shadow);
     }
 </style>

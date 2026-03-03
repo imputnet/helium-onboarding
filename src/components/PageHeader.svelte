@@ -22,8 +22,8 @@
     .page-header {
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        margin-top: 64px;
+        gap: var(--gap);
+        margin-top: 48px;
 
         &.no-top-margin {
             margin-top: 0;
@@ -37,12 +37,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
 
             & > :global(svg) {
                 height: 32px;
                 width: 32px;
-                stroke-width: 1.7px;
+                stroke-width: 2px;
             }
 
             &.vertical {
@@ -51,7 +52,7 @@
                 & > :global(svg) {
                     height: 48px;
                     width: 48px;
-                    stroke-width: 1.5px;
+                    stroke-width: 1.6px;
                 }
             }
         }
