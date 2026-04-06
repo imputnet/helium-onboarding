@@ -9,10 +9,15 @@ const engineOrder = Object.fromEntries(
     Object.keys(searchEngineConfig).map((key, i) => [key, i])
 );
 
+export const getKeyword = (domain: string) => {
+    const labels = domain.split('.');
+    return labels[labels.length - 2] ?? labels[0];
+}
+
 // use the order defined in searchEngineConfig and
 // push custom engines (not in config) to the end
 const engineIndex = (keyword: string) =>
-    engineOrder[keyword.split(".")[0]] ?? Infinity;
+    engineOrder[getKeyword(keyword)] ?? Infinity;
 
 const sortEngines = (engines: cr.SearchEngine[]) => {
     return engines.sort((a, b) =>

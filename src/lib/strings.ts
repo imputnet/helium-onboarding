@@ -65,6 +65,7 @@ export const s = {
     searchEngines: {
         duckduckgo: "Privacy-focused. Relies on Bing results but promises to never track or profile you.",
         kagi: "Privacy-focused. Customizable results without ads or tracking. Requires a paid account.",
+        brave: "Privacy-focused. Doesn't collect personal data or track you. Shows ads without profiling.",
         qwant: "Based in Europe. Uses Bing results. Sends tracking data to Microsoft.",
         ecosia: "May plant trees for clicking ads. Relies on Bing and Google. Sends tracking data to Microsoft and Google.",
         bing: "Collects extensive personal data. Privacy controls are buried and limited. Subjectively overwhelming UI.",

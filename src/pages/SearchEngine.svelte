@@ -1,7 +1,7 @@
 <script lang="ts">
     import { s } from "../lib/strings";
     import { currentPage } from "../lib/onboarding-flow";
-    import { searchEngines } from "../lib/browser/search-engines";
+    import { getKeyword, searchEngines } from "../lib/browser/search-engines";
     import { searchEngineIcons } from "../lib/nonfree-icons";
 
     import PageHeader from "../components/PageHeader.svelte";
@@ -26,7 +26,7 @@
 
         <div id="content" class="page-content">
             {#each $searchEngines as e}
-                {@const engineKey = e.keyword.split(".")[0]}
+                {@const engineKey = getKeyword(e.keyword)}
                 <SearchEngineItem
                     id={engineKey}
                     name={e.name}
