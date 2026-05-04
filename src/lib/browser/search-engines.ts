@@ -34,9 +34,9 @@ cr.addWebUiListener(
 
 export const searchEngines = readonly(_searchEngines);
 
-export const setDefaultEngine = (modelIndex: number) => {
+export const setDefaultEngine = (browserIndex: number) => {
     browser.setDefaultSearchEngine(
-        modelIndex,
+        browserIndex,
         cr.ChoiceMadeLocation.CHOICE_SCREEN,
         null
     );
