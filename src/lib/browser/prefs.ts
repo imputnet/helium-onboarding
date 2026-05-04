@@ -16,15 +16,16 @@ export type Preferences = {
 export type PrefKey = keyof Preferences;
 
 const _preferences = writable({} as Preferences);
+export const setup = () => {
+    cr.sendWithPromise<Preferences>('getPrefs').then(
+        prefs => _preferences.set(prefs)
+    );
 
-cr.sendWithPromise('getPrefs').then(
-    prefs => _preferences.set(prefs)
-);
-
-cr.addWebUiListener(
-    'helium-prefs-changed',
-    (prefs: Preferences) => _preferences.set(prefs)
-);
+    cr.addWebUiListener(
+        'helium-prefs-changed',
+        (prefs: Preferences) => _preferences.set(prefs)
+    );
+}
 
 export const preferences = readonly(_preferences);
 

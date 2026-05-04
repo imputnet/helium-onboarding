@@ -4,3 +4,5 @@ export * from "./importer";
 export * from "./extensions";
 export * from "./is-default";
 export * from "./search-engines";
+
+export { setup } from "./setup";

@@ -20,9 +20,11 @@ const sortEngines = (engines: cr.SearchEngine[]) => {
     );
 };
 
-browser.getSearchEnginesList().then(
-    engines => _searchEngines.set(sortEngines(engines.defaults))
-);
+export const setup = () => {
+    browser.getSearchEnginesList().then(
+        engines => _searchEngines.set(sortEngines(engines.defaults))
+    );
+}
 
 cr.addWebUiListener(
     'search-engines-changed',

@@ -2,6 +2,7 @@
     import "@fontsource-variable/instrument-sans";
 
     import * as pages from "./pages";
+    import * as Browser from "./lib/browser";
     import { currentPage, flow } from "./lib/onboarding-flow";
 
     import PageNavigation from "./components/PageNavigation.svelte";
@@ -13,6 +14,8 @@
     const initialMount = Object.fromEntries(
         flow.map(p => [p, false])
     ) as Record<Page, boolean>;
+
+    Browser.setup();
 
     let mounted = $state(initialMount);
     let prevPage: Page | null = null;

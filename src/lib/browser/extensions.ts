@@ -15,8 +15,10 @@ const update = (diff: ExtensionStatus) =>
 
 const _extensionStatus = writable<ExtensionStatus>({});
 
-cr.sendWithPromise('getExtensions').then(update);
-cr.addWebUiListener('extension-state-changed', update);
+export const setup = () => {
+    cr.sendWithPromise<ExtensionStatus>('getExtensions').then(update);
+    cr.addWebUiListener('extension-state-changed', update);
+}
 
 function intoInstallError(value: unknown): InstallError | undefined {
     if (

@@ -5,9 +5,11 @@ const browser = cr.ImportDataBrowserProxyImpl.getInstance();
 
 const importableProfilesRaw = writable<cr.BrowserProfile[]>([]);
 
-browser.initializeImportDialog().then(
-    profiles => importableProfilesRaw.set(profiles)
-);
+export const setup = () => {
+    browser.initializeImportDialog().then(
+        profiles => importableProfilesRaw.set(profiles)
+    );
+}
 
 const convertTasks = (tasks: WhatToImport): cr.WhatToImport => {
     return {

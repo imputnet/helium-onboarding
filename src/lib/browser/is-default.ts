@@ -6,23 +6,27 @@ const _defaultBrowser = writable(false);
 export let canBeDefaultBrowser = true;
 
 const browser = cr.DefaultBrowserBrowserProxyImpl.getInstance();
-browser.requestDefaultBrowserState().then(
-    state => {
-        _defaultBrowser.set(state.isDefault);
-        canBeDefaultBrowser =
-            state.canBeDefault
-            && !state.isDisabledByPolicy
-            && !state.isUnknownError;
-    }
-);
 
-cr.addWebUiListener(
-    'browser-default-state-changed',
-    (state: cr.DefaultBrowserInfo) => _defaultBrowser.set(state.isDefault)
-);
+export const setup = () => {
+    browser.requestDefaultBrowserState().then(
+        state => {
+            _defaultBrowser.set(state.isDefault);
+            canBeDefaultBrowser =
+                state.canBeDefault
+                && !state.isDisabledByPolicy
+                && !state.isUnknownError;
+        }
+    );
+
+    cr.addWebUiListener(
+        'browser-default-state-changed',
+        (state: cr.DefaultBrowserInfo) =>
+            _defaultBrowser.set(state.isDefault)
+    );
+}
 
 export const askToBeDefault = (/* 🥺👉👈 */) => {
-    browser.setAsDefaultBrowser();
+    browser.setAsDefaultBrowser(/*pin=*/false);
 }
 
 export const isDefaultBrowser = readonly(_defaultBrowser);
