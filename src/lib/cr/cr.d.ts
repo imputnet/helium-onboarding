@@ -1,4 +1,4 @@
 declare const chrome: {
-    send(message: string, params?: any[]): void,
+    send(message: string, params?: unknown[]): void,
     getVariableValue(variable: string): string,
 };
