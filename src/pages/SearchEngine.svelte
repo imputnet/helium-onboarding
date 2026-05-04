@@ -32,7 +32,7 @@
                     name={e.name}
                     desc={searchDescs[engineKey]}
                     iconPath={iconPath(engineKey)}
-                    modelIndex={e.modelIndex}
+                    browserId={e.id}
                     isDefault={e.default}
                 />
             {/each}

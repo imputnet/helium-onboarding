@@ -5,13 +5,24 @@ const browser = cr.ImportDataBrowserProxyImpl.getInstance();
 
 const importableProfilesRaw = writable<cr.BrowserProfile[]>([]);
 
+enum _HeliumImportType {
+    EXTENSIONS = 'import_dialog_extensions',
+};
+
+export const HeliumImportType = {
+    ...cr.ImportType,
+    ..._HeliumImportType,
+} as const;
+export type HeliumImportType = _HeliumImportType | cr.ImportType;
+export type HeliumImportTypes = Record<HeliumImportType, boolean>;
+
 export const setup = () => {
     browser.initializeImportDialog().then(
         profiles => importableProfilesRaw.set(profiles)
     );
 }
 
-const convertTasks = (tasks: WhatToImport): cr.WhatToImport => {
+const convertTasks = (tasks: WhatToImport): HeliumImportTypes => {
     return {
         import_dialog_autofill_form_data: !!tasks.autofillFormData,
         import_dialog_bookmarks: !!tasks.bookmarks,
@@ -23,7 +34,7 @@ const convertTasks = (tasks: WhatToImport): cr.WhatToImport => {
 }
 
 type Action = () => void;
-let queue: [number, cr.WhatToImport, Action, Action][] = [];
+let queue: [number, HeliumImportTypes, Action, Action][] = [];
 
 const runNext = () => {
     if (queue.length === 0) {

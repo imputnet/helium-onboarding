@@ -1,7 +1,7 @@
 import * as cr from './cr';
 import type { DefaultBrowserInfo } from './cr/default_browser_browser_proxy';
 import type { SearchEngine, SearchEnginesInfo } from './cr/search_engines_browser_proxy';
-import type { ExtensionStatus, InstallError } from './browser';
+import { HeliumImportType, type HeliumImportTypes, type ExtensionStatus, type InstallError } from './browser';
 
 declare namespace globalThis {
     namespace chrome {
@@ -47,9 +47,8 @@ const searchEngineTemplate: SearchEngine = {
     isPrepopulated: true,
     isStarterPack: false,
     keyword: 'domain.com',
-    modelIndex: -1,
     name: 'Search',
-    shouldConfirmDeletion: true,
+    shouldConfirmRemoval: true,
     url: 'https://dummy.invalid/suggest?q=%s',
     urlLocked: true
 };
@@ -63,24 +62,23 @@ const searchEngines: SearchEnginesInfo = {
 
 let currentDefault = 0;
 
-const actualDefaults: [string, number, string, number, boolean][] = [
-    ["DuckDuckGo", 6, "duckduckgo.com", 0, true],
-    ["Kagi", 7, "kagi.com", 1, false],
-    ["Ecosia", 3, "ecosia.org", 2, false],
-    ["Qwant", 4, "qwant.com", 3, false],
-    ["Microsoft Bing", 2, "bing.com", 4, false],
-    ["Google", 5, "google.com", 5, false],
-    ["Foogle", 8, "foogle.com", 6, false],
-    ["Bargle", 9, "bargle.com", 7, false],
+const actualDefaults: [string, number, string, boolean][] = [
+    ["DuckDuckGo", 6, "duckduckgo.com", true],
+    ["Kagi", 7, "kagi.com", false],
+    ["Ecosia", 3, "ecosia.org", false],
+    ["Qwant", 4, "qwant.com", false],
+    ["Microsoft Bing", 2, "bing.com", false],
+    ["Google", 5, "google.com", false],
+    ["Foogle", 8, "foogle.com", false],
+    ["Bargle", 9, "bargle.com", false],
 ];
 
-for (const [ name, id, keyword, modelId, isDefault ] of actualDefaults) {
+for (const [ name, id, keyword, isDefault ] of actualDefaults) {
     const engine = structuredClone(searchEngineTemplate);
     engine.name = name;
     engine.displayName = name;
     if (isDefault) engine.displayName += ` (Default)`;
     engine.id = id;
-    engine.modelIndex = modelId;
     engine.keyword = keyword;
     engine.default = isDefault;
     searchEngines.defaults.push(engine);
@@ -88,6 +86,7 @@ for (const [ name, id, keyword, modelId, isDefault ] of actualDefaults) {
 
 const defaultBrowser: DefaultBrowserInfo = {
     canBeDefault: true,
+    canPin: true,
     isDefault: false,
     isDisabledByPolicy: false,
     isUnknownError: false,
@@ -144,15 +143,6 @@ const importerList: cr.BrowserProfile[] = importerListSimple.map((data, index) =
         extensions: features.has('extensions')
     };
 });
-
-const necessary_keys: (keyof cr.WhatToImport)[] = [
-    'import_dialog_autofill_form_data',
-    'import_dialog_bookmarks',
-    'import_dialog_history',
-    'import_dialog_saved_passwords',
-    'import_dialog_search_engine',
-    'import_dialog_extensions'
-];
 
 const extensionList: ExtensionStatus = {
     aeblfdkhhhdcdjpifhhbdiojplfjncoa: true,
@@ -217,7 +207,7 @@ const _send_polyfill = (msg: string, params?: any[]) => {
 
         if (msg !== 'importFromBookmarksFile') {
             const id: number = params![0];
-            const imports: cr.WhatToImport = params![1];
+            const imports: HeliumImportTypes = params![1];
 
             if (id < 0 || id > importerList.length) {
                 return cr.webUIListenerCallback(
@@ -226,6 +216,7 @@ const _send_polyfill = (msg: string, params?: any[]) => {
                 );
             }
 
+            const necessary_keys = Object.values(HeliumImportType);
             if (necessary_keys.some(k => typeof imports[k] !== 'boolean')) {
                 return alert('browser crash');
             }
