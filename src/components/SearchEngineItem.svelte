@@ -17,11 +17,11 @@
         name: string;
         desc: string;
         iconPath: string;
-        modelIndex: number;
+        browserId: number;
         isDefault: boolean;
     };
 
-    let { id, name, desc, iconPath, modelIndex, isDefault }: Props = $props();
+    let { id, name, desc, iconPath, browserId, isDefault }: Props = $props();
 
     let brokenIcon = $state(false);
 
@@ -48,7 +48,7 @@
     class:selected={isDefault}
     aria-pressed={isDefault}
     onclick={() => {
-        setDefaultEngine(modelIndex);
+        setDefaultEngine(browserId);
     }}
 >
     <div class="engine-icon-container" aria-hidden="true">

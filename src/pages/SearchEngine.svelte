@@ -1,7 +1,7 @@
 <script lang="ts">
     import { s } from "../lib/strings";
+    import { searchEngines } from "../lib/browser";
     import { currentPage } from "../lib/onboarding-flow";
-    import { searchEngines } from "../lib/browser/search-engines";
     import { searchEngineIcons } from "../lib/nonfree-icons";
 
     import PageHeader from "../components/PageHeader.svelte";
@@ -32,7 +32,7 @@
                     name={e.name}
                     desc={searchDescs[engineKey]}
                     iconPath={iconPath(engineKey)}
-                    modelIndex={e.modelIndex}
+                    browserId={e.id}
                     isDefault={e.default}
                 />
             {/each}

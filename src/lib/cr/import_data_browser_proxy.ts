@@ -32,14 +32,18 @@ export enum ImportDataStatus {
   FAILED = 'failed',
 }
 
-export type WhatToImport = {
-  import_dialog_autofill_form_data: boolean,
-  import_dialog_bookmarks: boolean,
-  import_dialog_history: boolean,
-  import_dialog_saved_passwords: boolean,
-  import_dialog_search_engine: boolean,
-  import_dialog_extensions: boolean
-};
+/**
+ * These string values must be kept in sync with the import_dialog_* prefs.
+ */
+export enum ImportType {
+  AUTOFILL_FORM_DATA = 'import_dialog_autofill_form_data',
+  BOOKMARKS = 'import_dialog_bookmarks',
+  HISTORY = 'import_dialog_history',
+  SAVED_PASSWORDS = 'import_dialog_saved_passwords',
+  SEARCH_ENGINE = 'import_dialog_search_engine',
+}
+
+export type ImportTypes = Record<ImportType, boolean>;
 
 export interface ImportDataBrowserProxy {
   /**
@@ -52,9 +56,7 @@ export interface ImportDataBrowserProxy {
    * responds with the 'import-data-status-changed' WebUIListener event.
    * @param types Which types of data to import.
    */
-  importData(
-      sourceBrowserProfileIndex: number,
-      types: WhatToImport): void;
+  importData(sourceBrowserProfileIndex: number, types: ImportTypes): void;
 
   /**
    * Prompts the user to choose a bookmarks file to import bookmarks from.
@@ -64,11 +66,10 @@ export interface ImportDataBrowserProxy {
 
 export class ImportDataBrowserProxyImpl implements ImportDataBrowserProxy {
   initializeImportDialog() {
-    return sendWithPromise('initializeImportDialog');
+    return sendWithPromise<BrowserProfile[]>('initializeImportDialog');
   }
 
-  importData(
-      sourceBrowserProfileIndex: number, types: {[type: string]: boolean}) {
+  importData(sourceBrowserProfileIndex: number, types: ImportTypes) {
     chrome.send('importData', [sourceBrowserProfileIndex, types]);
   }
 
