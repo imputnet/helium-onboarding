@@ -186,10 +186,15 @@ const _send_polyfill = (msg: string, params?: any[]) => {
         currentDefaultEngine.default = false;
         if (params && params.length >= 1) {
             const browserIndex = +params[0];
-            const nextDefaultEngine = searchEngines.defaults[browserIndex];
+            const nextDefaultEngineIdx = searchEngines.defaults.findIndex(
+                e => e.id === browserIndex);
+            if (nextDefaultEngineIdx < 0) {
+                return alert('BUG: did not find engine with id ' + browserIndex);
+            }
+            const nextDefaultEngine = searchEngines.defaults[nextDefaultEngineIdx];
             nextDefaultEngine.default = true;
             nextDefaultEngine.displayName = `${nextDefaultEngine.name} (Default)`;
-            currentDefault = browserIndex;
+            currentDefault = nextDefaultEngineIdx;
         }
         cr.webUIListenerCallback('search-engines-changed', structuredClone(searchEngines));
     } else if (msg === 'requestDefaultBrowserState') {
