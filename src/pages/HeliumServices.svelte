@@ -11,16 +11,6 @@
     import ToggleSeparator from "../components/ToggleSeparator.svelte";
 
     const visible = $derived($currentPage === "HeliumServices");
-
-    // TODO: remove/update this as auto-updates become
-    // available on windows and linux
-    const platformSpecific = {
-        macos: "",
-        linux: s.services.autoupdates_linux,
-        windows: s.services.autoupdates_windows
-    };
-
-    const updatesPlatformDesc = platformSpecific[platform.name];
 </script>
 
 <div id="services-page" class="onboarding-page" class:visible>
@@ -55,12 +45,21 @@
                 prefName={"services.ublock_assets"}
                 inactive={!$pr["services.enabled"]}
             />
-            <Toggle
-                title={s.services.autoupdates_title}
-                desc={s.services.autoupdates_desc + updatesPlatformDesc}
-                prefName={"services.browser_updates"}
-                inactive={!$pr["services.enabled"]}
-            />
+            {#if !platform.is.linux}
+                <Toggle
+                    title={s.services.autoupdates_title}
+                    desc={s.services.autoupdates_desc}
+                    prefName={"services.browser_updates"}
+                    inactive={!$pr["services.enabled"]}
+                />
+            {:else}
+                <Toggle
+                    title={s.services.autoupdates_title_linux}
+                    desc={s.services.autoupdates_desc_linux}
+                    prefName={"services.browser_updates"}
+                    inactive={!$pr["services.enabled"]}
+                />
+            {/if}
             {#if !platform.is.macos}
                 <Toggle
                     title={s.services.spellcheck_title}
