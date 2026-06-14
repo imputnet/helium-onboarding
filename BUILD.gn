@@ -7,7 +7,7 @@ action("localized_strings") {
     script = "//third_party/node/node.py"
 
     inputs = [
-        "helium_onboarding_strings.grdp.in",
+        "helium_onboarding_strings.grdp",
         "util/generate-i18n.mts",
         "util/localized-strings.h.in",
     ]

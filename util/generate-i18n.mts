@@ -3,7 +3,7 @@ import { basename, join } from 'node:path';
 import { XMLParser } from 'fast-xml-parser';
 
 const PREFIX = 'IDS_HELIUM_ONBOARDING_';
-const GRD_PATH = join(import.meta.dirname, '../helium_onboarding_strings.grdp.in');
+const GRD_PATH = join(import.meta.dirname, '../helium_onboarding_strings.grdp');
 const TS_PATH = join(import.meta.dirname, '../src/lib/strings.ts');
 
 if (process.argv.length !== 2 && process.argv.length !== 3) {
