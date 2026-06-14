@@ -1,0 +1,243 @@
+<grit-part>
+
+<message name="IDS_HELIUM_ONBOARDING_PAGE_TITLE" desc="The title of the Helium setup onboarding page.">
+  Helium Setup
+</message>
+
+<message name="IDS_HELIUM_ONBOARDING_BUTTON_USE_DEFAULTS" desc="Button label that skips detailed setup and applies the default onboarding choices.">
+  Use defaults
+</message>
+<message name="IDS_HELIUM_ONBOARDING_BUTTON_CONFIGURE" desc="Button label that starts the detailed onboarding setup flow.">
+  Configure
+</message>
+<message name="IDS_HELIUM_ONBOARDING_BUTTON_NEXT" desc="Button label to continue to the next onboarding step.">
+  Next
+</message>
+<message name="IDS_HELIUM_ONBOARDING_BUTTON_BACK" desc="Button label to return to the previous onboarding step.">
+  Back
+</message>
+<message name="IDS_HELIUM_ONBOARDING_BUTTON_LETS_GO" desc="Button label that finishes onboarding and opens the browser.">
+  Let's go!
+</message>
+
+<message name="IDS_HELIUM_ONBOARDING_PARTNER_TITLE" desc="Badge title shown for partner services in onboarding.">
+  Helium Partner
+</message>
+<message name="IDS_HELIUM_ONBOARDING_PARTNER_TOOLTIP" desc="Tooltip explaining why a listed service is marked as a Helium partner.">
+  Paying for this service will support
+the development of Helium.
+</message>
+
+<message name="IDS_HELIUM_ONBOARDING_WELCOME_GREETING" desc="Main greeting on the first onboarding screen.">
+  Meet Helium
+</message>
+<message name="IDS_HELIUM_ONBOARDING_WELCOME_BODY" desc="Introductory body text on the first onboarding screen.">
+  Configure your browser just the way you want it, or use
+the default preset with best privacy and comfort.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_WELCOME_TERMS_NOTE" desc="Legal note prefix before privacy policy and terms links.">
+  By continuing, you agree to the
+</message>
+<message name="IDS_HELIUM_ONBOARDING_WELCOME_TERMS_PRIVACY" desc="Privacy policy link text in the onboarding legal note.">
+  privacy policy
+</message>
+<message name="IDS_HELIUM_ONBOARDING_WELCOME_TERMS_AND" desc="Conjunction between privacy policy and terms links in the onboarding legal note.">
+  and
+</message>
+<message name="IDS_HELIUM_ONBOARDING_WELCOME_TERMS_USE" desc="Terms of use link text in the onboarding legal note.">
+  terms of use
+</message>
+<message name="IDS_HELIUM_ONBOARDING_WELCOME_FOOTER" desc="Footer text explaining that setup can be skipped but Helium services require consent.">
+  You can skip setup and come back later, but Helium services won't work without it.
+</message>
+
+<message name="IDS_HELIUM_ONBOARDING_FINISH_TITLE" desc="Title on the final onboarding screen.">
+  Ready to browse?
+</message>
+<message name="IDS_HELIUM_ONBOARDING_FINISH_BODY" desc="Body text on the final onboarding screen.">
+  The setup is complete, thank you for choosing Helium.
+Time to enjoy the Internet again.
+</message>
+
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_TITLE" desc="Title of the onboarding screen for Helium services consent.">
+  Helium services
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_SUBTITLE" desc="Subtitle explaining when Helium services consent choices take effect.">
+  Services are not active until you consent to using them.
+Changes will be applied after you go to the next page.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_CONNECTION_TITLE" desc="Title of the global toggle for connecting to Helium services.">
+  Allow connecting to Helium services
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_CONNECTION_DESC" desc="Description of the global Helium services toggle.">
+  Helium services provide additional functionality, such as: extension downloads, native !bangs, filter list updates, and browser updates. When disabled, none of these features will work, but Helium will not make any web requests.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_BANGS_TITLE" desc="Title of the toggle for downloading the Helium bangs list.">
+  Allow downloading the !bangs list
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_BANGS_DESC" desc="Description of the toggle for downloading the Helium bangs list.">
+  Helium will fetch a list of bangs that help you browse the Internet faster, such as !w or !gh. When disabled, bangs will not work.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_EXTENSIONS_TITLE" desc="Title of the toggle for proxying extension downloads and updates.">
+  Proxy extension downloads and updates
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_EXTENSIONS_DESC" desc="Description of the toggle for proxying extension downloads and updates.">
+  When enabled, Helium will proxy extension downloads and updates to protect your privacy. When disabled, downloading and updating extensions will not work.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_UBLOCK_TITLE" desc="Title of the toggle for downloading uBlock Origin filter lists.">
+  Allow downloading filter lists for uBlock Origin
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_UBLOCK_DESC" desc="Description of the toggle for downloading uBlock Origin filter lists.">
+  Helium will fetch fresh filter lists for uBlock Origin. All requests to lists are proxied to protect your privacy. When disabled, default filter lists will be loaded from local storage, which are only updated along with Helium. Optional filter lists will be requested without proxying.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_AUTOUPDATES_TITLE" desc="Title of the toggle for automatic browser updates on platforms where Helium updates the browser.">
+  Allow automatic browser updates
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_AUTOUPDATES_DESC" desc="Description of the toggle for automatic browser updates on platforms where Helium updates the browser.">
+  Helium will automatically check for updates and install them. This includes browser and component updates. We recommend keeping this setting enabled to ensure you get the latest features and security updates.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_AUTOUPDATES_TITLE_LINUX" desc="Title of the toggle for automatic component updates on Linux.">
+  Allow automatic component updates
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_AUTOUPDATES_DESC_LINUX" desc="Description of the toggle for automatic component updates on Linux.">
+  Helium will automatically check for component updates and install them. We recommend keeping this setting enabled. On Linux, browser updates are handled by your distro's package manager. Please check for Helium package updates at least every week.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_SPELLCHECK_TITLE" desc="Title of the toggle for downloading spell check dictionary files.">
+  Allow downloading dictionary files for spell checking
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_SPELLCHECK_DESC" desc="Description of the toggle for downloading spell check dictionary files.">
+  Helium will fetch dictionary files used for spell checking when requested. When disabled, spell checking will not work.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_INSTANCE_TITLE" desc="Title of the option describing custom Helium services instances.">
+  Use your own instance of Helium services
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_INSTANCE_DESC" desc="Description of the option describing custom Helium services instances.">
+  You can host your own instance of Helium services and use it in your browser instead of the pre-hosted server. If you have one, you can set it in Helium settings.
+</message>
+
+<message name="IDS_HELIUM_ONBOARDING_SEARCH_TITLE" desc="Title of the onboarding screen for selecting a default search engine.">
+  Default search engine
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SEARCH_SUBTITLE" desc="Subtitle for the onboarding screen for selecting a default search engine.">
+  You can change your choice later in Settings.
+Engines are ordered by privacy.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SEARCH_CATEGORIES_PRIVATE" desc="Description for privacy-first search engines in onboarding.">
+  A privacy-first search engine which
+doesn't profile or track you.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SEARCH_CATEGORIES_SMALL" desc="Description for smaller search engines that are more private than mainstream engines but not privacy-focused.">
+  Transparent, but not privacy-focused.
+Offers better privacy than mainstream
+search engines.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SEARCH_CATEGORIES_MAINSTREAM" desc="Description for mainstream search engines in onboarding.">
+  A mainstream search engine which
+collects extensive personal data.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SEARCH_CATEGORIES_CUSTOM" desc="Description for a custom search engine in onboarding.">
+  A custom search engine. Its privacy
+wasn't verified by Helium.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SEARCH_ENGINES_DUCKDUCKGO" desc="Onboarding description of DuckDuckGo as a search engine option.">
+  Privacy-focused. Relies on Bing results but promises to never track or profile you.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SEARCH_ENGINES_KAGI" desc="Onboarding description of Kagi as a search engine option.">
+  Privacy-focused. Customizable results without ads or tracking. Requires a paid account.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SEARCH_ENGINES_QWANT" desc="Onboarding description of Qwant as a search engine option.">
+  Based in Europe. Uses Bing results. Sends tracking data to Microsoft.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SEARCH_ENGINES_ECOSIA" desc="Onboarding description of Ecosia as a search engine option.">
+  May plant trees for clicking ads. Relies on Bing and Google. Sends tracking data to Microsoft and Google.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SEARCH_ENGINES_BING" desc="Onboarding description of Bing as a search engine option.">
+  Collects extensive personal data. Privacy controls are buried and limited. Subjectively overwhelming UI.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SEARCH_ENGINES_GOOGLE" desc="Onboarding description of Google as a search engine option.">
+  It's Google. It dominates the search market, collects extensive personal data, and profiles you.
+</message>
+
+<message name="IDS_HELIUM_ONBOARDING_DEFAULT_BROWSER_TITLE" desc="Title of the onboarding screen asking whether Helium should be the default browser.">
+  Ready to switch to Helium?
+</message>
+<message name="IDS_HELIUM_ONBOARDING_DEFAULT_BROWSER_SUBTITLE" desc="Subtitle of the onboarding screen asking whether Helium should be the default browser.">
+  Better privacy, speed, and comfort. All in one click.
+Let's make links open in Helium by default.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_DEFAULT_BROWSER_YES" desc="Label for the option to make Helium the default browser.">
+  Yes
+</message>
+<message name="IDS_HELIUM_ONBOARDING_DEFAULT_BROWSER_NO" desc="Label for the option to keep the current default browser.">
+  No
+</message>
+<message name="IDS_HELIUM_ONBOARDING_DEFAULT_BROWSER_YES_DESC" desc="Description for the option to make Helium the default browser.">
+  Make Helium my default browser.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_DEFAULT_BROWSER_NO_DESC" desc="Description for the option to keep the current default browser.">
+  Just trying Helium for now.
+</message>
+
+<message name="IDS_HELIUM_ONBOARDING_DATA_IMPORT_TITLE" desc="Title of the onboarding screen for importing browser data.">
+  Take your stuff with you
+</message>
+<message name="IDS_HELIUM_ONBOARDING_DATA_IMPORT_SUBTITLE" desc="Subtitle of the onboarding screen for importing browser data.">
+  Transfer your most important bookmarks, history,
+ and extensions from other browsers.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_DATA_IMPORT_BOOKMARKS" desc="Label for bookmarks as an importable data type.">
+  Bookmarks
+</message>
+<message name="IDS_HELIUM_ONBOARDING_DATA_IMPORT_HISTORY" desc="Label for history as an importable data type.">
+  History
+</message>
+<message name="IDS_HELIUM_ONBOARDING_DATA_IMPORT_EXTENSIONS" desc="Label for extensions as an importable data type.">
+  Extensions
+</message>
+
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_TITLE" desc="Title of the onboarding screen for choosing a password manager.">
+  Password manager
+</message>
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_SUBTITLE" desc="Subtitle of the onboarding screen for choosing a password manager.">
+  Helium doesn't have a built-in password manager, by design.
+ Would you like to install a browser-agnostic one?
+</message>
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_IMPORT_GUIDE" desc="Button label linking to a password manager import guide.">
+  Import
+</message>
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_SETUP_GUIDE" desc="Button label linking to a password manager setup guide.">
+  Setup
+</message>
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_PRIVACY" desc="Button label linking to a password manager privacy policy.">
+  Privacy
+</message>
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_INSTALL" desc="Button label to install a password manager extension.">
+  Install
+</message>
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_INSTALLED" desc="Status label shown when a password manager extension is installed.">
+  Installed
+</message>
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_ERROR" desc="Prefix label shown before a password manager install error.">
+  Error:
+</message>
+
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_MANAGERS_PROTON_PASS" desc="Onboarding description of Proton Pass as a password manager option.">
+  Secure and privacy-focused password manager by Proton. Stores data in Europe. All clients are open-source. Free with an optional paid plan.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_MANAGERS_BITWARDEN" desc="Onboarding description of Bitwarden as a password manager option.">
+  The most popular open-source password manager. Offers data storage in Europe or US. Free with an optional paid plan. Can be self-hosted.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_MANAGERS_ONE_PASSWORD" desc="Onboarding description of 1Password as a password manager option.">
+  Popular, paid, and closed-source password manager. Offers data storage in Europe or US. May not work correctly with Helium due to negligence.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_MANAGERS_DASHLANE" desc="Onboarding description of Dashlane as a password manager option.">
+  Popular, paid, and closed-source password manager. Stores data in Europe. Known for aggressive upselling tactics.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_MANAGERS_ICLOUD_PASSWORDS" desc="Onboarding description of iCloud Passwords as a password manager option.">
+  Free password manager by Apple. Will nag you about using Safari and require re-authentication on browser restart. Can't generate passwords.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_MANAGERS_KEE_PASS_XC" desc="Onboarding description of KeePassXC as a password manager option.">
+  Local, free, and open-source password manager for advanced users. Requires technical knowledge to set up and use.
+</message>
+
+</grit-part>
