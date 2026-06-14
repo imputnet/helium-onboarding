@@ -61,7 +61,8 @@ const getString = (key: StringKey): string => {
 
     const string = (loadTimeData ?? globalThis.loadTimeData)?.getString(key);
     if (!string) {
-        throw `Could not get string for ${key}`;
+        console.error(`Could not get string for ${key}`);
+        return `¡${key}!`;
     }
 
     return string;
