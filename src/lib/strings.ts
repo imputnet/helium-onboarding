@@ -96,4 +96,12 @@ export const s = {
         installed: "Installed",
         error: "Error:",
     },
+    passwordManagers: {
+        protonPass: "Secure and privacy-focused password manager by Proton. Stores data in Europe. All clients are open-source. Free with an optional paid plan.",
+        bitwarden: "The most popular open-source password manager. Offers data storage in Europe or US. Free with an optional paid plan. Can be self-hosted.",
+        onePassword: "Popular, paid, and closed-source password manager. Offers data storage in Europe or US. May not work correctly with Helium due to negligence.",
+        dashlane: "Popular, paid, and closed-source password manager. Stores data in Europe. Known for aggressive upselling tactics.",
+        icloudPasswords: "Free password manager by Apple. Will nag you about using Safari and require re-authentication on browser restart. Can't generate passwords.",
+        keePassXc: "Local, free, and open-source password manager for advanced users. Requires technical knowledge to set up and use.",
+    },
 }
