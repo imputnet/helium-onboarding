@@ -1,5 +1,25 @@
 import("//tools/grit/grit_rule.gni")
 
+localized_strings_header =
+    "$target_gen_dir/helium_onboarding_localized_strings.h"
+
+action("localized_strings") {
+    script = "//third_party/node/node.py"
+
+    inputs = [
+        "helium_onboarding_strings.grdp.in",
+        "util/generate-i18n.mts",
+        "util/localized-strings.h.in",
+    ]
+
+    outputs = [ localized_strings_header ]
+
+    args = [
+        rebase_path("util/generate-i18n.mts", root_build_dir),
+        rebase_path(localized_strings_header, root_build_dir),
+    ]
+}
+
 action("build") {
     script = "//third_party/node/node.py"
     dist_dir = "$target_gen_dir/dist"
