@@ -10,9 +10,13 @@ action("localized_strings") {
         "helium_onboarding_strings.grdp",
         "util/generate-i18n.mts",
         "util/localized-strings.h.in",
+        "util/strings.ts.in",
     ]
 
-    outputs = [ localized_strings_header ]
+    outputs = [
+        localized_strings_header,
+        "src/lib/strings.ts",
+    ]
 
     args = [
         rebase_path("util/generate-i18n.mts", root_build_dir),
@@ -41,6 +45,7 @@ action("build") {
         "svelte.config.js",
     ]
 
+    deps = [ ":localized_strings" ]
     outputs = [ "$dist_dir/index.html" ]
 }
 
