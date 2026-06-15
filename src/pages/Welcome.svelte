@@ -55,13 +55,13 @@
         </div>
         <div id="welcome-footer">
             <p id="legal-note">
-                {s.welcome.terms_note}
+                {s.welcome.termsNote}
                 <OuterLink href={privacyUrl}>
-                    {s.welcome.terms_privacy}
+                    {s.welcome.termsPrivacy}
                 </OuterLink>
-                {s.welcome.terms_and}
+                {s.welcome.termsAnd}
                 <OuterLink href={termsUrl}>
-                    {s.welcome.terms_use}
+                    {s.welcome.termsUse}
                 </OuterLink>.
             </p>
 

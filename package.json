@@ -4,15 +4,20 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
+        "predev": "pnpm i18n",
         "dev": "vite",
+        "prebuild": "pnpm i18n",
         "build": "vite build",
+        "i18n": "node ./util/generate-i18n.mts",
         "preview": "vite preview",
+        "precheck": "pnpm i18n",
         "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json"
     },
     "devDependencies": {
         "@sveltejs/vite-plugin-svelte": "^6.2.0",
         "@tsconfig/svelte": "^5.0.5",
         "@types/node": "^24.3.1",
+        "fast-xml-parser": "^5.8.0",
         "svelte": "^5.38.10",
         "svelte-check": "^4.3.1",
         "typescript": "~5.9.2",

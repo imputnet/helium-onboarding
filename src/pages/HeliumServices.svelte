@@ -22,55 +22,55 @@
         />
         <div id="content" class="page-content">
             <Toggle
-                title={s.services.connection_title}
-                desc={s.services.connection_desc}
+                title={s.services.connectionTitle}
+                desc={s.services.connectionDesc}
                 prefName={"services.enabled"}
             />
             <ToggleSeparator />
             <Toggle
-                title={s.services.extensions_title}
-                desc={s.services.extensions_desc}
+                title={s.services.extensionsTitle}
+                desc={s.services.extensionsDesc}
                 prefName={"services.ext_proxy"}
                 inactive={!$pr["services.enabled"]}
             />
             <Toggle
-                title={s.services.bangs_title}
-                desc={s.services.bangs_desc}
+                title={s.services.bangsTitle}
+                desc={s.services.bangsDesc}
                 prefName={"services.bangs"}
                 inactive={!$pr["services.enabled"]}
             />
             <Toggle
-                title={s.services.ublock_title}
-                desc={s.services.ublock_desc}
+                title={s.services.ublockTitle}
+                desc={s.services.ublockDesc}
                 prefName={"services.ublock_assets"}
                 inactive={!$pr["services.enabled"]}
             />
             {#if !platform.is.linux}
                 <Toggle
-                    title={s.services.autoupdates_title}
-                    desc={s.services.autoupdates_desc}
+                    title={s.services.autoupdatesTitle}
+                    desc={s.services.autoupdatesDesc}
                     prefName={"services.browser_updates"}
                     inactive={!$pr["services.enabled"]}
                 />
             {:else}
                 <Toggle
-                    title={s.services.autoupdates_title_linux}
-                    desc={s.services.autoupdates_desc_linux}
+                    title={s.services.autoupdatesTitleLinux}
+                    desc={s.services.autoupdatesDescLinux}
                     prefName={"services.browser_updates"}
                     inactive={!$pr["services.enabled"]}
                 />
             {/if}
             {#if !platform.is.macos}
                 <Toggle
-                    title={s.services.spellcheck_title}
-                    desc={s.services.spellcheck_desc}
+                    title={s.services.spellcheckTitle}
+                    desc={s.services.spellcheckDesc}
                     prefName={"services.spellcheck_files"}
                     inactive={!$pr["services.enabled"]}
                 />
             {/if}
             <ButtonLink
-                title={s.services.instance_title}
-                desc={s.services.instance_desc}
+                title={s.services.instanceTitle}
+                desc={s.services.instanceDesc}
                 inactive={!$pr["services.enabled"]}
                 dest="chrome://settings/privacy/services"
             />

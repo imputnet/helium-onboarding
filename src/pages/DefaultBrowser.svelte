@@ -24,14 +24,14 @@
         <div id="content" class="page-content">
             <DefaultBrowserOption
                 title={s.defaultBrowser.yes}
-                desc={s.defaultBrowser.yes_desc}
+                desc={s.defaultBrowser.yesDesc}
                 state={userChoseHeliumAsDefault}
                 stateOption={true}
                 Icon={IconCheck}
             />
             <DefaultBrowserOption
                 title={s.defaultBrowser.no}
-                desc={s.defaultBrowser.no_desc}
+                desc={s.defaultBrowser.noDesc}
                 state={userChoseHeliumAsDefault}
                 stateOption={false}
                 Icon={IconX}
