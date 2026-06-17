@@ -13,10 +13,7 @@ action("localized_strings") {
         "util/strings.ts.in",
     ]
 
-    outputs = [
-        localized_strings_header,
-        "src/lib/strings.ts",
-    ]
+    outputs = [ localized_strings_header ]
 
     args = [
         rebase_path("util/generate-i18n.mts", root_build_dir),
