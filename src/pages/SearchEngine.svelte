@@ -26,7 +26,7 @@
 
         <div id="content" class="page-content">
             {#each $searchEngines as e}
-                {@const engineKey = e.keyword.split(".")[0]}
+                {@const engineKey = e.keyword.replace(/[^\x00-\x7F]/g, '').split(".")[0]}
                 <SearchEngineItem
                     id={engineKey}
                     name={e.name}
