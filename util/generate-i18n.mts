@@ -148,12 +148,12 @@ if (headerPath) {
             await readTemplate('./localized-strings.h.in'),
         )
     );
-} else {
-    await writeFile(
-        TS_PATH,
-        renderTs(
-            messages,
-            await readTemplate('./strings.ts.in')
-        )
-    );
 }
+
+await writeFile(
+    TS_PATH,
+    renderTs(
+        messages,
+        await readTemplate('./strings.ts.in')
+    )
+);
