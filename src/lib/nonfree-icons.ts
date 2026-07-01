@@ -11,21 +11,21 @@ const mapFromGlob = (files: FileMap): FileMap => {
 
 export const searchEngineIcons = mapFromGlob(
     import.meta.glob(
-        "$nonfree/search_engines/*.{svg,png}",
+        "../../node_modules/nonfree-icons/search_engines/*.{svg,png}",
         { eager: true, query: '?url', import: 'default' }
     )
 );
 
 export const browserIcons = mapFromGlob(
     import.meta.glob(
-        "$nonfree/browsers/*.png",
+        "../../node_modules/nonfree-icons/browsers/*.png",
         { eager: true, query: '?url', import: 'default' }
     )
 );
 
 export const passwordManagerIcons = mapFromGlob(
     import.meta.glob(
-        "$nonfree/password_managers/*.png",
+        "../../node_modules/nonfree-icons/password_managers/*.png",
         { eager: true, query: '?url', import: 'default' }
     )
 );

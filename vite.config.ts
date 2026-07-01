@@ -42,11 +42,6 @@ export default defineConfig({
         grdWatcher,
         svelte(),
     ],
-    resolve: {
-        alias: {
-            $nonfree: path.resolve(__dirname, "node_modules/nonfree-icons"),
-        }
-    },
     build: {
         target: 'chrome140',
         assetsInlineLimit: (filename) => filename.endsWith('.svg')
