@@ -1,5 +1,5 @@
 <script lang="ts">
-    import "@fontsource-variable/instrument-sans";
+    import "@fontsource-variable/instrument-sans/index.css";
 
     import * as pages from "./pages";
     import * as Browser from "./lib/browser";
