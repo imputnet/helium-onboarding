@@ -1,5 +1,6 @@
 <script lang="ts">
     import { s } from "../lib/strings";
+    import { parseLocalizedString } from "../lib/i18n";
     import { setPref, acceptLatestSchema } from "../lib/browser";
     import { currentPage, nextPage } from "../lib/onboarding-flow";
 
@@ -20,6 +21,7 @@
 
     const privacyUrl = "https://helium.computer/privacy";
     const termsUrl = "https://helium.computer/terms";
+    const termsParts = parseLocalizedString(s.welcome.terms);
 </script>
 
 <div
@@ -55,14 +57,15 @@
         </div>
         <div id="welcome-footer">
             <p id="legal-note">
-                {s.welcome.termsNote}
-                <OuterLink href={privacyUrl}>
-                    {s.welcome.termsPrivacy}
-                </OuterLink>
-                {s.welcome.termsAnd}
-                <OuterLink href={termsUrl}>
-                    {s.welcome.termsUse}
-                </OuterLink>.
+                {#each termsParts as part}
+                    {#if part.kind === "linkPrivacy"}
+                        <OuterLink href={privacyUrl}>{part.text}</OuterLink>
+                    {:else if part.kind === "linkTerms"}
+                        <OuterLink href={termsUrl}>{part.text}</OuterLink>
+                    {:else}
+                        {part.text}
+                    {/if}
+                {/each}
             </p>
 
             <p>{s.welcome.footer}</p>
