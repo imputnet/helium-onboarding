@@ -131,22 +131,28 @@ collects extensive personal data.
 wasn't verified by Helium.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_ENGINES_DUCKDUCKGO" desc="Onboarding description of DuckDuckGo as a search engine option.">
-  Privacy-focused. Relies on Bing results but promises to never track or profile you.
+  Privacy-focused. Relies on Bing for results. Promises not to track or profile you.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_ENGINES_KAGI" desc="Onboarding description of Kagi as a search engine option.">
-  Privacy-focused. Customizable results without ads or tracking. Requires a paid account.
+  Privacy-focused. Doesn't use Google or Bing. Has custom ranking. Requires a paid account. No ads, tracking, or profiling.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_ENGINES_QWANT" desc="Onboarding description of Qwant as a search engine option.">
-  Based in Europe. Uses Bing results. Sends tracking data to Microsoft.
+  Based in Europe. Relies on Bing for results. Sends tracking data to Microsoft.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_ENGINES_ECOSIA" desc="Onboarding description of Ecosia as a search engine option.">
-  May plant trees for clicking ads. Relies on Bing and Google. Sends tracking data to Microsoft and Google.
+  May plant trees for clicking ads. Relies on Google and Bing for results. Sends tracking data to Google and Microsoft.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_ENGINES_BING" desc="Onboarding description of Bing as a search engine option.">
   Collects extensive personal data. Privacy controls are buried and limited. Subjectively overwhelming UI.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_ENGINES_GOOGLE" desc="Onboarding description of Google as a search engine option.">
   It's Google. It dominates the search market, collects extensive personal data, and profiles you.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SEARCH_ENGINES_STARTPAGE" desc="Onboarding description of Startpage as a search engine option.">
+  Privacy-focused. Relies on Google and Bing for results. Promises not to track or profile you.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SEARCH_ENGINES_BRAVE" desc="Onboarding description of Brave as a search engine option.">
+  Privacy-focused. Doesn't use Google or Bing. Promises not to track or profile you. May show promotions related to Brave services.
 </message>
 
 <message name="IDS_HELIUM_ONBOARDING_DEFAULT_BROWSER_TITLE" desc="Title of the onboarding screen asking whether Helium should be the default browser.">

@@ -62,18 +62,20 @@ const searchEngines: SearchEnginesInfo = {
 
 let currentDefault = 0;
 
-const actualDefaults: [string, number, string, boolean][] = [
-    ["DuckDuckGo", 6, "duckduckgo.com", true],
-    ["Kagi", 7, "kagi.com", false],
-    ["Ecosia", 3, "ecosia.org", false],
-    ["Qwant", 4, "qwant.com", false],
-    ["Microsoft Bing", 2, "bing.com", false],
-    ["Google", 5, "google.com", false],
-    ["Foogle", 8, "foogle.com", false],
-    ["Bargle", 9, "bargle.com", false],
+const actualDefaults: [string, number, string, boolean, boolean][] = [
+    ["DuckDuckGo", 6, "duckduckgo.com", true, true],
+    ["Kagi", 7, "kagi.com", false, true],
+    ["Ecosia", 3, "ecosia.org", false, true],
+    ["Qwant", 4, "qwant.com", false, true],
+    ["Microsoft Bing", 2, "bing.com", false, true],
+    ["Google", 5, "google.com", false, true],
+    ["Startpage", 8, "startpage.com", false, true],
+    ["Brave Search", 9, "search.brave.com", false, true],
+    ["Foogle", 10, "google.com", false, false],
+    ["Bargle", 11, "bargle.com", false, false],
 ];
 
-for (const [ name, id, keyword, isDefault ] of actualDefaults) {
+for (const [ name, id, keyword, isDefault, isPrepopulated ] of actualDefaults) {
     const engine = structuredClone(searchEngineTemplate);
     engine.name = name;
     engine.displayName = name;
@@ -81,6 +83,7 @@ for (const [ name, id, keyword, isDefault ] of actualDefaults) {
     engine.id = id;
     engine.keyword = keyword;
     engine.default = isDefault;
+    engine.isPrepopulated = isPrepopulated;
     searchEngines.defaults.push(engine);
 }
 
