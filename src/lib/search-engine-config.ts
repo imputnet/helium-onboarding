@@ -3,6 +3,8 @@ export type SearchCategory = "private" | "small" | "mainstream" | "custom";
 export const searchEngineConfig: Record<string, SearchCategory> = {
     duckduckgo: "private",
     kagi: "private",
+    startpage: "private",
+    brave: "private",
     ecosia: "small",
     qwant: "small",
     google: "mainstream",

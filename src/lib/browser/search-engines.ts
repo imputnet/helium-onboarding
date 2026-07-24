@@ -9,14 +9,22 @@ const engineOrder = Object.fromEntries(
     Object.keys(searchEngineConfig).map((key, i) => [key, i])
 );
 
-// use the order defined in searchEngineConfig and
-// push custom engines (not in config) to the end
-const engineIndex = (keyword: string) =>
-    engineOrder[keyword.split(".")[0]] ?? Infinity;
+export const getKeyword = (engine: cr.SearchEngine) => {
+    if (!engine.isPrepopulated) return `custom-${engine.id}`;
+
+    // Prepopulated keywords are expected to use a single-label public suffix.
+    // A keyword such as "google.com.au" will be parsed incorrectly (as "com").
+    const labels = engine.keyword.replace(/[^\x00-\x7F]/g, "").split(".");
+    return labels[labels.length - 2] ?? labels[0];
+}
+
+// Follow the order from searchEnginesConfig and place custom engines last.
+const engineIndex = (engine: cr.SearchEngine) =>
+    engineOrder[getKeyword(engine)] ?? Infinity;
 
 const sortEngines = (engines: cr.SearchEngine[]) => {
     return engines.sort((a, b) =>
-        engineIndex(a.keyword) - engineIndex(b.keyword)
+        engineIndex(a) - engineIndex(b)
     );
 };
 
