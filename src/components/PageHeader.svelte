@@ -37,6 +37,7 @@
 <style>
     .page-header {
         display: flex;
+        align-items: center;
         flex-direction: column;
         gap: var(--gap-2);
         margin-top: 48px;
@@ -47,12 +48,13 @@
 
         & p {
             font-size: 18px;
+            max-width: 450px;
+            text-wrap: pretty;
         }
 
         & .title {
             display: flex;
             align-items: center;
-            justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
 

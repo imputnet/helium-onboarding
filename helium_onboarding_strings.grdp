@@ -53,8 +53,7 @@ Time to enjoy the Internet again.
   Helium services
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SERVICES_SUBTITLE" desc="Subtitle explaining when Helium services consent choices take effect.">
-  Services are not active until you consent to using them.
-Changes will be applied after you go to the next page.
+  Services are not active until you consent to using them. Changes will be applied after you go to the next page.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SERVICES_CONNECTION_TITLE" desc="Title of the global toggle for connecting to Helium services.">
   Allow connecting to Helium services
@@ -109,8 +108,7 @@ Changes will be applied after you go to the next page.
   Choose a search engine
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_SUBTITLE" desc="Subtitle for the onboarding screen for selecting a default search engine.">
-  You can change your choice later in Settings.
-Search engines are sorted by privacy.
+  You can change your choice later in Settings. Search engines are sorted by privacy.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_CATEGORIES_PRIVATE" desc="Description for privacy-first search engines in onboarding.">
   A privacy-first search engine which
@@ -158,8 +156,7 @@ wasn't verified by Helium.
   Ready to switch to Helium?
 </message>
 <message name="IDS_HELIUM_ONBOARDING_DEFAULT_BROWSER_SUBTITLE" desc="Subtitle of the onboarding screen asking whether Helium should be the default browser.">
-  Better privacy, speed, and comfort. All in one click.
-Let's make links open in Helium by default.
+  Better privacy, speed, and comfort. All in one click. Wanna make links open in Helium by default?
 </message>
 <message name="IDS_HELIUM_ONBOARDING_DEFAULT_BROWSER_YES" desc="Label for the option to make Helium the default browser.">
   Yes
@@ -178,8 +175,7 @@ Let's make links open in Helium by default.
   Take your stuff with you
 </message>
 <message name="IDS_HELIUM_ONBOARDING_DATA_IMPORT_SUBTITLE" desc="Subtitle of the onboarding screen for importing browser data.">
-  Transfer your most important bookmarks, history,
- and extensions from other browsers.
+  Transfer your most important bookmarks, history, and extensions from other browsers.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_DATA_IMPORT_BOOKMARKS" desc="Label for bookmarks as an importable data type.">
   Bookmarks
@@ -195,8 +191,7 @@ Let's make links open in Helium by default.
   Password manager
 </message>
 <message name="IDS_HELIUM_ONBOARDING_PASSWORD_SUBTITLE" desc="Subtitle of the onboarding screen for choosing a password manager.">
-  Helium doesn't have a built-in password manager.
- Would you like to install one from Chrome Web Store?
+  Helium doesn't have a built-in password manager. Would you like to install one from the Web Store?
 </message>
 <message name="IDS_HELIUM_ONBOARDING_PASSWORD_IMPORT_GUIDE" desc="Link label linking to a password manager import guide. Short title for a guide.">
   Import
