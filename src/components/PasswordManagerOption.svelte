@@ -2,7 +2,6 @@
     import {
         Button,
         IconDownload,
-        IconExternalLink,
         Link,
         Spinner,
     } from "@imput/helium-prism";
@@ -59,15 +58,8 @@
     }
 </script>
 
-{#snippet link(
-    url: string,
-    title: string,
-    Icon?: ConstructorOfATypedSvelteComponent,
-)}
-    <Link class="button" href={url}>
-        {#if Icon}
-            <Icon />
-        {/if}
+{#snippet link(url: string, title: string)}
+    <Link class="info-link" href={url}>
         {title}
     </Link>
 {/snippet}
@@ -93,29 +85,25 @@
                 <HeliumPartner />
             {/if}
             <h4>{info.title}</h4>
-            <p>{info.description}</p>
-        </div>
-    </div>
-    <div class="action-row">
-        <div class="button-group">
-            {#if info.importGuide}
+            <div class="info-links">
+                {#if info.importGuide}
+                    {@render link(
+                        info.importGuide,
+                        s.password.importGuide,
+                    )}
+                {/if}
+                {#if info.setupGuide}
+                    {@render link(
+                        info.setupGuide,
+                        s.password.setupGuide,
+                    )}
+                {/if}
                 {@render link(
-                    info.importGuide,
-                    s.password.importGuide,
+                    info.privacyPolicy,
+                    s.password.privacy,
                 )}
-            {/if}
-            {#if info.setupGuide}
-                {@render link(
-                    info.setupGuide,
-                    s.password.setupGuide,
-                )}
-            {/if}
-            {@render link(
-                info.privacyPolicy,
-                s.password.privacy,
-            )}
+            </div>
         </div>
-
         <Button
             primary={!installed && !error}
             disabled={installed || !!error || working}
@@ -135,6 +123,7 @@
             {/if}
         </Button>
     </div>
+    <p>{info.description}</p>
 </div>
 
 <style>
@@ -149,46 +138,37 @@
         gap: 16px;
         border-radius: 16px;
         align-self: stretch;
-        justify-content: space-between;
         background-color: var(--helium-elevated-5);
     }
 
     .pm-top {
-        width: 100%;
         display: flex;
-        flex-direction: row;
         gap: var(--gap-3);
-        min-width: 0;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .pm-text {
         display: flex;
         flex-direction: column;
+        flex: 1;
         gap: 2px;
         min-width: 0;
     }
 
-    .button-group {
+    .info-links {
         display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        gap: calc(var(--gap-1) / 2);
-        min-width: 0;
-
-        > :global(a) {
-            font-size: 14px;
-        }
-    }
-
-    .action-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: calc(var(--gap-1) / 2);
+        gap: var(--gap-3);
         width: 100%;
         min-width: 0;
-        flex-wrap: balance;
-        row-gap: calc(var(--gap-1) / 2);
+        flex-wrap: wrap;
+        row-gap: var(--gap-1);
+    }
+
+    .info-links :global(.info-link) {
+        color: var(--secondary);
+        font-size: 15px;
+        text-decoration-thickness: 1px;
     }
 
     .pm-icon-container {

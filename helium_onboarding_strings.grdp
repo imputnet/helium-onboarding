@@ -195,19 +195,19 @@ Let's make links open in Helium by default.
   Password manager
 </message>
 <message name="IDS_HELIUM_ONBOARDING_PASSWORD_SUBTITLE" desc="Subtitle of the onboarding screen for choosing a password manager.">
-  Helium doesn't have a built-in password manager, by design.
- Would you like to install a browser-agnostic one?
+  Helium doesn't have a built-in password manager.
+ Would you like to install one from Chrome Web Store?
 </message>
-<message name="IDS_HELIUM_ONBOARDING_PASSWORD_IMPORT_GUIDE" desc="Button label linking to a password manager import guide.">
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_IMPORT_GUIDE" desc="Link label linking to a password manager import guide. Short title for a guide.">
   Import
 </message>
-<message name="IDS_HELIUM_ONBOARDING_PASSWORD_SETUP_GUIDE" desc="Button label linking to a password manager setup guide.">
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_SETUP_GUIDE" desc="Link label linking to a password manager setup guide. Short title for a guide.">
   Setup
 </message>
-<message name="IDS_HELIUM_ONBOARDING_PASSWORD_PRIVACY" desc="Button label linking to a password manager privacy policy.">
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_PRIVACY" desc="Link label linking to a password manager privacy policy. Short title for privacy policy.">
   Privacy
 </message>
-<message name="IDS_HELIUM_ONBOARDING_PASSWORD_INSTALL" desc="Button label to install a password manager extension.">
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_INSTALL" desc="Button label to install a password manager extension, CTA.">
   Install
 </message>
 <message name="IDS_HELIUM_ONBOARDING_PASSWORD_INSTALLED" desc="Status label shown when a password manager extension is installed.">
@@ -218,22 +218,22 @@ Let's make links open in Helium by default.
 </message>
 
 <message name="IDS_HELIUM_ONBOARDING_PASSWORD_MANAGERS_PROTON_PASS" desc="Onboarding description of Proton Pass as a password manager option.">
-  Secure and privacy-focused password manager by Proton. Stores data in Europe. All clients are open-source. Free with an optional paid plan.
+  Secure and privacy-focused password manager with open-source clients. Stores data only in Europe. Free with an optional paid plan.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_PASSWORD_MANAGERS_BITWARDEN" desc="Onboarding description of Bitwarden as a password manager option.">
-  The most popular open-source password manager. Offers data storage in Europe or US. Free with an optional paid plan. Can be self-hosted.
+  Secure and the most popular open-source password manager. Offers data storage in Europe or US. Free with an optional paid plan. Can be self-hosted.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_PASSWORD_MANAGERS_ONE_PASSWORD" desc="Onboarding description of 1Password as a password manager option.">
-  Popular, paid, and closed-source password manager. Offers data storage in Europe or US. May not work correctly with Helium due to negligence.
+  Popular, paid, and closed-source password manager. Offers data storage in Europe or US. May not work correctly with Helium without extra configuration.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_PASSWORD_MANAGERS_DASHLANE" desc="Onboarding description of Dashlane as a password manager option.">
   Popular, paid, and closed-source password manager. Stores data in Europe. Known for aggressive upselling tactics.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_PASSWORD_MANAGERS_ICLOUD_PASSWORDS" desc="Onboarding description of iCloud Passwords as a password manager option.">
-  Free password manager by Apple. Will nag you about using Safari and require re-authentication on browser restart. Can't generate passwords.
+  Free and closed-source password manager by Apple. Nags about using Safari, requires re-authentication on browser restart, and can't generate passwords.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_PASSWORD_MANAGERS_KEE_PASS_XC" desc="Onboarding description of KeePassXC as a password manager option.">
-  Local, free, and open-source password manager for advanced users. Requires technical knowledge to set up and use.
+  Free, local, and open-source password manager for advanced users. Requires technical knowledge to set up and use. Cannot sync without extra software.
 </message>
 
 </grit-part>
