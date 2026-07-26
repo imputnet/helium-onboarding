@@ -1,14 +1,13 @@
 <script lang="ts">
+    import { HeliumLogo, Tooltip } from "@imput/helium-prism";
     import { s } from "../lib/strings";
-    import Tooltip from "./Tooltip.svelte";
-    import HeliumLogo from "../icons/HeliumLogo.svelte";
 </script>
 
 <div class="helium-partner">
     <Tooltip>
         {#snippet anchor()}
             <div class="helium-partner-badge">
-                <HeliumLogo />
+                <HeliumLogo height="13px" />
                 {s.partner.title}
             </div>
         {/snippet}
@@ -36,9 +35,5 @@
         line-height: 0;
         padding: 2px 0;
 
-        & :global(svg) {
-            width: 13px;
-            height: 13px;
-        }
     }
 </style>

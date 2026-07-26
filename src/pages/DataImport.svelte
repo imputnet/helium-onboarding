@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { IconWorld } from "@imput/helium-prism";
     import { s } from "../lib/strings";
     import type { BrowserProfile } from "../lib/cr";
     import { currentPage } from "../lib/onboarding-flow";
@@ -8,24 +9,22 @@
     import PageHeader from "../components/PageHeader.svelte";
     import ProfileImportOption from "../components/ProfileImportOption.svelte";
 
-    import IconWorld from "../icons/tabler/IconWorld.svelte";
     import IconTransferIn from "../icons/tabler/IconTransferIn.svelte";
 
     const visible = $derived($currentPage === "DataImport");
 
-    const groupedProfiles = $derived(
-        $importableProfiles.reduce(
+    const sorted = $derived.by(() => {
+        const grouped = $importableProfiles.reduce(
             (acc, profile) => {
                 (acc[profile.name] ??= []).push(profile);
                 return acc;
             },
             {} as Record<string, BrowserProfile[]>
-        )
-    );
+        );
 
-    const sorted = $derived(
-        Object.entries(groupedProfiles).sort(([a], [b]) => a.localeCompare(b))
-    );
+        return Object.entries(grouped)
+            .sort(([a], [b]) => a.localeCompare(b));
+    });
 
     const browserIconMap = {
         Arc: "arc",
@@ -56,7 +55,7 @@
             subtitle={s.dataImport.subtitle}
             Icon={IconTransferIn}
         />
-        <div id="content" class="page-content">
+        <div class="page-content">
             {#each sorted as [browser, profiles]}
                 {@const icon = browserIconMap[browser as keyof typeof browserIconMap]}
                 {@const url = icon && browserIcons[icon]}
@@ -81,42 +80,19 @@
 </div>
 
 <style>
-    #data-import-page {
-        justify-content: flex-start;
-        visibility: hidden;
-
-        &.visible {
-            visibility: visible;
-            animation: page-in 0.3s;
-            animation-delay: 0.05s;
-            animation-fill-mode: backwards;
-        }
-
-        &:not(.visible) {
-            animation: page-out 0.2s;
-            animation-fill-mode: forwards;
-        }
-    }
-
     #data-import-container {
         max-width: 600px;
-        width: 100%;
     }
 
-    #content {
-        gap: var(--gap-1);
+    .page-content {
+        gap: var(--gap-3);
     }
 
     .browser-header {
         display: flex;
-        flex-direction: row;
         width: 100%;
         align-items: center;
         gap: 8px;
-
-        & > :global(svg) {
-            stroke-width: 1.5px;
-        }
 
         & .browser-icon {
             width: 28px;
@@ -140,6 +116,6 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        gap: calc(var(--gap-1) / 2);
+        gap: var(--gap-1);
     }
 </style>

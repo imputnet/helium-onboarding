@@ -20,7 +20,7 @@
             Icon={IconLockStar}
         />
 
-        <div id="content" class="page-content">
+        <div class="page-content">
             {#each Object.entries(passwordManagers) as [id, info]}
                 {#if !info.platforms || info.platforms.includes(platform.name)}
                     <PasswordManagerOption {id} {info} />
@@ -31,30 +31,15 @@
 </div>
 
 <style>
-    #password-manager-page {
-        justify-content: flex-start;
-        visibility: hidden;
-
-        &.visible {
-            visibility: visible;
-            animation: page-in 0.3s;
-            animation-delay: 0.05s;
-            animation-fill-mode: backwards;
-        }
-
-        &:not(.visible) {
-            animation: page-out 0.2s;
-            animation-fill-mode: forwards;
-        }
-    }
-
     #password-manager-page-container {
-        max-width: unset;
+        max-width: 1000px;
     }
 
     .page-content {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        justify-items: center;
+        width: 100%;
     }
 
     @media screen and (max-width: 1000px) {

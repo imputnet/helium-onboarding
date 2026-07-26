@@ -107,11 +107,11 @@ Changes will be applied after you go to the next page.
 </message>
 
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_TITLE" desc="Title of the onboarding screen for selecting a default search engine.">
-  Default search engine
+  Choose a search engine
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_SUBTITLE" desc="Subtitle for the onboarding screen for selecting a default search engine.">
   You can change your choice later in Settings.
-Engines are ordered by privacy.
+Search engines are sorted by privacy.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_CATEGORIES_PRIVATE" desc="Description for privacy-first search engines in onboarding.">
   A privacy-first search engine which

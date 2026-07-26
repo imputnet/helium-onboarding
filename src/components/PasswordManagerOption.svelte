@@ -1,4 +1,11 @@
 <script lang="ts">
+    import {
+        Button,
+        IconDownload,
+        IconExternalLink,
+        Link,
+        Spinner,
+    } from "@imput/helium-prism";
     import { s } from "../lib/strings";
     import { passwordManagerIcons } from "../lib/nonfree-icons";
 
@@ -11,12 +18,9 @@
 
     import type { PasswordManagerInfo } from "../lib/password-managers";
 
-    import Spinner from "./Spinner.svelte";
     import HeliumPartner from "./HeliumPartner.svelte";
 
     import IconKey from "../icons/tabler/IconKey.svelte";
-    import IconDownload from "../icons/tabler/IconDownload.svelte";
-    import IconExternalLink from "../icons/tabler/IconExternalLink.svelte";
 
     let { id, info }: { id: string, info: PasswordManagerInfo } = $props();
 
@@ -60,17 +64,12 @@
     title: string,
     Icon?: ConstructorOfATypedSvelteComponent,
 )}
-    <a
-        class="button action-link"
-        target="_blank"
-        rel="noopener noreferrer"
-        href={url}
-    >
-        {title}
+    <Link class="button" href={url}>
         {#if Icon}
             <Icon />
         {/if}
-    </a>
+        {title}
+    </Link>
 {/snippet}
 
 <div class="pm-option">
@@ -103,26 +102,22 @@
                 {@render link(
                     info.importGuide,
                     s.password.importGuide,
-                    IconExternalLink,
                 )}
             {/if}
             {#if info.setupGuide}
                 {@render link(
                     info.setupGuide,
                     s.password.setupGuide,
-                    IconExternalLink,
                 )}
             {/if}
             {@render link(
                 info.privacyPolicy,
                 s.password.privacy,
-                IconExternalLink,
             )}
         </div>
 
-        <button
-            class="button action-link"
-            class:primary={!installed && !error}
+        <Button
+            primary={!installed && !error}
             disabled={installed || !!error || working}
             onclick={install}
         >
@@ -131,14 +126,14 @@
             {:else if error}
                 {s.password.error} {error}
             {:else}
-                {s.password.install}
                 {#if working}
-                    <Spinner />
+                    <Spinner size={18} />
                 {:else}
                     <IconDownload />
                 {/if}
+                {s.password.install}
             {/if}
-        </button>
+        </Button>
     </div>
 </div>
 
@@ -147,57 +142,53 @@
         display: flex;
         flex-direction: column;
         text-align: left;
+        width: 100%;
+        min-width: 0;
+        max-width: 480px;
         padding: 16px;
         gap: 16px;
         border-radius: 16px;
-        max-width: 420px;
-        height: -webkit-fill-available;
+        align-self: stretch;
         justify-content: space-between;
         background-color: var(--helium-elevated-5);
-        box-shadow: 0 0 0 1.5px var(--helium-elevated-5) inset;
     }
 
     .pm-top {
         width: 100%;
         display: flex;
         flex-direction: row;
-        gap: var(--gap-1);
+        gap: var(--gap-3);
+        min-width: 0;
     }
 
     .pm-text {
         display: flex;
         flex-direction: column;
         gap: 2px;
+        min-width: 0;
     }
 
-    .button {
-        text-decoration: none;
-    }
-
-    .action-row,
     .button-group {
         display: flex;
         flex-direction: row;
+        flex-wrap: nowrap;
         gap: calc(var(--gap-1) / 2);
+        min-width: 0;
+
+        > :global(a) {
+            font-size: 14px;
+        }
     }
 
     .action-row {
+        display: flex;
+        align-items: center;
         justify-content: space-between;
+        gap: calc(var(--gap-1) / 2);
         width: 100%;
-    }
-
-    .action-link {
-        padding: 9px 16px;
-        border-radius: 10px;
-        font-size: 15px;
-        font-weight: 500;
-        gap: 6px;
-
-        & :global(svg) {
-            height: 16px;
-            width: 16px;
-            stroke-width: 2px;
-        }
+        min-width: 0;
+        flex-wrap: balance;
+        row-gap: calc(var(--gap-1) / 2);
     }
 
     .pm-icon-container {

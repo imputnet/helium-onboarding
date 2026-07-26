@@ -1,14 +1,15 @@
 <script lang="ts">
+    import {
+        Button,
+        HeliumLogo,
+        IconArrowRight,
+        IconCheck,
+        Link,
+    } from "@imput/helium-prism";
     import { s } from "../lib/strings";
     import { parseLocalizedString } from "../lib/i18n";
     import { setPref, acceptLatestSchema } from "../lib/browser";
     import { currentPage, nextPage } from "../lib/onboarding-flow";
-
-    import OuterLink from "../components/OuterLink.svelte";
-
-    import HeliumLogo from "../icons/HeliumLogo.svelte";
-    import IconCheck from "../icons/tabler/IconCheck.svelte";
-    import IconArrowRight from "../icons/tabler/IconArrowRight.svelte";
 
     const useDefaults = async () => {
         acceptLatestSchema();
@@ -33,7 +34,7 @@
         <div id="welcome-top">
             <div id="welcome-logo-text">
                 <div id="welcome-logo">
-                    <HeliumLogo />
+                    <HeliumLogo height="64px" />
                 </div>
                 <div id="welcome-text">
                     <h1 id="welcome-greet">
@@ -45,23 +46,23 @@
                 </div>
             </div>
             <div id="welcome-buttons" class="action-buttons">
-                <button onclick={useDefaults}>
+                <Button onclick={useDefaults}>
                     <IconCheck />
                     {s.button.useDefaults}
-                </button>
-                <button class="primary" onclick={nextPage}>
+                </Button>
+                <Button primary onclick={nextPage}>
                     <IconArrowRight />
                     {s.button.configure}
-                </button>
+                </Button>
             </div>
         </div>
         <div id="welcome-footer">
             <p id="legal-note">
                 {#each termsParts as part}
                     {#if part.kind === "linkPrivacy"}
-                        <OuterLink href={privacyUrl}>{part.text}</OuterLink>
+                        <Link href={privacyUrl}>{part.text}</Link>
                     {:else if part.kind === "linkTerms"}
-                        <OuterLink href={termsUrl}>{part.text}</OuterLink>
+                        <Link href={termsUrl}>{part.text}</Link>
                     {:else}
                         {part.text}
                     {/if}
@@ -113,11 +114,6 @@
 
     #welcome-logo-text {
         max-width: 600px;
-    }
-
-    #welcome-logo :global(svg) {
-        height: 64px;
-        width: 64px;
     }
 
     .visible {
@@ -175,6 +171,11 @@
 
     #welcome-footer p {
         font-size: 12px;
+    }
+
+    #welcome-footer :global(a) {
+        font-size: inherit;
+        line-height: inherit;
     }
 
     @media (prefers-reduced-motion) {

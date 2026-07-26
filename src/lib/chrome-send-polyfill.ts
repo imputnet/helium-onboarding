@@ -71,8 +71,6 @@ const actualDefaults: [string, number, string, boolean, boolean][] = [
     ["Google", 5, "google.com", false, true],
     ["Startpage", 8, "startpage.com", false, true],
     ["Brave Search", 9, "search.brave.com", false, true],
-    ["Foogle", 10, "google.com", false, false],
-    ["Bargle", 11, "bargle.com", false, false],
 ];
 
 for (const [ name, id, keyword, isDefault, isPrepopulated ] of actualDefaults) {

@@ -15,6 +15,9 @@ importers:
         specifier: https://github.com/imputnet/helium-nonfree-assets/releases/download/20260724131745/nonfree-onboarding-assets.tar.gz
         version: https://github.com/imputnet/helium-nonfree-assets/releases/download/20260724131745/nonfree-onboarding-assets.tar.gz
     devDependencies:
+      '@imput/helium-prism':
+        specifier: 0.1.8
+        version: 0.1.8(svelte@5.56.7)
       '@sveltejs/vite-plugin-svelte':
         specifier: ^6.2.0
         version: 6.2.0(svelte@5.56.7)(vite@7.3.6(@types/node@24.3.1))
@@ -200,6 +203,12 @@ packages:
 
   '@fontsource-variable/instrument-sans@5.2.7':
     resolution: {integrity: sha512-OybDg1vN5iIA0Zwl1vhKxMtYSHMoEGZ8XObb1yItbcUwpgXZxUCg9Dgfarq7QGx42EgiwbWQe2vuh9+Zzrebvw==}
+
+  '@imput/helium-prism@0.1.8':
+    resolution: {integrity: sha512-A+jeQCXZL+KIB+5+Kv+JslMg0N5UAh0KMqEM9XDilx9gQaPaBjmhj7PcGjUvWDJk/W/md/6ipuviL0s/gFTARA==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      svelte: '>=5.20.0'
 
   '@jridgewell/gen-mapping@0.3.13':
     resolution: {integrity: sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==}
@@ -486,6 +495,9 @@ packages:
     resolution: {tarball: https://github.com/imputnet/helium-nonfree-assets/releases/download/20260724131745/nonfree-onboarding-assets.tar.gz}
     version: 1.0.0
 
+  ogl@1.0.11:
+    resolution: {integrity: sha512-kUpC154AFfxi16pmZUK4jk3J+8zxwTWGPo03EoYA8QPbzikHoaC82n6pNTbd+oEaJonaE8aPWBlX7ad9zrqLsA==}
+
   path-expression-matcher@1.5.0:
     resolution: {integrity: sha512-cbrerZV+6rvdQrrD+iGMcZFEiiSrbv9Tfdkvnusy6y0x0GKBXREFg/Y65GhIfm0tnLntThhzCnfKwp1WRjeCyQ==}
     engines: {node: '>=14.0.0'}
@@ -681,6 +693,11 @@ snapshots:
     optional: true
 
   '@fontsource-variable/instrument-sans@5.2.7': {}
+
+  '@imput/helium-prism@0.1.8(svelte@5.56.7)':
+    dependencies:
+      ogl: 1.0.11
+      svelte: 5.56.7
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
@@ -913,6 +930,8 @@ snapshots:
   nanoid@3.3.16: {}
 
   nonfree-icons@https://github.com/imputnet/helium-nonfree-assets/releases/download/20260724131745/nonfree-onboarding-assets.tar.gz: {}
+
+  ogl@1.0.11: {}
 
   path-expression-matcher@1.5.0: {}
 

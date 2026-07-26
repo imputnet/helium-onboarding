@@ -1,12 +1,13 @@
 <script lang="ts">
+    import {
+        Button,
+        HeliumLogo,
+        IconArrowLeft,
+        IconCheck,
+    } from "@imput/helium-prism";
     import { s } from "../lib/strings";
     import { setPref } from "../lib/browser";
     import { currentPage, previousPage } from "../lib/onboarding-flow";
-
-    import HeliumLogo from "../icons/HeliumLogo.svelte";
-
-    import IconCheck from "../icons/tabler/IconCheck.svelte";
-    import IconArrowLeft from "../icons/tabler/IconArrowLeft.svelte";
 
     const done = async () => {
         await setPref('completed_onboarding', true);
@@ -25,22 +26,22 @@
         <div id="finish-top">
             <div id="finish-logo-text">
                 <div id="finish-logo">
-                    <HeliumLogo />
+                    <HeliumLogo height="64px" />
                 </div>
                 <div id="finish-text">
                     <h1>{s.finish.title}</h1>
                     <p>{s.finish.body}</p>
                 </div>
             </div>
-            <div id="finish-buttons" class="action-buttons">
-                <button onclick={previousPage}>
+            <div class="action-buttons">
+                <Button onclick={previousPage}>
                     <IconArrowLeft />
                     {s.button.back}
-                </button>
-                <button class="primary" onclick={done}>
+                </Button>
+                <Button primary onclick={done}>
                     <IconCheck />
                     {s.button.letsGo}
-                </button>
+                </Button>
             </div>
         </div>
     </div>
@@ -48,19 +49,7 @@
 
 <style>
     #finish-page {
-        visibility: hidden;
-
-        &.visible {
-            visibility: visible;
-            animation: page-in 0.3s;
-            animation-delay: 0.15s;
-            animation-fill-mode: backwards;
-        }
-
-        &:not(.visible) {
-            animation: page-out 0.2s;
-            animation-fill-mode: forwards;
-        }
+        --page-in-delay: 0.15s;
     }
 
     #finish-top,
@@ -90,12 +79,6 @@
     #finish-logo {
         display: flex;
         align-items: center;
-        gap: 18px;
-    }
-
-    #finish-logo :global(svg) {
-        height: 64px;
-        width: 64px;
     }
 
     #finish-text p {

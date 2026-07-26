@@ -14,6 +14,7 @@
         "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json"
     },
     "devDependencies": {
+        "@imput/helium-prism": "0.1.8",
         "@sveltejs/vite-plugin-svelte": "^6.2.0",
         "@tsconfig/svelte": "^5.0.5",
         "@types/node": "^24.3.1",

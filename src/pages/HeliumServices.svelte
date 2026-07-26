@@ -1,98 +1,94 @@
 <script lang="ts">
+    import { CardLink, HeliumLogo } from "@imput/helium-prism";
     import { s } from "../lib/strings";
     import { platform } from "../lib/platform";
     import { currentPage } from "../lib/onboarding-flow";
     import { preferences as pr } from "../lib/browser";
 
-    import Toggle from "../components/Toggle.svelte";
-    import HeliumLogo from "../icons/HeliumLogo.svelte";
-    import ButtonLink from "../components/ButtonLink.svelte";
+    import PreferenceToggle from "../components/PreferenceToggle.svelte";
     import PageHeader from "../components/PageHeader.svelte";
-    import ToggleSeparator from "../components/ToggleSeparator.svelte";
 
     const visible = $derived($currentPage === "HeliumServices");
+    const servicesEnabled = $derived($pr["services.enabled"]);
+    const autoupdatesTitle = platform.is.linux
+        ? s.services.autoupdatesTitleLinux
+        : s.services.autoupdatesTitle;
+    const autoupdatesDesc = platform.is.linux
+        ? s.services.autoupdatesDescLinux
+        : s.services.autoupdatesDesc;
 </script>
 
 <div id="services-page" class="onboarding-page" class:visible>
-    <div id="services-page-container" class="scrollable-page">
+    <div class="scrollable-page">
         <PageHeader
             title={s.services.title}
             subtitle={s.services.subtitle}
             Icon={HeliumLogo}
+            iconHeight="32px"
         />
-        <div id="content" class="page-content">
-            <Toggle
+        <div class="page-content">
+            <PreferenceToggle
                 title={s.services.connectionTitle}
                 desc={s.services.connectionDesc}
-                prefName={"services.enabled"}
+                prefName="services.enabled"
             />
-            <ToggleSeparator />
-            <Toggle
+            <div class="toggle-separator"></div>
+            <PreferenceToggle
                 title={s.services.extensionsTitle}
                 desc={s.services.extensionsDesc}
-                prefName={"services.ext_proxy"}
-                inactive={!$pr["services.enabled"]}
+                prefName="services.ext_proxy"
+                disabled={!servicesEnabled}
             />
-            <Toggle
+            <PreferenceToggle
                 title={s.services.bangsTitle}
                 desc={s.services.bangsDesc}
-                prefName={"services.bangs"}
-                inactive={!$pr["services.enabled"]}
+                prefName="services.bangs"
+                disabled={!servicesEnabled}
             />
-            <Toggle
+            <PreferenceToggle
                 title={s.services.ublockTitle}
                 desc={s.services.ublockDesc}
-                prefName={"services.ublock_assets"}
-                inactive={!$pr["services.enabled"]}
+                prefName="services.ublock_assets"
+                disabled={!servicesEnabled}
             />
-            {#if !platform.is.linux}
-                <Toggle
-                    title={s.services.autoupdatesTitle}
-                    desc={s.services.autoupdatesDesc}
-                    prefName={"services.browser_updates"}
-                    inactive={!$pr["services.enabled"]}
-                />
-            {:else}
-                <Toggle
-                    title={s.services.autoupdatesTitleLinux}
-                    desc={s.services.autoupdatesDescLinux}
-                    prefName={"services.browser_updates"}
-                    inactive={!$pr["services.enabled"]}
-                />
-            {/if}
+            <PreferenceToggle
+                title={autoupdatesTitle}
+                desc={autoupdatesDesc}
+                prefName="services.browser_updates"
+                disabled={!servicesEnabled}
+            />
             {#if !platform.is.macos}
-                <Toggle
+                <PreferenceToggle
                     title={s.services.spellcheckTitle}
                     desc={s.services.spellcheckDesc}
-                    prefName={"services.spellcheck_files"}
-                    inactive={!$pr["services.enabled"]}
+                    prefName="services.spellcheck_files"
+                    disabled={!servicesEnabled}
                 />
             {/if}
-            <ButtonLink
-                title={s.services.instanceTitle}
-                desc={s.services.instanceDesc}
-                inactive={!$pr["services.enabled"]}
-                dest="chrome://settings/privacy/services"
-            />
+            <div
+                class="instance-link"
+                class:inactive={!servicesEnabled}
+                inert={!servicesEnabled}
+            >
+                <CardLink
+                    title={s.services.instanceTitle}
+                    desc={s.services.instanceDesc}
+                    href="chrome://settings/privacy/services"
+                    disabled={!servicesEnabled}
+                />
+            </div>
+            </div>
         </div>
-    </div>
 </div>
 
 <style>
     #services-page {
-        justify-content: flex-start;
-        visibility: hidden;
+        --page-in-delay: 0.1s;
+    }
 
-        &.visible {
-            visibility: visible;
-            animation: page-in 0.3s;
-            animation-delay: 0.1s;
-            animation-fill-mode: backwards;
-        }
-
-        &:not(.visible) {
-            animation: page-out 0.2s;
-            animation-fill-mode: forwards;
-        }
+    .toggle-separator {
+        height: 2px;
+        width: calc(100% - 48px);
+        background: var(--helium-elevated-10);
     }
 </style>

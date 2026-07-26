@@ -1,7 +1,7 @@
 import path from "node:path";
 import { promisify } from "node:util";
 import { execFile } from "node:child_process";
-import { defineConfig, PluginOption } from "vite";
+import { defineConfig, type PluginOption } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 
 const grdWatcher: PluginOption = {
@@ -42,6 +42,13 @@ export default defineConfig({
         grdWatcher,
         svelte(),
     ],
+    optimizeDeps: {
+        esbuildOptions: {
+            loader: {
+                ".glsl": "text",
+            },
+        },
+    },
     build: {
         target: 'chrome140',
         assetsInlineLimit: (filename) => filename.endsWith('.svg')
