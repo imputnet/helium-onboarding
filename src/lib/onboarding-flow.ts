@@ -67,6 +67,13 @@ export const previousPage = () => {
     index.update((current) => getPageNumber(current, -1));
 }
 
+export const ONBOARDING_INTRO_DELAY_MS = 800;
+
+export const hasSeenIntro = writable(false);
+export const markIntroSeen = () => {
+    hasSeenIntro.set(true);
+}
+
 export const userChoseHeliumAsDefault = writable(true);
 export const selectedProfiles = writable(new SvelteSet<number>());
 export const previouslyImportedProfiles = writable(new SvelteSet<number>());

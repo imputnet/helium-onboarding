@@ -32,14 +32,13 @@ the development of Helium.
   Meet Helium
 </message>
 <message name="IDS_HELIUM_ONBOARDING_WELCOME_BODY" desc="Introductory body text on the first onboarding screen.">
-  Configure your browser just the way you want it, or use
-the default preset with best privacy and comfort.
+  Configure Helium to match your taste and import data from other browsers. Make it feel like home or jump straight to browsing.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_WELCOME_TERMS" desc="Legal note shown during onboarding. Keep each BEGIN/END placeholder pair around its corresponding link text, but move the pairs as needed for a natural translation.">
   By continuing, you agree to the <ph name="BEGIN_LINK_PRIVACY">$1</ph>privacy policy<ph name="END_LINK_PRIVACY">$2</ph> and <ph name="BEGIN_LINK_TERMS">$3</ph>terms of use<ph name="END_LINK_TERMS">$4</ph>.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_WELCOME_FOOTER" desc="Footer text explaining that setup can be skipped but Helium services require consent.">
-  You can skip setup and come back later, but Helium services won't work without it.
+  If you use defaults, Helium services will be automatically enabled.
 </message>
 
 <message name="IDS_HELIUM_ONBOARDING_FINISH_TITLE" desc="Title on the final onboarding screen.">
