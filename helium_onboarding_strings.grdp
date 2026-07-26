@@ -45,8 +45,7 @@ the development of Helium.
   Ready to browse?
 </message>
 <message name="IDS_HELIUM_ONBOARDING_FINISH_BODY" desc="Body text on the final onboarding screen.">
-  The setup is complete, thank you for choosing Helium.
-Time to enjoy the Internet again.
+  The setup is complete, thank you for choosing Helium. Time to enjoy the internet again.
 </message>
 
 <message name="IDS_HELIUM_ONBOARDING_SERVICES_TITLE" desc="Title of the onboarding screen for Helium services consent.">

@@ -60,7 +60,7 @@
     }
 
     #finish-page-container {
-        max-width: 700px;
+        max-width: 500px;
     }
 
     #finish-top,
