@@ -71,7 +71,9 @@
                         <PrivacyIcon />
                     {/snippet}
                     {#snippet content()}
-                        {s.searchCategories[engineCategory]}
+                        <div class="tooltip-content">
+                            {s.searchCategories[engineCategory]}
+                        </div>
                     {/snippet}
                 </Tooltip>
                 {name}
@@ -126,5 +128,11 @@
         width: 32px;
         height: 32px;
         border-radius: 8px;
+    }
+
+    .tooltip-content {
+        max-width: 230px;
+        line-break: pretty;
+        white-space: normal;
     }
 </style>

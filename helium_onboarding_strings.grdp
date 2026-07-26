@@ -24,8 +24,7 @@
   Helium Partner
 </message>
 <message name="IDS_HELIUM_ONBOARDING_PARTNER_TOOLTIP" desc="Tooltip explaining why a listed service is marked as a Helium partner.">
-  Paying for this service will support
-the development of Helium.
+  Paying for this service will support the development of Helium.
 </message>
 
 <message name="IDS_HELIUM_ONBOARDING_WELCOME_GREETING" desc="Main greeting on the first onboarding screen.">
@@ -110,21 +109,16 @@ the development of Helium.
   You can change your choice later in Settings. Search engines are sorted by privacy.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_CATEGORIES_PRIVATE" desc="Description for privacy-first search engines in onboarding.">
-  A privacy-first search engine which
-doesn't profile or track you.
+  A privacy-first search engine which doesn't profile or track you.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_CATEGORIES_SMALL" desc="Description for smaller search engines that are more private than mainstream engines but not privacy-focused.">
-  Transparent, but not privacy-focused.
-Offers better privacy than mainstream
-search engines.
+  Transparent, but not privacy-focused. Offers better privacy than mainstream search engines.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_CATEGORIES_MAINSTREAM" desc="Description for mainstream search engines in onboarding.">
-  A mainstream search engine which
-collects extensive personal data.
+  A mainstream search engine which collects extensive personal data.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_CATEGORIES_CUSTOM" desc="Description for a custom search engine in onboarding.">
-  A custom search engine. Its privacy
-wasn't verified by Helium.
+  A custom search engine. Its privacy wasn't verified by Helium.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_ENGINES_DUCKDUCKGO" desc="Onboarding description of DuckDuckGo as a search engine option.">
   Privacy-focused. Relies on Bing for results. Promises not to track or profile you.
