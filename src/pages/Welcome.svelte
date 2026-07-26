@@ -33,6 +33,7 @@
     const termsParts = parseLocalizedString(s.welcome.terms);
 
     let introLogoVisible = $state(!$hasSeenIntro);
+    let introAnimating = $state(!$hasSeenIntro);
     const finalLogoVisible = $derived(!introLogoVisible);
 
     const next = () => {
@@ -40,12 +41,15 @@
         nextPage();
     }
 
-    const transitionIntroLogo = () => {
-        document.startViewTransition(() => {
+    const transitionIntroLogo = async () => {
+        const transition = document.startViewTransition(() => {
             flushSync(() => {
                 introLogoVisible = false;
             });
         });
+
+        await transition.finished;
+        introAnimating = false;
     }
 
     onMount(() => {
@@ -75,6 +79,7 @@
     class="onboarding-page"
     class:visible
     class:intro={!$hasSeenIntro}
+    inert={introAnimating}
 >
     <div id="welcome-page-container">
         <div id="welcome-top">
