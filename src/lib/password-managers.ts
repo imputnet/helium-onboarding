@@ -35,6 +35,14 @@ export const passwordManagers: Record<string, PasswordManagerInfo> = {
         importGuide: "https://support.1password.com/import/",
         privacyPolicy: "https://1password.com/legal/privacy"
     },
+    keePassXC: {
+        title: "KeePassXC",
+        description: s.passwordManagers.keePassXc,
+        extensionId: "oboonakemofpalcgghocfoadofidjkkk",
+        setupGuide: "https://keepassxc.org/docs/KeePassXC_UserGuide",
+        importGuide: "https://keepassxc.org/docs/KeePassXC_UserGuide#_importing_databases",
+        privacyPolicy: "https://keepassxc.org/privacy/#privacy-keepassxc",
+    },
     dashlane: {
         title: "Dashlane",
         description: s.passwordManagers.dashlane,
@@ -48,13 +56,5 @@ export const passwordManagers: Record<string, PasswordManagerInfo> = {
         extensionId: "pejdijmoenmkgeppbflobdenhhabjlaj",
         privacyPolicy: "https://www.apple.com/legal/privacy/",
         platforms: ["windows", "macos"],
-    },
-    keePassXC: {
-        title: "KeePassXC",
-        description: s.passwordManagers.keePassXc,
-        extensionId: "oboonakemofpalcgghocfoadofidjkkk",
-        setupGuide: "https://keepassxc.org/docs/KeePassXC_UserGuide",
-        importGuide: "https://keepassxc.org/docs/KeePassXC_UserGuide#_importing_databases",
-        privacyPolicy: "https://keepassxc.org/privacy/#privacy-keepassxc",
     },
 };

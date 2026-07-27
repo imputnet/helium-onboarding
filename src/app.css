@@ -1,55 +1,4 @@
 :root {
-    font-family: "Instrument Sans Variable", system-ui, Helvetica, Arial, sans-serif;
-    line-height: 1.2;
-    font-weight: 500;
-    letter-spacing: -0.01rem;
-
-    color: #ffffff;
-
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
-    user-select: none;
-
-    --primary: #0d1c64;
-    --secondary: #475a7f;
-
-    --white: #ffffff;
-
-    --helium-blue: #3450d1;
-    --helium-blue-hover: #3a58db;
-    --helium-blue-press: #304bc2;
-
-    color: var(--primary);
-
-    --background: #fbfcff;
-
-    --bg-gradient-start: #e3e8ff;
-    --bg-gradient-end: #f4f7ff;
-    --bg-gradient-end-rgb: 244, 247, 255;
-
-    --tooltip-bg: rgb(234, 237, 253);
-    --tooltip-shadow: rgba(155, 166, 216, 0.5);
-
-    --background-gradient: linear-gradient(
-        180deg,
-        var(--bg-gradient-start) 0%,
-        var(--bg-gradient-end) 100%
-    );
-
-    --helium-elevated: 52, 80, 209;
-    --helium-elevated-5: rgba(var(--helium-elevated), 0.05);
-    --helium-elevated-7: rgba(var(--helium-elevated), 0.07);
-    --helium-elevated-10: rgba(var(--helium-elevated), 0.1);
-    --helium-elevated-15: rgba(var(--helium-elevated), 0.15);
-    --helium-elevated-30: rgba(var(--helium-elevated), 0.3);
-
-    --gap: 8px;
-    --gap-1: 12px;
-    --gap-2: 24px;
-
     --page-scroll-gradient-mask: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 1) 90%,
@@ -57,197 +6,25 @@
     );
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --primary: #e3e6f2;
-        --secondary: #8f9bcb;
-
-        --white: var(--primary);
-
-        --background: #0e1123;
-
-        --tooltip-bg: rgb(29, 42, 93);
-        --tooltip-shadow: rgba(20, 35, 95, 0.5);
-
-        --bg-gradient-start: #151932;
-        --bg-gradient-end: #2d3c7f;
-        --bg-gradient-end-rgb: 45, 60, 127;
-
-        --helium-elevated: 179, 190, 236;
-    }
-}
-
-html {
-    background: var(--background);
-}
-
 body {
-    margin: 0;
     display: flex;
     justify-content: center;
     min-height: 100vh;
-    background: var(--background-gradient);
+    background: var(--bg-gradient-start);
     overflow: hidden;
-}
-
-*::-webkit-scrollbar {
-    display: none;
-}
-
-img {
-    pointer-events: none;
     user-select: none;
-}
-
-h1, h2, h4 {
-    font-weight: 500;
-    line-height: 1.2;
-    margin-block: 0;
-    margin-inline: 0;
-}
-
-h1, h2 {
-    letter-spacing: -0.05rem;
-}
-
-h1 {
-    font-size: 48px;
-}
-
-h2 {
-    font-size: 32px;
-}
-
-h4 {
-    font-size: 18px;
-}
-
-p {
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.2;
-    color: var(--secondary);
 }
 
 h1, h2, p {
     white-space: pre-line;
 }
 
-a {
-    color: inherit;
-    text-underline-offset: 2px;
-
-    &:focus-visible {
-        border-radius: 2px;
-    }
+h1 {
+    font-size: 38px;
 }
 
-button {
-    appearance: none;
-    letter-spacing: inherit;
-    word-spacing: unset;
-    line-height: inherit;
-    text-indent: 0px;
-    text-shadow: none;
-    text-align: center;
-    cursor: pointer;
-    box-sizing: border-box;
-    margin: 0em;
-    padding-block: 0;
-    padding-inline: 0;
-    border: none;
-    font-family: inherit;
-    font-weight: inherit;
-}
-
-button, .button {
-    color: var(--primary);
-    background-color: var(--helium-elevated-7);
-    box-shadow: 0 0 0 1.5px var(--helium-elevated-5) inset;
-
-    font-size: 16px;
-    padding: 11px 18px;
-    border-radius: 12px;
-
-    transition: 0.2s background-color, 0.2s transform, 0.2s opacity;
-    will-change: transform;
-
-    display: flex;
-    align-items: center;
-    gap: 9px;
-
-    &:hover {
-        background-color: var(--helium-elevated-10);
-
-        &:active {
-            background-color: var(--helium-elevated-15);
-            transform: scale(0.97);
-        }
-    }
-
-    &.primary {
-        color: var(--white);
-        background-color: var(--helium-blue);
-
-        &:hover {
-            background-color: var(--helium-blue-hover);
-
-            &:active {
-                background-color: var(--helium-blue-press);
-            }
-        }
-    }
-
-    &.big {
-        width: -webkit-fill-available;
-        text-align: left;
-        border-radius: 24px;
-        padding: 16px 21px;
-
-        &:hover {
-            &:active {
-                transform: scale(0.99);
-            }
-        }
-    }
-
-    &.inactive,
-    &:disabled {
-        color: var(--primary);
-        background-color: var(--helium-elevated-7);
-        pointer-events: none;
-        opacity: 0.5;
-
-        &:not(.selected) {
-            box-shadow: none;
-        }
-    }
-
-    &.selected {
-        box-shadow: 0 0 0 2px var(--primary) inset;
-    }
-
-    & svg {
-        height: 21px;
-        width: 21px;
-        stroke-width: 1.5px;
-    }
-}
-
-button:focus-visible,
-.button:focus-visible,
-a:focus-visible {
-    outline: 2px var(--primary) solid;
-    outline-offset: 3px;
-}
-
-.action-buttons {
-    display: flex;
-    gap: var(--gap);
-
-    & > button {
-        border-radius: 30px;
-    }
+h2 {
+    font-size: 30px;
 }
 
 .onboarding-page {
@@ -255,17 +32,28 @@ a:focus-visible {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     text-align: center;
     width: 100%;
     height: 100%;
     left: 0;
-
     position: absolute;
-    will-change: translate, filter, opacity;
+    visibility: hidden;
+}
+
+.onboarding-page.visible {
+    visibility: visible;
+    animation: page-in 0.3s;
+    animation-delay: var(--page-in-delay, 0.05s);
+    animation-fill-mode: backwards;
+}
+
+.onboarding-page:not(.visible) {
+    animation: page-out 0.2s;
+    animation-fill-mode: forwards;
 }
 
 .scrollable-page {
+    width: 100%;
     max-width: 600px;
     overflow-x: scroll;
     overflow-y: visible;
@@ -280,8 +68,8 @@ a:focus-visible {
 .page-content {
     display: flex;
     flex-direction: column;
-    gap: var(--gap-1);
-    margin-top: var(--gap-2);
+    gap: var(--gap-3);
+    margin-top: 24px;
     align-items: center;
 }
 
@@ -310,30 +98,7 @@ a:focus-visible {
     }
 }
 
-@keyframes intro-logo {
-    from {
-        opacity: 0;
-        transform: scale(2) translateY(250px);
-        filter: blur(10px);
-    }
-    to {
-        opacity: 1;
-        transform: none;
-    }
-}
-
-@keyframes intro-in {
-    from {
-        opacity: 0;
-        translate: 0 50px;
-        filter: blur(10px);
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@media (prefers-reduced-motion) {
+@media (prefers-reduced-motion: reduce) {
     @keyframes page-in {
         from {
             opacity: 0;
@@ -351,24 +116,6 @@ a:focus-visible {
         to {
             visibility: hidden;
             opacity: 0;
-        }
-    }
-
-    @keyframes intro-logo {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-
-    @keyframes intro-in {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
         }
     }
 }

@@ -1,4 +1,10 @@
 <script lang="ts">
+    import {
+        Button,
+        IconDownload,
+        Link,
+        Spinner,
+    } from "@imput/helium-prism";
     import { s } from "../lib/strings";
     import { passwordManagerIcons } from "../lib/nonfree-icons";
 
@@ -11,12 +17,9 @@
 
     import type { PasswordManagerInfo } from "../lib/password-managers";
 
-    import Spinner from "./Spinner.svelte";
     import HeliumPartner from "./HeliumPartner.svelte";
 
     import IconKey from "../icons/tabler/IconKey.svelte";
-    import IconDownload from "../icons/tabler/IconDownload.svelte";
-    import IconExternalLink from "../icons/tabler/IconExternalLink.svelte";
 
     let { id, info }: { id: string, info: PasswordManagerInfo } = $props();
 
@@ -55,22 +58,10 @@
     }
 </script>
 
-{#snippet link(
-    url: string,
-    title: string,
-    Icon?: ConstructorOfATypedSvelteComponent,
-)}
-    <a
-        class="button action-link"
-        target="_blank"
-        rel="noopener noreferrer"
-        href={url}
-    >
+{#snippet link(url: string, title: string)}
+    <Link class="info-link" href={url}>
         {title}
-        {#if Icon}
-            <Icon />
-        {/if}
-    </a>
+    </Link>
 {/snippet}
 
 <div class="pm-option">
@@ -94,35 +85,27 @@
                 <HeliumPartner />
             {/if}
             <h4>{info.title}</h4>
-            <p>{info.description}</p>
-        </div>
-    </div>
-    <div class="action-row">
-        <div class="button-group">
-            {#if info.importGuide}
+            <div class="info-links">
+                {#if info.importGuide}
+                    {@render link(
+                        info.importGuide,
+                        s.password.importGuide,
+                    )}
+                {/if}
+                {#if info.setupGuide}
+                    {@render link(
+                        info.setupGuide,
+                        s.password.setupGuide,
+                    )}
+                {/if}
                 {@render link(
-                    info.importGuide,
-                    s.password.importGuide,
-                    IconExternalLink,
+                    info.privacyPolicy,
+                    s.password.privacy,
                 )}
-            {/if}
-            {#if info.setupGuide}
-                {@render link(
-                    info.setupGuide,
-                    s.password.setupGuide,
-                    IconExternalLink,
-                )}
-            {/if}
-            {@render link(
-                info.privacyPolicy,
-                s.password.privacy,
-                IconExternalLink,
-            )}
+            </div>
         </div>
-
-        <button
-            class="button action-link"
-            class:primary={!installed && !error}
+        <Button
+            primary={!installed && !error}
             disabled={installed || !!error || working}
             onclick={install}
         >
@@ -131,15 +114,16 @@
             {:else if error}
                 {s.password.error} {error}
             {:else}
-                {s.password.install}
                 {#if working}
-                    <Spinner />
+                    <Spinner size={18} />
                 {:else}
                     <IconDownload />
                 {/if}
+                {s.password.install}
             {/if}
-        </button>
+        </Button>
     </div>
+    <p>{info.description}</p>
 </div>
 
 <style>
@@ -147,57 +131,44 @@
         display: flex;
         flex-direction: column;
         text-align: left;
+        width: 100%;
+        min-width: 0;
+        max-width: 480px;
         padding: 16px;
         gap: 16px;
         border-radius: 16px;
-        max-width: 420px;
-        height: -webkit-fill-available;
-        justify-content: space-between;
+        align-self: stretch;
         background-color: var(--helium-elevated-5);
-        box-shadow: 0 0 0 1.5px var(--helium-elevated-5) inset;
     }
 
     .pm-top {
-        width: 100%;
         display: flex;
-        flex-direction: row;
-        gap: var(--gap-1);
+        gap: var(--gap-3);
+        justify-content: space-between;
+        align-items: center;
     }
 
     .pm-text {
         display: flex;
         flex-direction: column;
+        flex: 1;
         gap: 2px;
+        min-width: 0;
     }
 
-    .button {
-        text-decoration: none;
-    }
-
-    .action-row,
-    .button-group {
+    .info-links {
         display: flex;
-        flex-direction: row;
-        gap: calc(var(--gap-1) / 2);
-    }
-
-    .action-row {
-        justify-content: space-between;
+        gap: var(--gap-3);
         width: 100%;
+        min-width: 0;
+        flex-wrap: wrap;
+        row-gap: var(--gap-1);
     }
 
-    .action-link {
-        padding: 9px 16px;
-        border-radius: 10px;
+    .info-links :global(.info-link) {
+        color: var(--secondary);
         font-size: 15px;
-        font-weight: 500;
-        gap: 6px;
-
-        & :global(svg) {
-            height: 16px;
-            width: 16px;
-            stroke-width: 2px;
-        }
+        text-decoration-thickness: 1px;
     }
 
     .pm-icon-container {

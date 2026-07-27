@@ -1,4 +1,4 @@
-export type SearchCategory = "private" | "small" | "mainstream" | "custom";
+type SearchCategory = "private" | "small" | "mainstream" | "custom";
 
 export const searchEngineConfig: Record<string, SearchCategory> = {
     duckduckgo: "private",
@@ -10,5 +10,3 @@ export const searchEngineConfig: Record<string, SearchCategory> = {
     google: "mainstream",
     bing: "mainstream",
 };
-
-export type SearchEngineName = keyof typeof searchEngineConfig;

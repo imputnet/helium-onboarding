@@ -1,12 +1,11 @@
 <script lang="ts">
+    import { IconCheck, IconX } from "@imput/helium-prism";
     import { s } from "../lib/strings";
     import { currentPage, userChoseHeliumAsDefault } from "../lib/onboarding-flow";
 
     import PageHeader from "../components/PageHeader.svelte";
     import DefaultBrowserOption from "../components/DefaultBrowserOption.svelte";
 
-    import IconX from "../icons/tabler/IconX.svelte";
-    import IconCheck from "../icons/tabler/IconCheck.svelte";
     import IconWorldHeart from "../icons/tabler/IconWorldHeart.svelte";
 
     const visible = $derived($currentPage === "DefaultBrowser");
@@ -21,7 +20,7 @@
             verticalTitle
             Icon={IconWorldHeart}
         />
-        <div id="content" class="page-content">
+        <div class="page-content">
             <DefaultBrowserOption
                 title={s.defaultBrowser.yes}
                 desc={s.defaultBrowser.yesDesc}
@@ -41,22 +40,6 @@
 </div>
 
 <style>
-    #default-browser-page {
-        visibility: hidden;
-
-        &.visible {
-            visibility: visible;
-            animation: page-in 0.3s;
-            animation-delay: 0.05s;
-            animation-fill-mode: backwards;
-        }
-
-        &:not(.visible) {
-            animation: page-out 0.2s;
-            animation-fill-mode: forwards;
-        }
-    }
-
     #default-browser-container {
         max-width: 600px;
     }

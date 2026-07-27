@@ -24,38 +24,34 @@
   Helium Partner
 </message>
 <message name="IDS_HELIUM_ONBOARDING_PARTNER_TOOLTIP" desc="Tooltip explaining why a listed service is marked as a Helium partner.">
-  Paying for this service will support
-the development of Helium.
+  Paying for this service will support the development of Helium.
 </message>
 
 <message name="IDS_HELIUM_ONBOARDING_WELCOME_GREETING" desc="Main greeting on the first onboarding screen.">
   Meet Helium
 </message>
 <message name="IDS_HELIUM_ONBOARDING_WELCOME_BODY" desc="Introductory body text on the first onboarding screen.">
-  Configure your browser just the way you want it, or use
-the default preset with best privacy and comfort.
+  Configure Helium to match your taste and import data from other browsers. Make it feel like home or jump straight to browsing.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_WELCOME_TERMS" desc="Legal note shown during onboarding. Keep each BEGIN/END placeholder pair around its corresponding link text, but move the pairs as needed for a natural translation.">
   By continuing, you agree to the <ph name="BEGIN_LINK_PRIVACY">$1</ph>privacy policy<ph name="END_LINK_PRIVACY">$2</ph> and <ph name="BEGIN_LINK_TERMS">$3</ph>terms of use<ph name="END_LINK_TERMS">$4</ph>.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_WELCOME_FOOTER" desc="Footer text explaining that setup can be skipped but Helium services require consent.">
-  You can skip setup and come back later, but Helium services won't work without it.
+  If you use defaults, Helium services will be automatically enabled.
 </message>
 
 <message name="IDS_HELIUM_ONBOARDING_FINISH_TITLE" desc="Title on the final onboarding screen.">
   Ready to browse?
 </message>
 <message name="IDS_HELIUM_ONBOARDING_FINISH_BODY" desc="Body text on the final onboarding screen.">
-  The setup is complete, thank you for choosing Helium.
-Time to enjoy the Internet again.
+  The setup is complete, thank you for choosing Helium. Time to enjoy the internet again.
 </message>
 
 <message name="IDS_HELIUM_ONBOARDING_SERVICES_TITLE" desc="Title of the onboarding screen for Helium services consent.">
   Helium services
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SERVICES_SUBTITLE" desc="Subtitle explaining when Helium services consent choices take effect.">
-  Services are not active until you consent to using them.
-Changes will be applied after you go to the next page.
+  Services are not active until you consent to using them. Changes will be applied after you go to the next page.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SERVICES_CONNECTION_TITLE" desc="Title of the global toggle for connecting to Helium services.">
   Allow connecting to Helium services
@@ -107,28 +103,22 @@ Changes will be applied after you go to the next page.
 </message>
 
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_TITLE" desc="Title of the onboarding screen for selecting a default search engine.">
-  Default search engine
+  Choose a search engine
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_SUBTITLE" desc="Subtitle for the onboarding screen for selecting a default search engine.">
-  You can change your choice later in Settings.
-Engines are ordered by privacy.
+  You can change your choice later in Settings. Search engines are sorted by privacy.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_CATEGORIES_PRIVATE" desc="Description for privacy-first search engines in onboarding.">
-  A privacy-first search engine which
-doesn't profile or track you.
+  A privacy-first search engine which doesn't profile or track you.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_CATEGORIES_SMALL" desc="Description for smaller search engines that are more private than mainstream engines but not privacy-focused.">
-  Transparent, but not privacy-focused.
-Offers better privacy than mainstream
-search engines.
+  Transparent, but not privacy-focused. Offers better privacy than mainstream search engines.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_CATEGORIES_MAINSTREAM" desc="Description for mainstream search engines in onboarding.">
-  A mainstream search engine which
-collects extensive personal data.
+  A mainstream search engine which collects extensive personal data.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_CATEGORIES_CUSTOM" desc="Description for a custom search engine in onboarding.">
-  A custom search engine. Its privacy
-wasn't verified by Helium.
+  A custom search engine. Its privacy wasn't verified by Helium.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_SEARCH_ENGINES_DUCKDUCKGO" desc="Onboarding description of DuckDuckGo as a search engine option.">
   Privacy-focused. Relies on Bing for results. Promises not to track or profile you.
@@ -159,8 +149,7 @@ wasn't verified by Helium.
   Ready to switch to Helium?
 </message>
 <message name="IDS_HELIUM_ONBOARDING_DEFAULT_BROWSER_SUBTITLE" desc="Subtitle of the onboarding screen asking whether Helium should be the default browser.">
-  Better privacy, speed, and comfort. All in one click.
-Let's make links open in Helium by default.
+  Better privacy, speed, and comfort. All in one click. Wanna make links open in Helium by default?
 </message>
 <message name="IDS_HELIUM_ONBOARDING_DEFAULT_BROWSER_YES" desc="Label for the option to make Helium the default browser.">
   Yes
@@ -179,8 +168,7 @@ Let's make links open in Helium by default.
   Take your stuff with you
 </message>
 <message name="IDS_HELIUM_ONBOARDING_DATA_IMPORT_SUBTITLE" desc="Subtitle of the onboarding screen for importing browser data.">
-  Transfer your most important bookmarks, history,
- and extensions from other browsers.
+  Transfer your most important bookmarks, history, and extensions from other browsers.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_DATA_IMPORT_BOOKMARKS" desc="Label for bookmarks as an importable data type.">
   Bookmarks
@@ -196,19 +184,18 @@ Let's make links open in Helium by default.
   Password manager
 </message>
 <message name="IDS_HELIUM_ONBOARDING_PASSWORD_SUBTITLE" desc="Subtitle of the onboarding screen for choosing a password manager.">
-  Helium doesn't have a built-in password manager, by design.
- Would you like to install a browser-agnostic one?
+  Helium doesn't have a built-in password manager. Would you like to install one from the Web Store?
 </message>
-<message name="IDS_HELIUM_ONBOARDING_PASSWORD_IMPORT_GUIDE" desc="Button label linking to a password manager import guide.">
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_IMPORT_GUIDE" desc="Link label linking to a password manager import guide. Short title for a guide.">
   Import
 </message>
-<message name="IDS_HELIUM_ONBOARDING_PASSWORD_SETUP_GUIDE" desc="Button label linking to a password manager setup guide.">
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_SETUP_GUIDE" desc="Link label linking to a password manager setup guide. Short title for a guide.">
   Setup
 </message>
-<message name="IDS_HELIUM_ONBOARDING_PASSWORD_PRIVACY" desc="Button label linking to a password manager privacy policy.">
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_PRIVACY" desc="Link label linking to a password manager privacy policy. Short title for privacy policy.">
   Privacy
 </message>
-<message name="IDS_HELIUM_ONBOARDING_PASSWORD_INSTALL" desc="Button label to install a password manager extension.">
+<message name="IDS_HELIUM_ONBOARDING_PASSWORD_INSTALL" desc="Button label to install a password manager extension, CTA.">
   Install
 </message>
 <message name="IDS_HELIUM_ONBOARDING_PASSWORD_INSTALLED" desc="Status label shown when a password manager extension is installed.">
@@ -219,22 +206,22 @@ Let's make links open in Helium by default.
 </message>
 
 <message name="IDS_HELIUM_ONBOARDING_PASSWORD_MANAGERS_PROTON_PASS" desc="Onboarding description of Proton Pass as a password manager option.">
-  Secure and privacy-focused password manager by Proton. Stores data in Europe. All clients are open-source. Free with an optional paid plan.
+  Secure and privacy-focused password manager with open-source clients. Stores data only in Europe. Free with an optional paid plan.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_PASSWORD_MANAGERS_BITWARDEN" desc="Onboarding description of Bitwarden as a password manager option.">
-  The most popular open-source password manager. Offers data storage in Europe or US. Free with an optional paid plan. Can be self-hosted.
+  Secure and the most popular open-source password manager. Offers data storage in Europe or US. Free with an optional paid plan. Can be self-hosted.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_PASSWORD_MANAGERS_ONE_PASSWORD" desc="Onboarding description of 1Password as a password manager option.">
-  Popular, paid, and closed-source password manager. Offers data storage in Europe or US. May not work correctly with Helium due to negligence.
+  Popular, paid, and closed-source password manager. Offers data storage in Europe or US. May not work correctly with Helium without extra configuration.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_PASSWORD_MANAGERS_DASHLANE" desc="Onboarding description of Dashlane as a password manager option.">
   Popular, paid, and closed-source password manager. Stores data in Europe. Known for aggressive upselling tactics.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_PASSWORD_MANAGERS_ICLOUD_PASSWORDS" desc="Onboarding description of iCloud Passwords as a password manager option.">
-  Free password manager by Apple. Will nag you about using Safari and require re-authentication on browser restart. Can't generate passwords.
+  Free and closed-source password manager by Apple. Nags about using Safari, requires re-authentication on browser restart, and can't generate passwords.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_PASSWORD_MANAGERS_KEE_PASS_XC" desc="Onboarding description of KeePassXC as a password manager option.">
-  Local, free, and open-source password manager for advanced users. Requires technical knowledge to set up and use.
+  Free, local, and open-source password manager for advanced users. Requires technical knowledge to set up and use. Cannot sync without extra software.
 </message>
 
 </grit-part>

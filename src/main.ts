@@ -1,6 +1,8 @@
 import { mount } from 'svelte'
 import './lib/chrome-send-polyfill';
 
+import "@fontsource-variable/instrument-sans/index.css";
+import "@imput/helium-prism/styles.css";
 import './app.css'
 import { initStrings, s } from './lib/strings';
 

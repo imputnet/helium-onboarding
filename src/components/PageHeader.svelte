@@ -1,18 +1,34 @@
 <script lang="ts">
+    import type { Component } from "svelte";
+
     type Props = {
         title: string;
         subtitle: string;
         noTopMargin?: boolean;
         verticalTitle?: boolean;
-        Icon: ConstructorOfATypedSvelteComponent;
+        iconHeight?: string;
+        Icon: Component;
     };
 
-    const { title, subtitle, noTopMargin, verticalTitle, Icon }: Props = $props();
+    const {
+        title,
+        subtitle,
+        noTopMargin,
+        verticalTitle,
+        iconHeight,
+        Icon,
+    }: Props = $props();
 </script>
 
 <div class="page-header" class:no-top-margin={noTopMargin}>
     <div class="title" class:vertical={verticalTitle}>
-        <Icon />
+        <div class="header-icon">
+            {#if iconHeight}
+                <Icon height={iconHeight} />
+            {:else}
+                <Icon />
+            {/if}
+        </div>
         <h2>{title}</h2>
     </div>
     <p>{subtitle}</p>
@@ -21,8 +37,9 @@
 <style>
     .page-header {
         display: flex;
+        align-items: center;
         flex-direction: column;
-        gap: var(--gap);
+        gap: var(--gap-2);
         margin-top: 48px;
 
         &.no-top-margin {
@@ -31,27 +48,37 @@
 
         & p {
             font-size: 18px;
+            max-width: 450px;
+            text-wrap: pretty;
         }
 
         & .title {
             display: flex;
             align-items: center;
-            justify-content: center;
             flex-wrap: wrap;
             gap: 10px;
 
-            & > :global(svg) {
+            & .header-icon {
+                display: flex;
                 height: 32px;
                 width: 32px;
+            }
+
+            & .header-icon :global(svg) {
+                width: 100%;
+                height: 100%;
                 stroke-width: 2px;
             }
 
             &.vertical {
                 flex-direction: column;
 
-                & > :global(svg) {
+                & .header-icon {
                     height: 48px;
                     width: 48px;
+                }
+
+                & .header-icon :global(svg) {
                     stroke-width: 1.6px;
                 }
             }

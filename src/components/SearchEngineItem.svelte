@@ -1,11 +1,8 @@
 <script lang="ts">
+    import { Button, IconSearch, Tooltip } from "@imput/helium-prism";
     import { s } from "../lib/strings";
     import { setDefaultEngine } from "../lib/browser";
-    import { searchEngineConfig, type SearchEngineName } from "../lib/search-engine-config";
-
-    import Tooltip from "./Tooltip.svelte";
-
-    import IconSearch from "../icons/tabler/IconSearch.svelte";
+    import { searchEngineConfig } from "../lib/search-engine-config";
 
     import IconShieldCheck from "../icons/tabler/IconShieldCheck.svelte";
     import IconShieldExclamation from "../icons/tabler/IconShieldExclamation.svelte";
@@ -34,7 +31,7 @@
 
     const engineCategory = $derived.by(() => {
         if (Object.hasOwn(searchEngineConfig, id)) {
-            return searchEngineConfig[id as SearchEngineName];
+            return searchEngineConfig[id];
         }
 
         return "custom";
@@ -43,56 +40,66 @@
     const PrivacyIcon = $derived(privacyMarkers[engineCategory]);
 </script>
 
-<button
-    class="big"
-    class:selected={isDefault}
+<Button
+    card
+    selected={isDefault}
+    aria-label={`${name}. ${s.searchCategories[engineCategory]}${engineCategory === "custom" ? "" : ` ${desc}`}`}
     aria-pressed={isDefault}
     onclick={() => {
         setDefaultEngine(browserId);
     }}
 >
-    <div class="engine-icon-container" aria-hidden="true">
-        {#if !brokenIcon}
-            <img
-                class="engine-icon"
-                width="32"
-                height="32"
-                src={iconPath}
-                alt="{name} logo"
-                onerror={() => (brokenIcon = true)}
-            />
-        {:else}
-            <IconSearch />
-        {/if}
+    <div class="engine-layout">
+        <div class="engine-icon-container" aria-hidden="true">
+            {#if !brokenIcon}
+                <img
+                    class="engine-icon"
+                    width="32"
+                    height="32"
+                    src={iconPath}
+                    alt="{name} logo"
+                    onerror={() => (brokenIcon = true)}
+                />
+            {:else}
+                <IconSearch />
+            {/if}
+        </div>
+        <div class="engine-text">
+            <h4 class="engine-name">
+                <Tooltip>
+                    {#snippet anchor()}
+                        <PrivacyIcon />
+                    {/snippet}
+                    {#snippet content()}
+                        <div class="tooltip-content">
+                            {s.searchCategories[engineCategory]}
+                        </div>
+                    {/snippet}
+                </Tooltip>
+                {name}
+            </h4>
+            {#if engineCategory !== "custom"}
+                <p>{desc}</p>
+            {/if}
+        </div>
     </div>
-    <div class="engine-text">
-        <h4 class="engine-name">
-            <Tooltip>
-                {#snippet anchor()}
-                    <PrivacyIcon />
-                {/snippet}
-                {#snippet content()}
-                    {s.searchCategories[engineCategory]}
-                {/snippet}
-            </Tooltip>
-            {name}
-        </h4>
-        {#if engineCategory !== "custom"}
-            <p>{desc}</p>
-        {/if}
-    </div>
-</button>
+</Button>
 
 <style>
-    button {
-        gap: 18px;
-        max-width: 600px;
+    .engine-layout {
+        display: grid;
+        grid-template-columns: 32px minmax(0, 1fr);
+        align-items: center;
+        gap: 16px;
+        width: 100%;
     }
 
     .engine-text {
         display: flex;
         flex-direction: column;
         gap: 2px;
+        min-width: 0;
+        text-align: left;
     }
 
     .engine-name {
@@ -104,8 +111,8 @@
 
         & :global(svg) {
             stroke-width: 2px;
-            height: 19px;
-            width: 19px;
+            height: 18px;
+            width: 18px;
         }
     }
 
@@ -120,7 +127,12 @@
     .engine-icon {
         width: 32px;
         height: 32px;
-        aspect-ratio: 1/1;
         border-radius: 8px;
+    }
+
+    .tooltip-content {
+        max-width: 230px;
+        line-break: pretty;
+        white-space: normal;
     }
 </style>

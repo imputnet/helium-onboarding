@@ -1,4 +1,10 @@
 <script lang="ts">
+    import {
+        Button,
+        IconArrowLeft,
+        IconArrowRight,
+        Spinner,
+    } from "@imput/helium-prism";
     import { s } from "../lib/strings";
     import { SvelteSet } from "svelte/reactivity";
     import { acceptLatestSchema, askToBeDefault, importProfile, setPref } from "../lib/browser";
@@ -10,11 +16,6 @@
         selectedProfiles,
         previouslyImportedProfiles,
     } from "../lib/onboarding-flow";
-
-    import Spinner from "./Spinner.svelte";
-
-    import IconArrowLeft from "../icons/tabler/IconArrowLeft.svelte";
-    import IconArrowRight from "../icons/tabler/IconArrowRight.svelte";
 
     const visible = $derived(
         $currentPage !== "Welcome" && $currentPage !== "Finish"
@@ -69,19 +70,21 @@
     }
 </script>
 
-<div id="setup-buttons" class="action-buttons" class:visible>
-    <button disabled={working} onclick={previousPage}>
-        <IconArrowLeft />
-        {s.button.back}
-    </button>
-    <button disabled={working} class="primary" onclick={next}>
-        {#if working}
-            <Spinner />
-        {:else}
-            <IconArrowRight />
-        {/if}
-        {s.button.next}
-    </button>
+<div class="glass-children">
+    <div id="setup-buttons" class="action-buttons" class:visible>
+        <Button disabled={working} onclick={previousPage}>
+            <IconArrowLeft />
+            {s.button.back}
+        </Button>
+        <Button disabled={working} primary onclick={next}>
+            {#if working}
+                <Spinner size={18} />
+            {:else}
+                <IconArrowRight />
+            {/if}
+            {s.button.next}
+        </Button>
+    </div>
 </div>
 
 <style>
@@ -90,6 +93,8 @@
         --misclick-protect: 8px;
 
         bottom: var(--bottom-space);
+        left: 50%;
+        transform: translateX(-50%);
 
         justify-content: center;
 
@@ -104,10 +109,6 @@
             animation-delay: 0.4s;
             animation-fill-mode: backwards;
         }
-    }
-
-    button:not(.primary) {
-        backdrop-filter: blur(15px);
     }
 
     /* invisible bottom layer to prevent misclicks */

@@ -21,19 +21,12 @@ export const currentPage = derived(
     $index => flow[$index]
 );
 
-// TODO: remove this once we're sure we want to suggest password managers
-const showPasswordManagers = false;
-
 const shouldSkip = (page: typeof flow[number]): boolean => {
     switch (page) {
         case 'DataImport':
             // skip if nothing to import
             return get(importableProfiles).length === 0;
         case 'PasswordManager':
-            // TODO: remove this once we're ready
-            if (!showPasswordManagers) {
-                return true;
-            }
             // skip if we aren't allowed to install extensions
             const pref = get(preferences);
             return !pref['services.ext_proxy'] || !pref['services.enabled'];
@@ -65,6 +58,13 @@ export const nextPage = () => {
 
 export const previousPage = () => {
     index.update((current) => getPageNumber(current, -1));
+}
+
+export const ONBOARDING_INTRO_DELAY_MS = 800;
+
+export const hasSeenIntro = writable(false);
+export const markIntroSeen = () => {
+    hasSeenIntro.set(true);
 }
 
 export const userChoseHeliumAsDefault = writable(true);
