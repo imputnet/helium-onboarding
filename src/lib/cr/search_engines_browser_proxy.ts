@@ -34,6 +34,7 @@ export interface SearchEngine {
   name: string;
   shouldConfirmRemoval: boolean;
   url: string;
+  suggestionsUrl: string;
   urlLocked: boolean;
 }
 
@@ -67,9 +68,19 @@ export enum SearchEnginesInteractions {
   DEACTIVATE = 1,
   KEYBOARD_SHORTCUT_TAB = 2,
   KEYBOARD_SHORTCUT_SPACE_OR_TAB = 3,
+  SITE_SHORTCUTS_SECTION_EXPANDED = 4,
+  SITE_SHORTCUTS_SECTION_COLLAPSED = 5,
+  FEATURE_SHORTCUTS_SECTION_EXPANDED = 6,
+  FEATURE_SHORTCUTS_SECTION_COLLAPSED = 7,
+  MORE_ACTIONS = 8,
+  EDIT_SEARCH_ENGINE = 9,
+  ADD_SEARCH_ENGINE = 10,
+  SUBPAGE_NAVIGATED = 11,
+  EXTENSION_DISABLE = 12,
+  EXTENSION_MANAGE = 13,
 
   // Leave this at the end.
-  COUNT = 4,
+  COUNT = 14,
 }
 
 /**
@@ -86,11 +97,16 @@ export enum ChoiceMadeLocation {
   // The search engine choice dialog for existing users or the profile picker
   // for new users. This value should not be used in settings.
   CHOICE_SCREEN = 2,
+  // Programmatic import of a search engine choice selected at the device level
+  // (e.g., Android Play API). Behaves mostly like `CHOICE_SCREEN` for initial
+  // recording, but allows repeated signals from the OS to be dropped silently
+  // without triggering assertion failures or creating duplicate records.
+  DEVICE_CHOICE_IMPORT = 3,
   // Some other source, not matching some requirements that the full search
   // engine choice surfaces are compatible with. Might be used for example when
   // automatically changing default search engine via an extension, or some
   // enterprise policy.
-  OTHER = 3,
+  OTHER = 4,
 }
 
 export interface SearchEnginesBrowserProxy {
@@ -107,7 +123,8 @@ export interface SearchEnginesBrowserProxy {
   searchEngineEditCancelled(): void;
 
   searchEngineEditCompleted(
-      searchEngine: string, keyword: string, queryUrl: string): void;
+      searchEngine: string, keyword: string, queryUrl: string,
+      suggestionsUrl: string): void;
 
   getCategorizedTemplateUrls(): Promise<CategorizedTemplateUrls>;
 
@@ -115,8 +132,9 @@ export interface SearchEnginesBrowserProxy {
 
   getSaveGuestChoice(): Promise<boolean|null>;
 
-  validateSearchEngineInput(fieldName: string, fieldValue: string):
-      Promise<boolean>;
+  validateSearchEngineInput(
+      fieldName: string, fieldValue: string,
+      isNewPrimary: boolean): Promise<boolean>;
 
   /**
    * Helper function that calls recordHistogram for the
@@ -155,11 +173,13 @@ export class SearchEnginesBrowserProxyImpl implements
   }
 
   searchEngineEditCompleted(
-      searchEngine: string, keyword: string, queryUrl: string) {
+      searchEngine: string, keyword: string, queryUrl: string,
+      suggestionsUrl: string) {
     chrome.send('searchEngineEditCompleted', [
       searchEngine,
       keyword,
       queryUrl,
+      suggestionsUrl,
     ]);
   }
 
@@ -176,9 +196,10 @@ export class SearchEnginesBrowserProxyImpl implements
     return sendWithPromise<boolean|null>('getSaveGuestChoice');
   }
 
-  validateSearchEngineInput(fieldName: string, fieldValue: string) {
+  validateSearchEngineInput(
+      fieldName: string, fieldValue: string, isNewPrimary: boolean) {
     return sendWithPromise<boolean>(
-        'validateSearchEngineInput', fieldName, fieldValue);
+        'validateSearchEngineInput', fieldName, fieldValue, isNewPrimary);
   }
 
   recordSearchEnginesPageHistogram(_interaction: SearchEnginesInteractions) {}
