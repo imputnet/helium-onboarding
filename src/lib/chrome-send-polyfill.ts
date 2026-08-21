@@ -50,6 +50,7 @@ const searchEngineTemplate: SearchEngine = {
     name: 'Search',
     shouldConfirmRemoval: true,
     url: 'https://dummy.invalid/suggest?q=%s',
+    suggestionsUrl: '',
     urlLocked: true
 };
 

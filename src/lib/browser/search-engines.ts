@@ -45,7 +45,7 @@ export const searchEngines = readonly(_searchEngines);
 export const setDefaultEngine = (browserIndex: number) => {
     browser.setDefaultSearchEngine(
         browserIndex,
-        cr.ChoiceMadeLocation.CHOICE_SCREEN,
+        cr.ChoiceMadeLocation.OTHER,
         null
     );
 }
