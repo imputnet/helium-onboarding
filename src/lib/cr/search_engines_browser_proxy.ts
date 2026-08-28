@@ -90,23 +90,23 @@ export enum SearchEnginesInteractions {
  * //components/search_engines/choice_made_location.h
  */
 export enum ChoiceMadeLocation {
+  // Some unspecified source, not matching some requirements that the full
+  // search engine choice surfaces are compatible with. Might be used for
+  // example when automatically changing default search engine via an extension,
+  // or some enterprise policy.
+  OTHER = 0,
   // `chrome://settings/search`
-  SEARCH_SETTINGS = 0,
+  SEARCH_SETTINGS = 1,
   // `chrome://settings/searchEngines`
-  SEARCH_ENGINE_SETTINGS = 1,
+  SEARCH_ENGINE_SETTINGS = 2,
   // The search engine choice dialog for existing users or the profile picker
   // for new users. This value should not be used in settings.
-  CHOICE_SCREEN = 2,
+  CHOICE_SCREEN = 3,
   // Programmatic import of a search engine choice selected at the device level
   // (e.g., Android Play API). Behaves mostly like `CHOICE_SCREEN` for initial
   // recording, but allows repeated signals from the OS to be dropped silently
   // without triggering assertion failures or creating duplicate records.
-  DEVICE_CHOICE_IMPORT = 3,
-  // Some other source, not matching some requirements that the full search
-  // engine choice surfaces are compatible with. Might be used for example when
-  // automatically changing default search engine via an extension, or some
-  // enterprise policy.
-  OTHER = 4,
+  DEVICE_CHOICE_IMPORT = 4,
 }
 
 export interface SearchEnginesBrowserProxy {
@@ -123,8 +123,7 @@ export interface SearchEnginesBrowserProxy {
   searchEngineEditCancelled(): void;
 
   searchEngineEditCompleted(
-      searchEngine: string, keyword: string, queryUrl: string,
-      suggestionsUrl: string): void;
+      searchEngine: string, keyword: string, queryUrl: string, suggestionsUrl: string): void;
 
   getCategorizedTemplateUrls(): Promise<CategorizedTemplateUrls>;
 
@@ -173,8 +172,7 @@ export class SearchEnginesBrowserProxyImpl implements
   }
 
   searchEngineEditCompleted(
-      searchEngine: string, keyword: string, queryUrl: string,
-      suggestionsUrl: string) {
+      searchEngine: string, keyword: string, queryUrl: string, suggestionsUrl: string) {
     chrome.send('searchEngineEditCompleted', [
       searchEngine,
       keyword,
