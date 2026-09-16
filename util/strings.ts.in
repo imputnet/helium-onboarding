@@ -29,13 +29,10 @@ const installLoadTimeData = (): LoadTimeData => {
 
 let chromiumStringsPromise: Promise<void> | undefined;
 const loadChromiumStrings = async (): Promise<void> => {
-    chromiumStringsPromise ??= new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = '/strings.js';
-        script.onload = () => resolve();
-        script.onerror = () => reject(new Error('failed to load /strings.js'));
-        document.head.append(script);
-    });
+    // Chromium serves this at runtime. Import it without a script.src assignment,
+    // which would require TrustedScriptURL under WebUI's Trusted Types CSP.
+    const stringsUrl = '/strings.js';
+    chromiumStringsPromise ??= import(/* @vite-ignore */ stringsUrl).then(() => {});
 
     await chromiumStringsPromise;
 };
