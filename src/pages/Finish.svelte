@@ -6,12 +6,12 @@
         IconCheck,
     } from "@imput/helium-prism";
     import { s } from "../lib/strings";
-    import { setPref } from "../lib/browser";
+    import { setPref, openNewTab } from "../lib/browser";
     import { currentPage, previousPage } from "../lib/onboarding-flow";
 
     const done = async () => {
         await setPref('completed_onboarding', true);
-        window.open("chrome://newtab", "_self");
+        openNewTab();
     }
 
     const visible = $derived($currentPage === "Finish");
