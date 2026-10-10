@@ -52,7 +52,6 @@ action("grit") {
   dist_dir = "$target_gen_dir/dist"
 
   args = [
-    "--experimental-strip-types",
     rebase_path(node_script),
     rebase_path(dist_dir),
     rebase_path("$target_gen_dir/resources.grd"),
