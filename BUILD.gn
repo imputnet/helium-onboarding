@@ -4,84 +4,83 @@ localized_strings_header =
     "$target_gen_dir/helium_onboarding_localized_strings.h"
 
 action("localized_strings") {
-    script = "//third_party/node/node.py"
+  script = "//third_party/node/node.py"
 
-    inputs = [
-        "helium_onboarding_strings.grdp",
-        "util/generate-i18n.mts",
-        "util/localized-strings.h.in",
-        "util/strings.ts.in",
-    ]
+  inputs = [
+    "helium_onboarding_strings.grdp",
+    "util/generate-i18n.mts",
+    "util/localized-strings.h.in",
+    "util/strings.ts.in",
+  ]
 
-    outputs = [ localized_strings_header ]
+  outputs = [ localized_strings_header ]
 
-    args = [
-        rebase_path("util/generate-i18n.mts", root_build_dir),
-        rebase_path(localized_strings_header, root_build_dir),
-    ]
+  args = [
+    rebase_path("util/generate-i18n.mts", root_build_dir),
+    rebase_path(localized_strings_header, root_build_dir),
+  ]
 }
 
 action("build") {
-    script = "//third_party/node/node.py"
-    dist_dir = "$target_gen_dir/dist"
+  script = "//third_party/node/node.py"
+  dist_dir = "$target_gen_dir/dist"
 
-    args = [
-        rebase_path("node_modules/vite/bin/vite.js"),
-        "build",
-        rebase_path("."),
-        "--outDir",
-        rebase_path(dist_dir)
-    ]
+  args = [
+    rebase_path("node_modules/vite/bin/vite.js"),
+    "build",
+    rebase_path("."),
+    "--outDir",
+    rebase_path(dist_dir),
+  ]
 
-    inputs = [
-        "index.html",
-        "src",
-        "public",
-        "package.json",
-        "vite.config.ts",
-        "svelte.config.js",
-    ]
+  inputs = [
+    "index.html",
+    "src",
+    "public",
+    "package.json",
+    "vite.config.ts",
+    "svelte.config.js",
+  ]
 
-    deps = [ ":localized_strings" ]
-    outputs = [ "$dist_dir/index.html" ]
+  deps = [ ":localized_strings" ]
+  outputs = [ "$dist_dir/index.html" ]
 }
 
 action("grit") {
-    script = "//third_party/node/node.py"
-    node_script = "./util/generate-grd.mts"
-    dist_dir = "$target_gen_dir/dist"
+  script = "//third_party/node/node.py"
+  node_script = "./util/generate-grd.mts"
+  dist_dir = "$target_gen_dir/dist"
 
-    args = [
-        "--experimental-strip-types",
-        rebase_path(node_script),
-        rebase_path(dist_dir),
-        rebase_path("$target_gen_dir/resources.grd")
-    ]
+  args = [
+    rebase_path(node_script),
+    rebase_path(dist_dir),
+    rebase_path("$target_gen_dir/resources.grd"),
+  ]
 
-    inputs = [
-        node_script,
-        "$dist_dir/index.html"
-    ]
+  inputs = [
+    node_script,
+    "$dist_dir/index.html",
+  ]
 
-    outputs = [ "$target_gen_dir/resources.grd" ]
-    deps = [ ":build" ]
+  outputs = [ "$target_gen_dir/resources.grd" ]
+  deps = [ ":build" ]
 }
 
 grit("generated_resources") {
-    source = "$target_gen_dir/resources.grd"
+  source = "$target_gen_dir/resources.grd"
 
-    # Required because the .grd is generated.
-    enable_input_discovery_for_gn_analyze = false
-    use_brotli = true
+  # Required because the .grd is generated.
+  enable_input_discovery_for_gn_analyze = false
+  use_brotli = true
 
-    output_dir = "$target_gen_dir/resources"
+  output_dir = "$target_gen_dir/resources"
 
-    outputs = [
-        "grit/helium_onboarding_generated.h",
-        "grit/helium_onboarding_generated_map.cc",
-        "grit/helium_onboarding_generated_map.h",
-        "helium_onboarding_generated.pak"
-    ]
+  outputs = [
+    "grit/helium_onboarding_generated.h",
+    "grit/helium_onboarding_generated_map.cc",
+    "grit/helium_onboarding_generated_map.h",
+    "helium_onboarding_generated.pak",
+  ]
 
-    deps = [":grit"]
+  deps = [ ":grit" ]
 }

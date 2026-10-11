@@ -119,3 +119,31 @@ h2 {
         }
     }
 }
+
+@media (max-width: 600px) {
+    body {
+        min-height: 100dvh;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .onboarding-page > div {
+        box-sizing: border-box;
+        max-width: 100%;
+    }
+
+    .scrollable-page {
+        box-sizing: border-box;
+        max-height: calc(100dvh - 24px);
+        padding-inline: 16px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .action-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

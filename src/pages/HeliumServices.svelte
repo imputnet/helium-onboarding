@@ -10,12 +10,42 @@
 
     const visible = $derived($currentPage === "HeliumServices");
     const servicesEnabled = $derived($pr["services.enabled"]);
-    const autoupdatesTitle = platform.is.linux
-        ? s.services.autoupdatesTitleLinux
-        : s.services.autoupdatesTitle;
-    const autoupdatesDesc = platform.is.linux
-        ? s.services.autoupdatesDescLinux
-        : s.services.autoupdatesDesc;
+    const services = ([
+        {
+            title: s.services.extensionsTitle,
+            desc: s.services.extensionsDesc,
+            prefName: "services.ext_proxy",
+            available: !platform.is.android,
+        },
+        {
+            title: s.services.bangsTitle,
+            desc: s.services.bangsDesc,
+            prefName: "services.bangs",
+            available: true,
+        },
+        {
+            title: s.services.ublockTitle,
+            desc: s.services.ublockDesc,
+            prefName: "services.ublock_assets",
+            available: !platform.is.android,
+        },
+        {
+            title: platform.is.linux
+                ? s.services.autoupdatesTitleLinux
+                : s.services.autoupdatesTitle,
+            desc: platform.is.linux
+                ? s.services.autoupdatesDescLinux
+                : s.services.autoupdatesDesc,
+            prefName: "services.browser_updates",
+            available: !platform.is.android,
+        },
+        {
+            title: s.services.spellcheckTitle,
+            desc: s.services.spellcheckDesc,
+            prefName: "services.spellcheck_files",
+            available: !platform.is.android && !platform.is.macos,
+        },
+    ] as const).filter(service => service.available);
 </script>
 
 <div id="services-page" class="onboarding-page" class:visible>
@@ -33,52 +63,31 @@
                 prefName="services.enabled"
             />
             <div class="toggle-separator"></div>
-            <PreferenceToggle
-                title={s.services.extensionsTitle}
-                desc={s.services.extensionsDesc}
-                prefName="services.ext_proxy"
-                disabled={!servicesEnabled}
-            />
-            <PreferenceToggle
-                title={s.services.bangsTitle}
-                desc={s.services.bangsDesc}
-                prefName="services.bangs"
-                disabled={!servicesEnabled}
-            />
-            <PreferenceToggle
-                title={s.services.ublockTitle}
-                desc={s.services.ublockDesc}
-                prefName="services.ublock_assets"
-                disabled={!servicesEnabled}
-            />
-            <PreferenceToggle
-                title={autoupdatesTitle}
-                desc={autoupdatesDesc}
-                prefName="services.browser_updates"
-                disabled={!servicesEnabled}
-            />
-            {#if !platform.is.macos}
+            {#each services as service (service.prefName)}
                 <PreferenceToggle
-                    title={s.services.spellcheckTitle}
-                    desc={s.services.spellcheckDesc}
-                    prefName="services.spellcheck_files"
+                    title={service.title}
+                    desc={service.desc}
+                    prefName={service.prefName}
                     disabled={!servicesEnabled}
                 />
+            {/each}
+            <!-- TODO: wire instance settings on android -->
+            {#if !platform.is.android}
+                <div
+                    class="instance-link"
+                    class:inactive={!servicesEnabled}
+                    inert={!servicesEnabled}
+                >
+                    <CardLink
+                        title={s.services.instanceTitle}
+                        desc={s.services.instanceDesc}
+                        href="chrome://settings/privacy/services"
+                        disabled={!servicesEnabled}
+                    />
+                </div>
             {/if}
-            <div
-                class="instance-link"
-                class:inactive={!servicesEnabled}
-                inert={!servicesEnabled}
-            >
-                <CardLink
-                    title={s.services.instanceTitle}
-                    desc={s.services.instanceDesc}
-                    href="chrome://settings/privacy/services"
-                    disabled={!servicesEnabled}
-                />
-            </div>
-            </div>
         </div>
+    </div>
 </div>
 
 <style>

@@ -9,7 +9,7 @@
     } from "@imput/helium-prism";
     import { s } from "../lib/strings";
     import { parseLocalizedString } from "../lib/i18n";
-    import { setPref, acceptLatestSchema } from "../lib/browser";
+    import { setPref, acceptLatestSchema, openNewTab } from "../lib/browser";
     import {
         currentPage,
         hasSeenIntro,
@@ -22,7 +22,7 @@
         acceptLatestSchema();
         await setPref('services.user_consented', true);
         await setPref('completed_onboarding', true);
-        window.open("chrome://newtab", "_self");
+        openNewTab();
     }
 
     const visible = $derived($currentPage === "Welcome");
