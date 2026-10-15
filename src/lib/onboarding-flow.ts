@@ -2,8 +2,7 @@ import { platform } from "./platform";
 import { SvelteSet } from "svelte/reactivity";
 import { derived, get, writable } from "svelte/store";
 
-import { preferences } from "../lib/browser";
-import { canBeDefaultBrowser, importableProfiles, isDefaultBrowser } from "./browser";
+import { canBeDefaultBrowser, isDefaultBrowser, preferences } from "./browser";
 
 export const flow = [
     "Welcome",
@@ -25,8 +24,7 @@ export const currentPage = derived(
 const shouldSkip = (page: typeof flow[number]): boolean => {
     switch (page) {
         case 'DataImport':
-            // skip if nothing to import
-            return platform.is.android || get(importableProfiles).length === 0;
+            return platform.is.android;
         case 'PasswordManager':
             // skip if we aren't allowed to install extensions
             const pref = get(preferences);

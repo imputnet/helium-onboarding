@@ -2,7 +2,6 @@ import { platform } from "../platform";
 
 import * as Prefs from "./prefs";
 import * as Profile from "./profile";
-import * as Importer from "./importer";
 import * as Extensions from "./extensions";
 import * as DefaultBrowser from "./is-default";
 import * as SearchEngines from "./search-engines";
@@ -21,7 +20,6 @@ export const setup = () => {
     SearchEngines.setup();
     if (!platform.is.android) {
         Profile.setup();
-        Importer.setup();
         // TODO: explore extension support on android
         Extensions.setup();
         // TODO: wire default browser setup to android's browser role request

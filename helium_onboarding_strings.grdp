@@ -165,10 +165,25 @@
 </message>
 
 <message name="IDS_HELIUM_ONBOARDING_DATA_IMPORT_TITLE" desc="Title of the onboarding screen for importing browser data.">
-  Take your stuff with you
+  Import from other browsers
 </message>
 <message name="IDS_HELIUM_ONBOARDING_DATA_IMPORT_SUBTITLE" desc="Subtitle of the onboarding screen for importing browser data.">
-  Transfer your most important bookmarks, history, and extensions from other browsers.
+  Transfer your bookmarks, history, and extensions from other browsers.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_DATA_IMPORT_PROMPT_TITLE" desc="Title of the prompt asking to look for other browsers before showing import options.">
+  Find browsers to import from
+</message>
+<message name="IDS_HELIUM_ONBOARDING_DATA_IMPORT_PROMPT_PERMISSION" desc="Explanation asking for permission to look for other browsers before choosing data to import.">
+  Allow Helium to look for other browsers on this device so you can choose what to transfer.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_DATA_IMPORT_ALLOW" desc="Button that allows Helium to look for browsers to import data from.">
+  Allow
+</message>
+<message name="IDS_HELIUM_ONBOARDING_DATA_IMPORT_NO_BROWSERS" desc="Notice shown when no previous browsers are available to import data from.">
+  No compatible browsers could be found.
+</message>
+<message name="IDS_HELIUM_ONBOARDING_DATA_IMPORT_DISCOVERY_ERROR" desc="Error shown when looking for browsers fails. The user can retry using the Allow button.">
+  An error occurred. Please try again.
 </message>
 <message name="IDS_HELIUM_ONBOARDING_DATA_IMPORT_BOOKMARKS" desc="Label for bookmarks as an importable data type.">
   Bookmarks

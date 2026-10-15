@@ -5,6 +5,12 @@ const browser = cr.ImportDataBrowserProxyImpl.getInstance();
 
 const importableProfilesRaw = writable<cr.BrowserProfile[]>([]);
 
+export const importDiscovery = writable<{
+    status: 'initial' | 'loading' | 'loaded' | 'error';
+}>({
+    status: 'initial',
+});
+
 enum _HeliumImportType {
     EXTENSIONS = 'import_dialog_extensions',
 };
@@ -20,10 +26,18 @@ type Action = () => void;
 // The import in progress stays at the front until it finishes.
 const queue: [number, HeliumImportTypes, Action, Action][] = [];
 
-export const setup = () => {
-    browser.initializeImportDialog().then(
-        profiles => importableProfilesRaw.set(profiles)
+const fetchProfiles = async () => {
+    importableProfilesRaw.set(await browser.initializeImportDialog());
+}
+
+export const loadImportableProfiles = async () => {
+    importDiscovery.set({ status: 'loading' });
+
+    const status = await fetchProfiles().then(
+        () => 'loaded' as const,
+        () => 'error' as const,
     );
+    importDiscovery.set({ status });
 }
 
 const convertTasks = (tasks: WhatToImport): HeliumImportTypes => {
@@ -58,7 +72,7 @@ const runNext = () => {
         if (queue.length) {
             runNext();
         } else {
-            browser.initializeImportDialog().then(importableProfilesRaw.set);
+            fetchProfiles();
         }
     });
 
