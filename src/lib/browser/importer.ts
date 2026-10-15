@@ -16,6 +16,10 @@ export const HeliumImportType = {
 export type HeliumImportType = _HeliumImportType | cr.ImportType;
 export type HeliumImportTypes = Record<HeliumImportType, boolean>;
 
+type Action = () => void;
+// The import in progress stays at the front until it finishes.
+const queue: [number, HeliumImportTypes, Action, Action][] = [];
+
 export const setup = () => {
     browser.initializeImportDialog().then(
         profiles => importableProfilesRaw.set(profiles)
@@ -33,15 +37,12 @@ const convertTasks = (tasks: WhatToImport): HeliumImportTypes => {
     };
 }
 
-type Action = () => void;
-let queue: [number, HeliumImportTypes, Action, Action][] = [];
-
 const runNext = () => {
     if (queue.length === 0) {
         return;
     }
 
-    const [ index, tasks, resolve, reject ] = queue.pop()!;
+    const [ index, tasks, resolve, reject ] = queue[0];
 
     const me = cr.addWebUiListener('import-data-status-changed', (status: cr.ImportDataStatus) => {
         if (status === cr.ImportDataStatus.FAILED)
@@ -52,6 +53,7 @@ const runNext = () => {
             return;
 
         cr.removeWebUiListener(me);
+        queue.shift();
 
         if (queue.length) {
             runNext();
