@@ -202,7 +202,7 @@
             calc(var(--onboarding-intro-delay) + 0.85s)
             both;
         view-transition-name: welcome-logo;
-        will-change: transform, filter, opacity;
+        will-change: transform, opacity;
     }
 
     #welcome-page.visible.intro {
@@ -232,7 +232,6 @@
     :global(::view-transition-old(welcome-logo)),
     :global(::view-transition-new(welcome-logo)) {
         animation: none;
-        filter: none;
         height: 100%;
         object-fit: contain;
         width: 100%;
@@ -242,17 +241,11 @@
         from {
             opacity: 0;
             transform: translateY(360px);
-            filter: blur(10px);
-        }
-
-        90% {
-            filter: none;
         }
 
         to {
             opacity: 1;
             transform: none;
-            filter: none;
         }
     }
 

@@ -75,13 +75,14 @@ h2 {
 
 @keyframes page-in {
     from {
-        translate: 0 30px;
-        filter: blur(8px);
+        translate: 0 40px;
+        opacity: 0;
+    }
+    10% {
         opacity: 0;
     }
     to {
         opacity: 1;
-        filter: none;
     }
 }
 
@@ -90,11 +91,13 @@ h2 {
         opacity: 1;
         visibility: visible;
     }
+    90% {
+        opacity: 0;
+    }
     to {
         opacity: 0;
         visibility: hidden;
-        translate: 0 -30px;
-        filter: blur(8px);
+        translate: 0 -40px;
     }
 }
 
