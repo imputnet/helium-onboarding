@@ -51,6 +51,7 @@
 
 <style>
     :global(label.checkbox.profile-option) {
+        position: relative;
         width: 100%;
         gap: 16px;
         padding: 12px 18px;
