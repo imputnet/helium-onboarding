@@ -134,6 +134,7 @@ const importerListSimple = [
 const importerList: cr.BrowserProfile[] = importerListSimple.map((data, index) => {
     const [ name, profileName, features ] = data;
     return {
+        id: 1000 + index,
         name,
         index,
         profileName,
@@ -182,6 +183,7 @@ const _send_polyfill = (msg: string, params?: any[]) => {
     } else if (msg === 'setProfileName') {
         profileName = params![0];
     } else if (msg === 'acceptLatestSchema') {
+    } else if (msg === 'openFilesAndFoldersSettings') {
     } else if (msg === 'setDefaultSearchEngine') {
         const currentDefaultEngine = searchEngines.defaults[currentDefault];
         currentDefaultEngine.displayName = currentDefaultEngine.name;

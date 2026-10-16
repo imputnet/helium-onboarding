@@ -11,6 +11,7 @@ import {sendWithPromise} from './cr.js';
  * The structure of this data must be kept in sync with C++ ImportDataHandler.
  */
 export interface BrowserProfile {
+  id: number;
   name: string;
   index: number;
   profileName: string;

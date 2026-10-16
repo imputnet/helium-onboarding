@@ -1,8 +1,12 @@
+import { assert } from './cr/assert';
+import { platform } from './platform';
+
 type StringKey = never/* $keys */;
 
 type LoadTimeData = {
-    data?: Record<string, string>;
+    data?: Record<string, string | boolean>;
     getString(key: string): string;
+    getBoolean(key: string): boolean;
 };
 
 declare global {
@@ -18,7 +22,14 @@ const installLoadTimeData = (): LoadTimeData => {
     globalThis.loadTimeData = {
         data: {},
         getString(key: string) {
-            return globalThis.loadTimeData?.data?.[key] ?? '';
+            const value = globalThis.loadTimeData?.data?.[key] ?? '';
+            assert(typeof value === 'string', `${key} is not a string`);
+            return value;
+        },
+        getBoolean(key: string) {
+            const value = globalThis.loadTimeData?.data?.[key] ?? false;
+            assert(typeof value === 'boolean', `${key} is not a boolean`);
+            return value;
         },
     };
     return globalThis.loadTimeData;
@@ -60,6 +71,17 @@ const getString = (key: StringKey): string => {
     }
 
     return string;
+};
+
+const DEV_BOOLEANS: Record<string, boolean> = import.meta.env.DEV ? {
+    ...(platform.is.macos ? { showMacImportPermissionNotice: true } : {}),
+} : {};
+export const getBoolean = (key: string): boolean => {
+    if (import.meta.env.DEV) {
+        return DEV_BOOLEANS[key] ?? false;
+    }
+
+    return (loadTimeData ?? globalThis.loadTimeData)?.getBoolean(key) ?? false;
 };
 
 export const s = {/* $tree */} as const;

@@ -2,20 +2,25 @@
     import { tick } from "svelte";
     import { get } from "svelte/store";
     import { fade } from "svelte/transition";
-    import { s } from "../lib/strings";
-    import type { BrowserProfile } from "../lib/cr";
+    import { getBoolean, s } from "../lib/strings";
     import { currentPage } from "../lib/onboarding-flow";
+    import type { BrowserProfile } from "../lib/cr";
     import { importableProfiles, importDiscovery } from "../lib/browser";
 
     import PageHeader from "../components/PageHeader.svelte";
     import ImportNotice from "../components/ImportNotice.svelte";
     import ImportPrompt from "../components/ImportPrompt.svelte";
+    import MacImportNotice from "../components/MacImportNotice.svelte";
     import BrowserProfileGroup from "../components/BrowserProfileGroup.svelte";
     import BrowserImportGraphic from "../components/BrowserImportGraphic.svelte";
 
     import IconTransferIn from "../icons/tabler/IconTransferIn.svelte";
 
     const PROMPT_FADE_DURATION = 80;
+
+    // The browser only sets this where users can grant access to protected
+    // browsers (macOS 27+).
+    const showMacNotice = getBoolean("showMacImportPermissionNotice");
 
     const visible = $derived($currentPage === "DataImport");
     const discovered = $derived($importDiscovery.status === "loaded");
@@ -85,6 +90,9 @@
                     {#each sorted as [browser, profiles] (browser)}
                         <BrowserProfileGroup {browser} {profiles} />
                     {/each}
+                    {#if showMacNotice}
+                        <MacImportNotice />
+                    {/if}
                 </div>
             {/if}
         </div>

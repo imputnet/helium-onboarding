@@ -2,7 +2,11 @@ import { platform } from "./platform";
 import { SvelteSet } from "svelte/reactivity";
 import { derived, get, writable } from "svelte/store";
 
-import { canBeDefaultBrowser, isDefaultBrowser, preferences } from "./browser";
+import {
+    canBeDefaultBrowser,
+    isDefaultBrowser,
+    preferences,
+} from "./browser";
 
 export const flow = [
     "Welcome",

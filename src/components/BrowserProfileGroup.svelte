@@ -50,7 +50,7 @@
     <h4>{browser}</h4>
 </div>
 <div class="browser-profiles">
-    {#each profiles as profile (profile.index)}
+    {#each profiles as profile (profile.id)}
         <ProfileImportOption {profile} />
     {/each}
 </div>

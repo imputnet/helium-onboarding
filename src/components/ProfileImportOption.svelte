@@ -13,14 +13,14 @@
 
     const { profile }: Props = $props();
 
-    const selected = $derived($selectedProfiles.has(profile.index));
-    const disabled = $derived($previouslyImportedProfiles.has(profile.index));
+    const selected = $derived($selectedProfiles.has(profile.id));
+    const disabled = $derived($previouslyImportedProfiles.has(profile.id));
 
     const toggle = () => {
         if (!selected) {
-            $selectedProfiles.add(profile.index);
+            $selectedProfiles.add(profile.id);
         } else {
-            $selectedProfiles.delete(profile.index);
+            $selectedProfiles.delete(profile.id);
         }
     };
 

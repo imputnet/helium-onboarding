@@ -1,4 +1,4 @@
-import { derived, writable } from "svelte/store";
+import { derived, get, writable } from "svelte/store";
 import * as cr from "../cr";
 
 const browser = cr.ImportDataBrowserProxyImpl.getInstance();
@@ -7,8 +7,10 @@ const importableProfilesRaw = writable<cr.BrowserProfile[]>([]);
 
 export const importDiscovery = writable<{
     status: 'initial' | 'loading' | 'loaded' | 'error';
+    refreshing: boolean;
 }>({
     status: 'initial',
+    refreshing: false,
 });
 
 enum _HeliumImportType {
@@ -30,14 +32,33 @@ const fetchProfiles = async () => {
     importableProfilesRaw.set(await browser.initializeImportDialog());
 }
 
+export const openFilesAndFoldersSettings = () => {
+    chrome.send('openFilesAndFoldersSettings');
+}
+
 export const loadImportableProfiles = async () => {
-    importDiscovery.set({ status: 'loading' });
+    importDiscovery.update(d => ({ ...d, status: 'loading' }));
 
     const status = await fetchProfiles().then(
         () => 'loaded' as const,
         () => 'error' as const,
     );
-    importDiscovery.set({ status });
+    importDiscovery.update(d => ({ ...d, status }));
+}
+
+// Re-detects profiles without leaving the loaded state. Skipped while imports
+// are queued or running, since they reference profiles by index; the queue
+// refreshes the list itself once it drains.
+export const refreshImportableProfiles = async () => {
+    if (get(importDiscovery).refreshing || queue.length) {
+        return;
+    }
+
+    importDiscovery.update(d => ({ ...d, refreshing: true }));
+
+    // Keep the previous list if detection fails
+    await fetchProfiles().catch(() => {});
+    importDiscovery.update(d => ({ ...d, refreshing: false }));
 }
 
 const convertTasks = (tasks: WhatToImport): HeliumImportTypes => {
@@ -72,7 +93,7 @@ const runNext = () => {
         if (queue.length) {
             runNext();
         } else {
-            fetchProfiles();
+            refreshImportableProfiles();
         }
     });
 
