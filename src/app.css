@@ -4,6 +4,11 @@
         rgba(0, 0, 0, 1) 90%,
         rgba(0, 0, 0, 0) 100%
     );
+
+    /* Distance of the fixed navigation buttons from the bottom of the page. */
+    --navigation-bottom-space: 24px;
+    /* Scroll padding that keeps page content clear of the navigation buttons. */
+    --navigation-clearance: 96px;
 }
 
 body {
@@ -58,10 +63,10 @@ h2 {
     overflow-x: scroll;
     overflow-y: visible;
     /* accommodation for outline */
-    padding: 6px;
+    padding: var(--gap-1);
     padding-top: 0;
     /* accommodation for navigation buttons */
-    padding-bottom: 96px;
+    padding-bottom: var(--navigation-clearance);
     mask-image: var(--page-scroll-gradient-mask);
 }
 

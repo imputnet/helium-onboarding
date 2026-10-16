@@ -104,7 +104,7 @@
 
 <style>
     #setup-buttons {
-        --bottom-space: 24px;
+        --bottom-space: var(--navigation-bottom-space);
         --misclick-protect: 8px;
 
         bottom: var(--bottom-space);

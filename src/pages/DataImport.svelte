@@ -114,8 +114,10 @@
              * This state drops the bottom padding that normally keeps content
              * clear of the fixed navigation buttons, so reserve that space here.
              */
-            max-height: calc(100dvh - 120px);
-            padding-block: 6px;
+            max-height: calc(
+                100dvh - var(--navigation-clearance) - var(--navigation-bottom-space)
+            );
+            padding-block: var(--gap-1);
             mask-image: none;
         }
     }
