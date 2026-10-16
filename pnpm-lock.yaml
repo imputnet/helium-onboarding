@@ -16,8 +16,8 @@ importers:
         version: https://github.com/imputnet/helium-nonfree-assets/releases/download/202610131302/nonfree-onboarding-assets-202610131302.tar.gz
     devDependencies:
       '@imput/helium-prism':
-        specifier: 0.1.8
-        version: 0.1.8(svelte@5.56.7)
+        specifier: 0.2.0
+        version: 0.2.0(svelte@5.56.7)
       '@sveltejs/vite-plugin-svelte':
         specifier: ^6.2.0
         version: 6.2.0(svelte@5.56.7)(vite@7.3.6(@types/node@24.3.1))
@@ -204,8 +204,8 @@ packages:
   '@fontsource-variable/instrument-sans@5.2.7':
     resolution: {integrity: sha512-OybDg1vN5iIA0Zwl1vhKxMtYSHMoEGZ8XObb1yItbcUwpgXZxUCg9Dgfarq7QGx42EgiwbWQe2vuh9+Zzrebvw==}
 
-  '@imput/helium-prism@0.1.8':
-    resolution: {integrity: sha512-A+jeQCXZL+KIB+5+Kv+JslMg0N5UAh0KMqEM9XDilx9gQaPaBjmhj7PcGjUvWDJk/W/md/6ipuviL0s/gFTARA==}
+  '@imput/helium-prism@0.2.0':
+    resolution: {integrity: sha512-nx1ZRr0lo8ZEajSMxNi7br595IBKaeylD6jnLv83iG1HTsJHu14fqP4ulHaN/yoxtGP9lgREvs4aMjbKIEsJvQ==}
     engines: {node: '>=20'}
     peerDependencies:
       svelte: '>=5.20.0'
@@ -694,7 +694,7 @@ snapshots:
 
   '@fontsource-variable/instrument-sans@5.2.7': {}
 
-  '@imput/helium-prism@0.1.8(svelte@5.56.7)':
+  '@imput/helium-prism@0.2.0(svelte@5.56.7)':
     dependencies:
       ogl: 1.0.11
       svelte: 5.56.7
