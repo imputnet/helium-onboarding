@@ -1,17 +1,46 @@
 <script lang="ts">
-    import { IconWorld } from "@imput/helium-prism";
-    import { s } from "../lib/strings";
-    import type { BrowserProfile } from "../lib/cr";
+    import { tick } from "svelte";
+    import { get } from "svelte/store";
+    import { fade } from "svelte/transition";
+    import { getBoolean, s } from "../lib/strings";
     import { currentPage } from "../lib/onboarding-flow";
-    import { importableProfiles } from "../lib/browser";
-    import { browserIcons } from "../lib/nonfree-icons";
+    import type { BrowserProfile } from "../lib/cr";
+    import { importableProfiles, importDiscovery } from "../lib/browser";
 
     import PageHeader from "../components/PageHeader.svelte";
-    import ProfileImportOption from "../components/ProfileImportOption.svelte";
+    import ImportNotice from "../components/ImportNotice.svelte";
+    import ImportPrompt from "../components/ImportPrompt.svelte";
+    import MacImportNotice from "../components/MacImportNotice.svelte";
+    import BrowserProfileGroup from "../components/BrowserProfileGroup.svelte";
+    import BrowserImportGraphic from "../components/BrowserImportGraphic.svelte";
 
     import IconTransferIn from "../icons/tabler/IconTransferIn.svelte";
 
+    const PROMPT_FADE_DURATION = 80;
+
+    // The browser only sets this where users can grant access to protected
+    // browsers (macOS 27+).
+    const showMacNotice = getBoolean("showMacImportPermissionNotice");
+
     const visible = $derived($currentPage === "DataImport");
+    const discovered = $derived($importDiscovery.status === "loaded");
+    const animateDiscovery = get(importDiscovery).status !== "loaded";
+    let importContainer = $state<HTMLDivElement>();
+
+    $effect.pre(() => {
+        if (!discovered || !animateDiscovery || !importContainer) {
+            return;
+        }
+
+        const container = importContainer;
+        const style = getComputedStyle(container);
+        const from = `${container.getBoundingClientRect().height}px`;
+
+        tick().then(() => container.animate([{ height: from, offset: 0 }], {
+            duration: parseFloat(style.transitionDuration) * 1000,
+            easing: style.transitionTimingFunction,
+        }));
+    });
 
     const sorted = $derived.by(() => {
         const grouped = $importableProfiles.reduce(
@@ -25,97 +54,97 @@
         return Object.entries(grouped)
             .sort(([a], [b]) => a.localeCompare(b));
     });
-
-    const browserIconMap = {
-        Arc: "arc",
-        Brave: "brave",
-        Chromium: "chromium",
-        Dia: "dia",
-        Opera: "opera",
-        Safari: "safari",
-        Vivaldi: "vivaldi",
-        Yandex: "yandex",
-        Zen: "zen",
-
-        "Google Chrome": "chrome",
-        "Google Chrome Beta": "chrome_beta",
-        "Google Chrome Canary": "chrome_canary",
-        "Google Chrome Dev": "chrome_dev",
-        "Microsoft Edge": "edge",
-        "Mozilla Firefox": "firefox",
-        "NAVER Whale": "whale",
-        "Perplexity Comet": "comet",
-    } as const;
 </script>
 
-<div id="data-import-page" class="onboarding-page" class:visible>
-    <div id="data-import-container" class="scrollable-page">
+<div id="data-import-page" class="onboarding-page" class:visible inert={!visible}>
+    <div
+        id="data-import-container"
+        bind:this={importContainer}
+        class={["scrollable-page", { "prompt-only": !discovered }]}
+        style:--prompt-fade-duration={`${PROMPT_FADE_DURATION}ms`}
+    >
+        {#if animateDiscovery}
+            <BrowserImportGraphic visible={!discovered} />
+        {/if}
         <PageHeader
             title={s.dataImport.title}
             subtitle={s.dataImport.subtitle}
+            noTopMargin={!discovered}
             Icon={IconTransferIn}
         />
-        <div class="page-content">
-            {#each sorted as [browser, profiles]}
-                {@const icon = browserIconMap[browser as keyof typeof browserIconMap]}
-                {@const url = icon && browserIcons[icon]}
-                <div class="browser-header">
-                    <div class="browser-icon">
-                        {#if url}
-                            <img src={url} alt="{browser} icon" />
-                        {:else}
-                            <IconWorld />
-                        {/if}
-                    </div>
-                    <h4>{browser}</h4>
+        <div class="import-content">
+            {#if !discovered}
+                <div
+                    class="page-content prompt-content"
+                    out:fade={{ duration: PROMPT_FADE_DURATION }}
+                >
+                    <ImportPrompt />
                 </div>
-                <div class="browser-profiles">
-                    {#each profiles as profile}
-                        <ProfileImportOption {profile} />
+            {:else}
+                <div class={["page-content", { animate: animateDiscovery }]}>
+                    {#if $importableProfiles.length === 0}
+                        <ImportNotice role="status">
+                            <p>{s.dataImport.noBrowsers}</p>
+                        </ImportNotice>
+                    {/if}
+                    {#each sorted as [browser, profiles] (browser)}
+                        <BrowserProfileGroup {browser} {profiles} />
                     {/each}
+                    {#if showMacNotice}
+                        <MacImportNotice />
+                    {/if}
                 </div>
-            {/each}
+            {/if}
         </div>
     </div>
 </div>
 
 <style>
     #data-import-container {
+        --resize-duration: 450ms;
+        --resize-easing: cubic-bezier(0.22, 1, 0.36, 1);
+
+        height: calc-size(auto, min(size, 100%));
         max-width: 600px;
+        box-sizing: border-box;
+        transition: padding var(--resize-duration) var(--resize-easing);
+
+        &.prompt-only {
+            /*
+             * This state drops the bottom padding that normally keeps content
+             * clear of the fixed navigation buttons, so reserve that space here.
+             */
+            max-height: calc(
+                100dvh - var(--navigation-clearance) - var(--navigation-bottom-space)
+            );
+            padding-block: var(--gap-1);
+            mask-image: none;
+        }
+    }
+
+    #data-import-container :global(.page-header) {
+        transition: margin-top var(--resize-duration) var(--resize-easing);
+    }
+
+    .import-content {
+        display: grid;
     }
 
     .page-content {
-        gap: var(--gap-3);
+        grid-area: 1 / 1;
     }
 
-    .browser-header {
-        display: flex;
-        width: 100%;
-        align-items: center;
-        gap: 8px;
-
-        & .browser-icon {
-            width: 28px;
-            height: 28px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            & img {
-                width: 28px;
-                height: 28px;
-            }
-        }
-
-        & > h4 {
-            line-height: 1;
-        }
+    .prompt-content {
+        align-self: start;
     }
 
-    .browser-profiles {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        gap: var(--gap-1);
+    .animate {
+        animation: page-in 0.3s 0.05s backwards;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        #data-import-container {
+            --resize-duration: 0ms;
+        }
     }
 </style>

@@ -7,7 +7,14 @@
     } from "@imput/helium-prism";
     import { s } from "../lib/strings";
     import { SvelteSet } from "svelte/reactivity";
-    import { acceptLatestSchema, askToBeDefault, importProfile, setPref } from "../lib/browser";
+    import {
+        acceptLatestSchema,
+        askToBeDefault,
+        importableProfiles,
+        importDiscovery,
+        importProfile,
+        setPref,
+    } from "../lib/browser";
     import {
         nextPage,
         previousPage,
@@ -22,6 +29,14 @@
     );
 
     let working = $state(false);
+
+    // "Next" is disabled while profiles are importing or refreshing. Importing
+    // may show a browser-level error, such as a request to close the other
+    // browser. Refreshing may (re)move the previously targeted profiles. The
+    // user has to be aware of both.
+    const nextDisabled = $derived(
+        working || ($currentPage === "DataImport" && $importDiscovery.refreshing)
+    );
 
     const doNext = async () => {
         switch ($currentPage) {
@@ -41,13 +56,13 @@
         case "DataImport":
             // FIXME: handle errors
             await Promise.allSettled(
-                [...$selectedProfiles].map(
-                    index => importProfile(index, {
+                $importableProfiles
+                    .filter(profile => $selectedProfiles.has(profile.id))
+                    .map(profile => importProfile(profile.index, {
                         bookmarks: true,
                         history: true,
                         extensions: true
-                    })
-                )
+                    }))
             );
 
             $previouslyImportedProfiles = new SvelteSet([
@@ -76,7 +91,7 @@
             <IconArrowLeft />
             {s.button.back}
         </Button>
-        <Button disabled={working} primary onclick={next}>
+        <Button disabled={nextDisabled} primary onclick={next}>
             {#if working}
                 <Spinner size={18} />
             {:else}
@@ -89,7 +104,7 @@
 
 <style>
     #setup-buttons {
-        --bottom-space: 24px;
+        --bottom-space: var(--navigation-bottom-space);
         --misclick-protect: 8px;
 
         bottom: var(--bottom-space);

@@ -12,12 +12,12 @@ importers:
         specifier: ^5.2.7
         version: 5.2.7
       nonfree-icons:
-        specifier: https://github.com/imputnet/helium-nonfree-assets/releases/download/20260724131745/nonfree-onboarding-assets.tar.gz
-        version: https://github.com/imputnet/helium-nonfree-assets/releases/download/20260724131745/nonfree-onboarding-assets.tar.gz
+        specifier: https://github.com/imputnet/helium-nonfree-assets/releases/download/202610131302/nonfree-onboarding-assets-202610131302.tar.gz
+        version: https://github.com/imputnet/helium-nonfree-assets/releases/download/202610131302/nonfree-onboarding-assets-202610131302.tar.gz
     devDependencies:
       '@imput/helium-prism':
-        specifier: 0.1.8
-        version: 0.1.8(svelte@5.56.7)
+        specifier: 0.2.0
+        version: 0.2.0(svelte@5.56.7)
       '@sveltejs/vite-plugin-svelte':
         specifier: ^6.2.0
         version: 6.2.0(svelte@5.56.7)(vite@7.3.6(@types/node@24.3.1))
@@ -204,8 +204,8 @@ packages:
   '@fontsource-variable/instrument-sans@5.2.7':
     resolution: {integrity: sha512-OybDg1vN5iIA0Zwl1vhKxMtYSHMoEGZ8XObb1yItbcUwpgXZxUCg9Dgfarq7QGx42EgiwbWQe2vuh9+Zzrebvw==}
 
-  '@imput/helium-prism@0.1.8':
-    resolution: {integrity: sha512-A+jeQCXZL+KIB+5+Kv+JslMg0N5UAh0KMqEM9XDilx9gQaPaBjmhj7PcGjUvWDJk/W/md/6ipuviL0s/gFTARA==}
+  '@imput/helium-prism@0.2.0':
+    resolution: {integrity: sha512-nx1ZRr0lo8ZEajSMxNi7br595IBKaeylD6jnLv83iG1HTsJHu14fqP4ulHaN/yoxtGP9lgREvs4aMjbKIEsJvQ==}
     engines: {node: '>=20'}
     peerDependencies:
       svelte: '>=5.20.0'
@@ -491,8 +491,8 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  nonfree-icons@https://github.com/imputnet/helium-nonfree-assets/releases/download/20260724131745/nonfree-onboarding-assets.tar.gz:
-    resolution: {tarball: https://github.com/imputnet/helium-nonfree-assets/releases/download/20260724131745/nonfree-onboarding-assets.tar.gz}
+  nonfree-icons@https://github.com/imputnet/helium-nonfree-assets/releases/download/202610131302/nonfree-onboarding-assets-202610131302.tar.gz:
+    resolution: {tarball: https://github.com/imputnet/helium-nonfree-assets/releases/download/202610131302/nonfree-onboarding-assets-202610131302.tar.gz}
     version: 1.0.0
 
   ogl@1.0.11:
@@ -694,7 +694,7 @@ snapshots:
 
   '@fontsource-variable/instrument-sans@5.2.7': {}
 
-  '@imput/helium-prism@0.1.8(svelte@5.56.7)':
+  '@imput/helium-prism@0.2.0(svelte@5.56.7)':
     dependencies:
       ogl: 1.0.11
       svelte: 5.56.7
@@ -929,7 +929,7 @@ snapshots:
 
   nanoid@3.3.16: {}
 
-  nonfree-icons@https://github.com/imputnet/helium-nonfree-assets/releases/download/20260724131745/nonfree-onboarding-assets.tar.gz: {}
+  nonfree-icons@https://github.com/imputnet/helium-nonfree-assets/releases/download/202610131302/nonfree-onboarding-assets-202610131302.tar.gz: {}
 
   ogl@1.0.11: {}
 

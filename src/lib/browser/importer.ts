@@ -1,9 +1,17 @@
-import { derived, writable } from "svelte/store";
+import { derived, get, writable } from "svelte/store";
 import * as cr from "../cr";
 
 const browser = cr.ImportDataBrowserProxyImpl.getInstance();
 
 const importableProfilesRaw = writable<cr.BrowserProfile[]>([]);
+
+export const importDiscovery = writable<{
+    status: 'initial' | 'loading' | 'loaded' | 'error';
+    refreshing: boolean;
+}>({
+    status: 'initial',
+    refreshing: false,
+});
 
 enum _HeliumImportType {
     EXTENSIONS = 'import_dialog_extensions',
@@ -16,10 +24,41 @@ export const HeliumImportType = {
 export type HeliumImportType = _HeliumImportType | cr.ImportType;
 export type HeliumImportTypes = Record<HeliumImportType, boolean>;
 
-export const setup = () => {
-    browser.initializeImportDialog().then(
-        profiles => importableProfilesRaw.set(profiles)
+type Action = () => void;
+// The import in progress stays at the front until it finishes.
+const queue: [number, HeliumImportTypes, Action, Action][] = [];
+
+const fetchProfiles = async () => {
+    importableProfilesRaw.set(await browser.initializeImportDialog());
+}
+
+export const openFilesAndFoldersSettings = () => {
+    chrome.send('openFilesAndFoldersSettings');
+}
+
+export const loadImportableProfiles = async () => {
+    importDiscovery.update(d => ({ ...d, status: 'loading' }));
+
+    const status = await fetchProfiles().then(
+        () => 'loaded' as const,
+        () => 'error' as const,
     );
+    importDiscovery.update(d => ({ ...d, status }));
+}
+
+// Re-detects profiles without leaving the loaded state. Skipped while imports
+// are queued or running, since they reference profiles by index; the queue
+// refreshes the list itself once it drains.
+export const refreshImportableProfiles = async () => {
+    if (get(importDiscovery).refreshing || queue.length) {
+        return;
+    }
+
+    importDiscovery.update(d => ({ ...d, refreshing: true }));
+
+    // Keep the previous list if detection fails
+    await fetchProfiles().catch(() => {});
+    importDiscovery.update(d => ({ ...d, refreshing: false }));
 }
 
 const convertTasks = (tasks: WhatToImport): HeliumImportTypes => {
@@ -33,15 +72,12 @@ const convertTasks = (tasks: WhatToImport): HeliumImportTypes => {
     };
 }
 
-type Action = () => void;
-let queue: [number, HeliumImportTypes, Action, Action][] = [];
-
 const runNext = () => {
     if (queue.length === 0) {
         return;
     }
 
-    const [ index, tasks, resolve, reject ] = queue.pop()!;
+    const [ index, tasks, resolve, reject ] = queue[0];
 
     const me = cr.addWebUiListener('import-data-status-changed', (status: cr.ImportDataStatus) => {
         if (status === cr.ImportDataStatus.FAILED)
@@ -52,11 +88,12 @@ const runNext = () => {
             return;
 
         cr.removeWebUiListener(me);
+        queue.shift();
 
         if (queue.length) {
             runNext();
         } else {
-            browser.initializeImportDialog().then(importableProfilesRaw.set);
+            refreshImportableProfiles();
         }
     });
 
