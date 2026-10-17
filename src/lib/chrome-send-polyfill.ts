@@ -29,6 +29,7 @@ const prefs: Record<string, unknown> = {
     'services.spellcheck_files': true,
     'services.browser_updates': true,
     'services.ublock_assets': true,
+    'services.web_push': true,
 };
 
 const searchEngineTemplate: SearchEngine = {

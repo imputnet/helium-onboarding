@@ -95,6 +95,12 @@
 <message name="IDS_HELIUM_ONBOARDING_SERVICES_SPELLCHECK_DESC" desc="Description of the toggle for downloading spell check dictionary files.">
   Helium will fetch dictionary files used for spell checking when requested. When disabled, spell checking will not work.
 </message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_WEB_PUSH_TITLE" desc="Title of the toggle for receiving web push notifications.">
+  Allow receiving push notifications
+</message>
+<message name="IDS_HELIUM_ONBOARDING_SERVICES_WEB_PUSH_DESC" desc="Description of the toggle for receiving web push notifications.">
+  Websites you allow to send notifications can deliver them through the Helium push server, even when they aren't open. Helium only connects to it while at least one website is subscribed. When disabled, websites can't subscribe to push notifications.
+</message>
 <message name="IDS_HELIUM_ONBOARDING_SERVICES_INSTANCE_TITLE" desc="Title of the option describing custom Helium services instances.">
   Use your own instance of Helium services
 </message>

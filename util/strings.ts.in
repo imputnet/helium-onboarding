@@ -75,6 +75,7 @@ const getString = (key: StringKey): string => {
 
 const DEV_BOOLEANS: Record<string, boolean> = import.meta.env.DEV ? {
     ...(platform.is.macos ? { showMacImportPermissionNotice: true } : {}),
+    webPushAvailable: true,
 } : {};
 export const getBoolean = (key: string): boolean => {
     if (import.meta.env.DEV) {

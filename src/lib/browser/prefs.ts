@@ -11,6 +11,7 @@ export type Preferences = {
     'services.spellcheck_files': boolean,
     'services.browser_updates': boolean,
     'services.ublock_assets': boolean,
+    'services.web_push': boolean,
 };
 
 export type PrefKey = keyof Preferences;

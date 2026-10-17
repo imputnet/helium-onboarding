@@ -1,6 +1,6 @@
 <script lang="ts">
     import { CardLink, HeliumLogo } from "@imput/helium-prism";
-    import { s } from "../lib/strings";
+    import { getBoolean, s } from "../lib/strings";
     import { platform } from "../lib/platform";
     import { currentPage } from "../lib/onboarding-flow";
     import { preferences as pr } from "../lib/browser";
@@ -44,6 +44,12 @@
             desc: s.services.spellcheckDesc,
             prefName: "services.spellcheck_files",
             available: !platform.is.android && !platform.is.macos,
+        },
+        {
+            title: s.services.webPushTitle,
+            desc: s.services.webPushDesc,
+            prefName: "services.web_push",
+            available: !platform.is.android && getBoolean("webPushAvailable"),
         },
     ] as const).filter(service => service.available);
 </script>
