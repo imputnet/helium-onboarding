@@ -54,13 +54,9 @@ jobs:
           sha256sum helium*.tar.gz >> release.md
           echo '```' >> release.md
       - name: Release
-        uses: imputnet/action-gh-release@v2.5
-        id: release
+        uses: imputnet/immutable-release@v1
         with:
-          body_path: /tmp/release.md
-          draft: false
+          tag: ${{ steps.ts.outputs.tag }}
           prerelease: true
+          notes-file: /tmp/release.md
           files: /tmp/helium-onboarding-${{ steps.ts.outputs.tag }}.tar.gz
-          name: ${{ steps.ts.outputs.tag }}
-          tag_name: ${{ steps.ts.outputs.tag }}
-          token: ${{ secrets.GITHUB_TOKEN }}
